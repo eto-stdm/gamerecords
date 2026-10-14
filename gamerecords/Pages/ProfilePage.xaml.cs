@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace gamerecords.Dialogs
+namespace gamerecords.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ForgotPassword.xaml
+    /// Логика взаимодействия для ProfilePage.xaml
     /// </summary>
-    public partial class ForgotPassword : Window
+    public partial class ProfilePage : Page
     {
-        public ForgotPassword()
+        public ProfilePage()
         {
             InitializeComponent();
         }

@@ -4,30 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ed6b0a3464c409c9cd6c6b8b57d49d1" Name="Diagram1">
-        <EntityTypeShape EntityType="gamerecordsModel.Categories" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+      <Diagram DiagramId="8a445e2f3d254b4fa3bc6aa0a9a1e161" Name="Diagram1">
+        <EntityTypeShape EntityType="gamerecordsModel.Categories" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Contacts" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Countries" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Countries" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Games" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.GamesCategories" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.GamesGenres" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.GameVersions" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.GamesPlatforms" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Genres" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Guides" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Platforms" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Platforms" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Players" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Records" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Roles" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
-        <AssociationConnector Association="gamerecordsModel.FK__Categorie__game___3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="gamerecordsModel.FK__Records__categor__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_GamesCategories_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Contacts__player__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Players__country__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__GamesGenr__game___4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="gamerecordsModel.FK__GameVersi__game___398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Guides__game_id__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_GamesCategories_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_GamesPlatforms_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_Records_GamesCategories" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__GamesGenr__genre__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_GamesPlatforms_Platforms" ManuallyRouted="false" />
+        <AssociationConnector Association="gamerecordsModel.FK_Records_GamesPlatforms" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Guides__author_i__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="gamerecordsModel.FK__Records__platfor__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Players__role_id__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="gamerecordsModel.FK__Records__player___412EB0B6" ManuallyRouted="false" />
       </Diagram>

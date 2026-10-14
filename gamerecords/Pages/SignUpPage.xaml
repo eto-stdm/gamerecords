@@ -24,9 +24,6 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Пароль" Style="{StaticResource RegularTextSignIn}" Grid.Column="0"/>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="10,0,10,5">
-                        <Hyperlink Style="{StaticResource HyperlinkSignIn}" NavigateUri="/Dialogs/.xaml">Забыли пароль?</Hyperlink>
-                        </TextBlock>
                     </Grid>
                     <PasswordBox x:Name="PasswordTB" Style="{StaticResource PasswordSignIn}"/>
                 </StackPanel>
@@ -35,11 +32,11 @@
                     <ComboBox x:Name="CountryTB" Style="{StaticResource ComboBoxSignUp}" ItemContainerStyle="{StaticResource ComboItemSignUp}"/>
                 </StackPanel>
                 <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{StaticResource RegularTextSignIn}"/>
-                <Button x:Name="SignInBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}"/>
+                <Button x:Name="SignInBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}" Click="SignInBtn_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Уже есть аккаунт?" Style="{StaticResource RegularTextSignIn}"/>
                     <TextBlock Grid.Column="1" Margin="5,0,10,10">
-                       <Hyperlink Style="{StaticResource HyperlinkSignIn}" NavigateUri="/Pages/SignUpPage.xaml">Войти</Hyperlink>
+                       <Hyperlink Style="{StaticResource HyperlinkSignIn}" NavigateUri="/Pages/SignInPage.xaml">Войти</Hyperlink>
                     </TextBlock>
                 </StackPanel>
             </StackPanel>

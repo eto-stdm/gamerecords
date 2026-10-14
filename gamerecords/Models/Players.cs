@@ -25,7 +25,7 @@ namespace gamerecords.Models
         public int role_id { get; set; }
         public string nickname { get; set; }
         public string password { get; set; }
-        public int countryid { get; set; }
+        public Nullable<int> countryid { get; set; }
         public string image { get; set; }
         public System.DateTime created_at { get; set; }
     

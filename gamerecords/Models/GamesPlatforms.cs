@@ -12,12 +12,19 @@ namespace gamerecords.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GameVersions
+    public partial class GamesPlatforms
     {
+        public GamesPlatforms()
+        {
+            this.Records = new HashSet<Records>();
+        }
+    
         public int id { get; set; }
         public int game_id { get; set; }
-        public string version { get; set; }
+        public int platform_id { get; set; }
     
         public virtual Games Games { get; set; }
+        public virtual Platforms Platforms { get; set; }
+        public virtual ICollection<Records> Records { get; set; }
     }
 }

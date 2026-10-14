@@ -16,12 +16,12 @@ namespace gamerecords.Models
     {
         public Platforms()
         {
-            this.Records = new HashSet<Records>();
+            this.GamesPlatforms = new HashSet<GamesPlatforms>();
         }
     
         public int id { get; set; }
         public string platform { get; set; }
     
-        public virtual ICollection<Records> Records { get; set; }
+        public virtual ICollection<GamesPlatforms> GamesPlatforms { get; set; }
     }
 }

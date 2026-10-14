@@ -17,12 +17,12 @@ namespace gamerecords.Models
         public int id { get; set; }
         public int category_id { get; set; }
         public int player_id { get; set; }
-        public byte[] total_time { get; set; }
+        public System.TimeSpan total_time { get; set; }
         public int platform_id { get; set; }
         public string video { get; set; }
     
-        public virtual Categories Categories { get; set; }
-        public virtual Platforms Platforms { get; set; }
+        public virtual GamesCategories GamesCategories { get; set; }
+        public virtual GamesPlatforms GamesPlatforms { get; set; }
         public virtual Players Players { get; set; }
     }
 }

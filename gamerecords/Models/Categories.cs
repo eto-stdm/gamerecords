@@ -16,14 +16,12 @@ namespace gamerecords.Models
     {
         public Categories()
         {
-            this.Records = new HashSet<Records>();
+            this.GamesCategories = new HashSet<GamesCategories>();
         }
     
         public int id { get; set; }
-        public int game_id { get; set; }
         public string category { get; set; }
     
-        public virtual Games Games { get; set; }
-        public virtual ICollection<Records> Records { get; set; }
+        public virtual ICollection<GamesCategories> GamesCategories { get; set; }
     }
 }

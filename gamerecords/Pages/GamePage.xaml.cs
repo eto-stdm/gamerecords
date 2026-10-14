@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace gamerecords.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для GamePage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class GamePage : Page
     {
-        public MainPage()
+        public GamePage()
         {
             InitializeComponent();
         }

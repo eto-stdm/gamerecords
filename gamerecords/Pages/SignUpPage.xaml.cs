@@ -27,14 +27,10 @@ namespace gamerecords.Pages
             InitializeComponent();
             CountryTB.ItemsSource = Core.Context.Countries.ToList();
         }
-        private void RegTB_Click(object sender, RoutedEventArgs e)
+
+        private void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void LogTB_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SignInPage());
         }
     }
 }

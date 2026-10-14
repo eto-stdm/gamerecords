@@ -16,10 +16,10 @@ namespace gamerecords.Models
     {
         public Games()
         {
-            this.Categories = new HashSet<Categories>();
             this.GamesGenres = new HashSet<GamesGenres>();
-            this.GameVersions = new HashSet<GameVersions>();
             this.Guides = new HashSet<Guides>();
+            this.GamesCategories = new HashSet<GamesCategories>();
+            this.GamesPlatforms = new HashSet<GamesPlatforms>();
         }
     
         public int id { get; set; }
@@ -27,9 +27,9 @@ namespace gamerecords.Models
         public System.DateTime created_year { get; set; }
         public string image { get; set; }
     
-        public virtual ICollection<Categories> Categories { get; set; }
         public virtual ICollection<GamesGenres> GamesGenres { get; set; }
-        public virtual ICollection<GameVersions> GameVersions { get; set; }
         public virtual ICollection<Guides> Guides { get; set; }
+        public virtual ICollection<GamesCategories> GamesCategories { get; set; }
+        public virtual ICollection<GamesPlatforms> GamesPlatforms { get; set; }
     }
 }

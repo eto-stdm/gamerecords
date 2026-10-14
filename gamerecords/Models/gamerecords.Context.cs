@@ -29,8 +29,9 @@ namespace gamerecords.Models
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<Countries> Countries { get; set; }
         public DbSet<Games> Games { get; set; }
+        public DbSet<GamesCategories> GamesCategories { get; set; }
         public DbSet<GamesGenres> GamesGenres { get; set; }
-        public DbSet<GameVersions> GameVersions { get; set; }
+        public DbSet<GamesPlatforms> GamesPlatforms { get; set; }
         public DbSet<Genres> Genres { get; set; }
         public DbSet<Guides> Guides { get; set; }
         public DbSet<Platforms> Platforms { get; set; }

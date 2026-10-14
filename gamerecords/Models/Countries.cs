@@ -21,6 +21,7 @@ namespace gamerecords.Models
     
         public int id { get; set; }
         public string country { get; set; }
+        public string image { get; set; }
     
         public virtual ICollection<Players> Players { get; set; }
     }

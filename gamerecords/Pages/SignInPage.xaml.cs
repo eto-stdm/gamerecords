@@ -35,7 +35,7 @@ namespace gamerecords.Pages
                 if (player.password == PasswordTB.Password)
                 {
                     Core.current_player = player;
-                    NavigationService.Navigate(new MainPage());
+                    NavigationService.Navigate(new CatalogPage());
                 }
                 else if (failedPassword < 3) { failedPassword++; /*Показать диалог неверный пароль*/ }
                 else { /*Показать диалог с капчей*/ }
@@ -43,11 +43,5 @@ namespace gamerecords.Pages
             else if (failedPassword < 3) { failedPassword++; /*Показать диалог неверный пароль*/ }
             else { /*Показать диалог с капчей*/ }
         }
-
-        private void SignUpBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SignUpPage());
-        }
-
     }
 }
