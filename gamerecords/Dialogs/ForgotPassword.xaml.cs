@@ -10,29 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace gamerecords.Pages
+namespace gamerecords.Dialogs
 {
     /// <summary>
-    /// Логика взаимодействия для RegPage.xaml
+    /// Логика взаимодействия для ForgotPassword.xaml
     /// </summary>
-    public partial class RegPage : Page
+    public partial class ForgotPassword : Window
     {
-        public RegPage()
+        public ForgotPassword()
         {
             InitializeComponent();
-        }
-
-        private void RegTB_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LogTB_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AuthPage());
         }
     }
 }

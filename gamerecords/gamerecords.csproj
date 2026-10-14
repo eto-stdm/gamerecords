@@ -63,6 +63,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Core.cs" />
+    <Compile Include="Dialogs\ForgotPassword.xaml.cs">
+      <DependentUpon>ForgotPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Categories.cs">
       <DependentUpon>gamerecords.tt</DependentUpon>
     </Compile>
@@ -117,15 +120,13 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>gamerecords.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AuthPage.xaml.cs">
-      <DependentUpon>AuthPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegPage.xaml.cs">
-      <DependentUpon>RegPage.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Dialogs\ForgotPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,15 +139,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\AuthPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RegPage.xaml">
+    <Page Include="Pages\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignUpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,6 +161,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -181,6 +188,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>gamerecords.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\Inter-ExtraBold.ttf" />
+    <Resource Include="Fonts\Inter-Medium.ttf" />
     <None Include="Models\gamerecords.edmx.diagram">
       <DependentUpon>gamerecords.edmx</DependentUpon>
     </None>
@@ -197,6 +206,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\speedrun.png" />
+    <Resource Include="Images\angry birds.png" />
+    <Resource Include="Images\bad piggies.png" />
+    <Resource Include="Images\celeste.png" />
+    <Resource Include="Images\ghostrunner.png" />
+    <Resource Include="Images\hollow knight.png" />
+    <Resource Include="Images\katana zero.png" />
+    <Resource Include="Images\minecraft.png" />
+    <Resource Include="Images\mirrors edge.png" />
+    <Resource Include="Images\neon white.png" />
+    <Resource Include="Images\nier automata.png" />
+    <Resource Include="Images\peak.png" />
+    <Resource Include="Images\tboi.png" />
+    <Resource Include="Images\th16.png" />
+    <Resource Include="Images\the messenger.png" />
+    <Resource Include="Images\ultrakill.png" />
     <Content Include="Models\gamerecords.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>gamerecords.edmx</DependentUpon>
@@ -208,5 +233,6 @@
       <LastGenOutput>gamerecords.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

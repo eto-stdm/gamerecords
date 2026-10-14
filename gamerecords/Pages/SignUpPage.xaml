@@ -1,0 +1,48 @@
+﻿<Page x:Class="gamerecords.Pages.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gamerecords.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SignUpPage">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image Style="{StaticResource LogoSignIn}"/>
+        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+            <StackPanel>
+                <TextBlock Text="Создание аккаунта" Style="{StaticResource HeaderSignIn}"/>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Логин" Style="{StaticResource RegularTextSignIn}"/>
+                    <TextBox x:Name="LoginTB" Style="{StaticResource TextBoxSignIn}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Пароль" Style="{StaticResource RegularTextSignIn}" Grid.Column="0"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="10,0,10,5">
+                        <Hyperlink Style="{StaticResource HyperlinkSignIn}" NavigateUri="/Dialogs/.xaml">Забыли пароль?</Hyperlink>
+                        </TextBlock>
+                    </Grid>
+                    <PasswordBox x:Name="PasswordTB" Style="{StaticResource PasswordSignIn}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Страна (опционально)" Style="{StaticResource RegularTextSignIn}"/>
+                    <ComboBox x:Name="CountryTB" Style="{StaticResource ComboBoxSignUp}" ItemContainerStyle="{StaticResource ComboItemSignUp}"/>
+                </StackPanel>
+                <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{StaticResource RegularTextSignIn}"/>
+                <Button x:Name="SignInBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Уже есть аккаунт?" Style="{StaticResource RegularTextSignIn}"/>
+                    <TextBlock Grid.Column="1" Margin="5,0,10,10">
+                       <Hyperlink Style="{StaticResource HyperlinkSignIn}" NavigateUri="/Pages/SignUpPage.xaml">Войти</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Page>

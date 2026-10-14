@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gamerecords"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow"
+        WindowStyle="None"
+        WindowState="Maximized"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
         Style="{StaticResource MyWindowStyle}">
     <Grid>
-        
-        <Frame Source="Pages/AuthPage.xaml" NavigationUIVisibility="Hidden"/>
-        <TextBlock x:Name="DateTimeNow" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
+        <Frame Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
+        <TextBlock x:Name="DateTimeNow" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="White"/>
     </Grid>
 </Window>
