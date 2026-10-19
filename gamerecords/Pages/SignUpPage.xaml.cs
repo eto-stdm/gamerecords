@@ -25,7 +25,13 @@ namespace gamerecords.Pages
         public SignUpPage()
         {
             InitializeComponent();
-            CountryTB.ItemsSource = Core.Context.Countries.ToList();
+            List<string> countries = new List<string>();
+            foreach (Countries country in Core.Context.Countries.ToList())
+            {
+                countries.Add(Convert.ToString(country.country));
+            }
+            CountryTB.ItemsSource = countries;
+            CountryTB.SelectedIndex = 18;
         }
 
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
@@ -36,12 +42,18 @@ namespace gamerecords.Pages
                 Players play = Core.Context.Players.FirstOrDefault(x => x.nickname == LoginTB.Text);
                 if (play == null)
                 {
+                    string s = CountryTB.Text;
+                    int? cid = null;
+                    if (s != " (нет)")
+                    {
+                        cid = Core.Context.Countries.FirstOrDefault(x => x.country == s).id;
+                    }    
                     Players newplayer = new Players
                     {
                         role_id = 2,
                         nickname = LoginTB.Text,
                         password = Core.GetHash(PasswordTB.Password),
-                        countryid = null,
+                        countryid = cid,
                         created_at = DateTime.Now,
                     };
                     Core.Context.Players.Add(newplayer);
