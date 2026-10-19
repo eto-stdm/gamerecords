@@ -42,5 +42,10 @@ namespace gamerecords
             MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No) { e.Cancel = true; }
             else { e.Cancel = false; }
         }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

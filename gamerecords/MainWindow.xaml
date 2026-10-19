@@ -12,6 +12,7 @@
         Closing="Window_Closing"
         Style="{StaticResource MyWindowStyle}">
     <Grid>
+        <Button x:Name="CloseBtn" Content="✗" Style="{StaticResource ButtonExit}" Click="CloseBtn_Click"/>
         <Frame Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
         <TextBlock x:Name="DateTimeNow" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="White"/>
     </Grid>

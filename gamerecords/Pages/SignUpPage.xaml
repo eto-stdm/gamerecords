@@ -32,7 +32,7 @@
                     <ComboBox x:Name="CountryTB" Style="{StaticResource ComboBoxSignUp}" ItemContainerStyle="{StaticResource ComboItemSignUp}"/>
                 </StackPanel>
                 <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{StaticResource RegularTextSignIn}"/>
-                <Button x:Name="SignInBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}" Click="SignInBtn_Click"/>
+                <Button x:Name="SignUpBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}" Click="SignUpBtn_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Уже есть аккаунт?" Style="{StaticResource RegularTextSignIn}"/>
                     <TextBlock Grid.Column="1" Margin="5,0,10,10">

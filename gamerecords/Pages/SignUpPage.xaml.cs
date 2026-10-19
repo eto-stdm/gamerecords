@@ -28,9 +28,29 @@ namespace gamerecords.Pages
             CountryTB.ItemsSource = Core.Context.Countries.ToList();
         }
 
-        private void SignInBtn_Click(object sender, RoutedEventArgs e)
+        private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            if (LoginTB.Text != "" && PasswordTB.Password != "")
+            {
+                Players play = Core.Context.Players.FirstOrDefault(x => x.nickname == LoginTB.Text);
+                if (play == null)
+                {
+                    Players newplayer = new Players
+                    {
+                        role_id = 2,
+                        nickname = LoginTB.Text,
+                        password = Core.GetHash(PasswordTB.Password),
+                        countryid = null,
+                        created_at = DateTime.Now,
+                    };
+                    Core.Context.Players.Add(newplayer);
+                    Core.Context.SaveChanges();
+                    NavigationService.Navigate(new CatalogPage());
+                }
+            }
+            else { MessageBox.Show("Заполните все данные!"); } // потом заменить на красивое окно
+            //x=16sin3(t)x equals 16 sine cubed t 
         }
     }
 }

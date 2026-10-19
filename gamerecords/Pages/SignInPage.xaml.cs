@@ -32,7 +32,7 @@ namespace gamerecords.Pages
             Players player = Core.Context.Players.FirstOrDefault(p => p.nickname == LoginTB.Text.ToLower());
             if (player != null)
             {
-                if (player.password == PasswordTB.Password)
+                if (player.password == Core.GetHash(PasswordTB.Password))
                 {
                     Core.current_player = player;
                     NavigationService.Navigate(new CatalogPage());
@@ -42,6 +42,7 @@ namespace gamerecords.Pages
             }
             else if (failedPassword < 3) { failedPassword++; /*Показать диалог неверный пароль*/ }
             else { /*Показать диалог с капчей*/ }
-        }
+        } // https://gamma.app/docs/51--homqtqne71iu8yk?mode=doc
+        // пара 26
     }
 }
