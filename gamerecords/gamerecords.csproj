@@ -276,6 +276,7 @@
     <Resource Include="Images\ultrakill.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\vvvvvv.png" />
     <Content Include="Models\gamerecords.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>gamerecords.edmx</DependentUpon>

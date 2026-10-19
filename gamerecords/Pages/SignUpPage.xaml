@@ -31,6 +31,7 @@
                     <TextBlock Text="Страна (опционально)" Style="{StaticResource RegularTextSignIn}"/>
                     <ComboBox x:Name="CountryTB" Style="{StaticResource ComboBoxSignUp}" ItemContainerStyle="{StaticResource ComboItemSignUp}"/>
                 </StackPanel>
+                <!-- сделать добавление аватара -->
                 <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{StaticResource RegularTextSignIn}"/>
                 <Button x:Name="SignUpBtn" Content="Зарегистрироваться" Style="{StaticResource ButtonSignIn}" Click="SignUpBtn_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
