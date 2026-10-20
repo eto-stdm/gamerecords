@@ -79,5 +79,16 @@ namespace gamerecords.Pages
                 ShowCaptcha();
             }
         }
+
+        private void ForgotPasswordHL_Click(object sender, RoutedEventArgs e)
+        {
+            ForgotPasswordDialog dialog = new ForgotPasswordDialog();
+            bool? result = dialog.ShowDialog();
+        }
+
+        private void SignUpHL_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SignUpPage());
+        }
     }
 }
