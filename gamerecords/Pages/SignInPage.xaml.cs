@@ -1,4 +1,5 @@
 ﻿using gamerecords.Classes;
+using gamerecords.Dialogs;
 using gamerecords.Models;
 using System;
 using System.Collections.Generic;
@@ -22,27 +23,61 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class SignInPage : Page
     {
-        int failedPassword;
+        int failedPassword = 0;
+
         public SignInPage()
         {
             InitializeComponent();
         }
+
+        private void ShowCaptcha()
+        {
+            CaptchaDialog dialog = new CaptchaDialog();
+            bool? result = dialog.ShowDialog();
+        }
+
+        private void RedirectAfterCorrect(Players player)
+        {
+            Core.current_player = player;
+            NavigationService.Navigate(new CatalogPage());
+        }
+
         private void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
+            int attemptAmount = 3;
             Players player = Core.Context.Players.FirstOrDefault(p => p.nickname == LoginTB.Text.ToLower());
             if (player != null)
             {
-                if (player.password == Core.GetHash(PasswordTB.Password))
+                string enteredHashedPassword = Core.GetHash(PasswordTB.Password);
+                if (player.password == enteredHashedPassword && failedPassword < attemptAmount) { RedirectAfterCorrect(player);  }
+                else if (player.password == enteredHashedPassword && failedPassword >= attemptAmount) 
                 {
-                    Core.current_player = player;
-                    NavigationService.Navigate(new CatalogPage());
+                    ShowCaptcha();
+                    RedirectAfterCorrect(player);
                 }
-                else if (failedPassword < 3) { failedPassword++; /*Показать диалог неверный пароль*/ }
-                else { /*Показать диалог с капчей*/ }
+                else if (player.password != enteredHashedPassword && failedPassword < attemptAmount - 1)
+                {
+                    failedPassword++;
+                    MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+                }
+                else
+                {
+                    failedPassword++;
+                    MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+                    ShowCaptcha();
+                }
             }
-            else if (failedPassword < 3) { failedPassword++; /*Показать диалог неверный пароль*/ }
-            else { /*Показать диалог с капчей*/ }
-        } // https://gamma.app/docs/51--homqtqne71iu8yk?mode=doc
-        // пара 26
+            else if (failedPassword < attemptAmount - 1)
+            {
+                failedPassword++;
+                MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+            }
+            else
+            {
+                failedPassword++;
+                MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+                ShowCaptcha();
+            }
+        }
     }
 }
