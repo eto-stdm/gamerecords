@@ -1,4 +1,8 @@
-﻿using System;
+﻿using gamerecords.Classes;
+
+
+using gamerecords.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +23,32 @@ namespace gamerecords.Dialogs
     /// </summary>
     public partial class ForgotPasswordDialog : Window
     {
-        public ForgotPasswordDialog()
+        string login {  set; get; }
+        public ForgotPasswordDialog(string login)
         {
             InitializeComponent();
+            this.login = login;
+            LoginTB.Text = login;
+
+            if (login != "") { LoginTB.IsEnabled = false;  }
+        }
+
+        private void ChangePasswordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Core.ShowCaptcha();
+            Players player = Core.Context.Players.FirstOrDefault(p => p.nickname == LoginTB.Text.ToLower());
+            
+            if (player != null && PasswordTB.Password != "")
+            {
+                string newpass = Core.GetHash(PasswordTB.Password);
+                if (newpass != player.password)
+                {
+                    player.password = newpass;
+                    Core.Context.SaveChanges();
+                }
+                MessageBox.Show("Пароль изменён");
+            }
+            else { MessageBox.Show("Заполните все поля!"); }
         }
     }
 }

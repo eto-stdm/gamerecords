@@ -30,12 +30,6 @@ namespace gamerecords.Pages
             InitializeComponent();
         }
 
-        private void ShowCaptcha()
-        {
-            CaptchaDialog dialog = new CaptchaDialog();
-            bool? result = dialog.ShowDialog();
-        }
-
         private void RedirectAfterCorrect(Players player)
         {
             Core.current_player = player;
@@ -52,7 +46,7 @@ namespace gamerecords.Pages
                 if (player.password == enteredHashedPassword && failedPassword < attemptAmount) { RedirectAfterCorrect(player);  }
                 else if (player.password == enteredHashedPassword && failedPassword >= attemptAmount) 
                 {
-                    ShowCaptcha();
+                    Core.ShowCaptcha();
                     RedirectAfterCorrect(player);
                 }
                 else if (player.password != enteredHashedPassword && failedPassword < attemptAmount - 1)
@@ -64,7 +58,7 @@ namespace gamerecords.Pages
                 {
                     failedPassword++;
                     MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
-                    ShowCaptcha();
+                    Core.ShowCaptcha();
                 }
             }
             else if (failedPassword < attemptAmount - 1)
@@ -76,13 +70,13 @@ namespace gamerecords.Pages
             {
                 failedPassword++;
                 MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
-                ShowCaptcha();
+                Core.ShowCaptcha();
             }
         }
 
         private void ForgotPasswordHL_Click(object sender, RoutedEventArgs e)
         {
-            ForgotPasswordDialog dialog = new ForgotPasswordDialog();
+            ForgotPasswordDialog dialog = new ForgotPasswordDialog(LoginTB.Text);
             bool? result = dialog.ShowDialog();
         }
 

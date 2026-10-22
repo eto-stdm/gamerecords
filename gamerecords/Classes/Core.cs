@@ -1,4 +1,5 @@
-﻿using gamerecords.Models;
+﻿using gamerecords.Dialogs;
+using gamerecords.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,6 +21,12 @@ namespace gamerecords.Classes
             {
                 return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
             }
+        }
+
+        public static void ShowCaptcha()
+        {
+            CaptchaDialog dialog = new CaptchaDialog();
+            bool? result = dialog.ShowDialog();
         }
     }
 }
