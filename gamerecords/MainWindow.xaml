@@ -9,7 +9,7 @@
         WindowStyle="None"
         WindowState="Maximized"
         Loaded="Window_Loaded"
-        Closing="Window_Closing"
+        
         Style="{DynamicResource MyWindowStyle}">
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">

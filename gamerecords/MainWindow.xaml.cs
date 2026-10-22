@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gamerecords.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,16 +57,17 @@ namespace gamerecords
             }
         }
 
-        void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
-            MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No) { e.Cancel = true; }
-            else { e.Cancel = false; }
-        }
+        //void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+        //    if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
+        //    MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No) { e.Cancel = true; }
+        //    else { e.Cancel = false; }
+        //}
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            ExitDialog dialog = new ExitDialog();
+            if (dialog.ShowDialog() == true) { this.Close(); }
         }
 
 

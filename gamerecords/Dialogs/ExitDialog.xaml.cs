@@ -23,5 +23,15 @@ namespace gamerecords.Dialogs
         {
             InitializeComponent();
         }
+
+        private void YesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
+
+        private void NoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
     }
 }
