@@ -17,10 +17,8 @@ namespace gamerecords.Classes
 
         public static string GetHash(String password)
         {
-            using (var hash = SHA1.Create())
-            {
-                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
-            }
+            using var hash = SHA1.Create();
+            return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
         }
 
         public static void ShowCaptcha()

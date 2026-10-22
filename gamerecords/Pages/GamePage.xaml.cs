@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gamerecords.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        public GamePage()
+        Games Game { get; set; }
+        public GamePage(Games game)
         {
             InitializeComponent();
+            this.Game = game;
+            test.Text = game.name;
         }
     }
 }

@@ -9,6 +9,6 @@
       Title="GamePage">
 
     <Grid>
-        
+        <TextBlock x:Name="test" Text="test" Foreground="White"/>
     </Grid>
 </Page>

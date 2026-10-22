@@ -27,7 +27,7 @@ namespace gamerecords.Pages
 
         private void GamesBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainPageFrame.NavigationService.Navigate(new CatalogPage());
+            MainPageFrame.NavigationService.Navigate(new CatalogPage(""));
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
