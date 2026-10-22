@@ -9,13 +9,13 @@
       Title="SignInPage">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Image Style="{StaticResource LogoSignIn}"/>
+        <Image Style="{DynamicResource LogoSignIn}"/>
         <Border Padding="10" Background="#233a3d" CornerRadius="10">
             <StackPanel>
-                <TextBlock Text="Вход" Style="{StaticResource HeaderSignIn}"/>
+                <TextBlock Text="Вход" Style="{DynamicResource HeaderSignIn}"/>
                 <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Логин" Style="{StaticResource RegularTextSignIn}"/>
-                    <TextBox x:Name="LoginTB" Style="{StaticResource TextBoxSignIn}"/>
+                    <TextBlock Text="Логин" Style="{DynamicResource RegularTextSignIn}"/>
+                    <TextBox x:Name="LoginTB" Style="{DynamicResource TextBoxSignIn}"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center">
                     <Grid>
@@ -23,18 +23,18 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Пароль" Style="{StaticResource RegularTextSignIn}" Grid.Column="0"/>
+                        <TextBlock Text="Пароль" Style="{DynamicResource RegularTextSignIn}" Grid.Column="0"/>
                         <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="10,0,10,5">
-                        <Hyperlink x:Name="ForgotPasswordHL" Style="{StaticResource HyperlinkSignIn}" Click="ForgotPasswordHL_Click">Забыли пароль?</Hyperlink>
+                        <Hyperlink x:Name="ForgotPasswordHL" Style="{DynamicResource HyperlinkSignIn}" Click="ForgotPasswordHL_Click">Забыли пароль?</Hyperlink>
                         </TextBlock>
                     </Grid>
-                    <PasswordBox x:Name="PasswordTB" Style="{StaticResource PasswordSignIn}"/>
+                    <PasswordBox x:Name="PasswordTB" Style="{DynamicResource PasswordSignIn}"/>
                 </StackPanel>
-                <Button x:Name="SignInBtn" Content="Войти" Style="{StaticResource ButtonSignIn}" Click="SignInBtn_Click"/>
+                <Button x:Name="SignInBtn" Content="Войти" Style="{DynamicResource ButtonSignIn}" Click="SignInBtn_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="Новые в спидраннинге?" Style="{StaticResource RegularTextSignIn}"/>
+                    <TextBlock Text="Новые в спидраннинге?" Style="{DynamicResource RegularTextSignIn}"/>
                     <TextBlock Grid.Column="1" Margin="5,0,10,10">
-                       <Hyperlink x:Name="SignUpHL" Style="{StaticResource HyperlinkSignIn}" Click="SignUpHL_Click">Создайте аккаунт</Hyperlink>
+                       <Hyperlink x:Name="SignUpHL" Style="{DynamicResource HyperlinkSignIn}" Click="SignUpHL_Click">Создайте аккаунт</Hyperlink>
                     </TextBlock>
                 </StackPanel>
             </StackPanel>

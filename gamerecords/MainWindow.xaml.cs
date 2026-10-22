@@ -23,6 +23,8 @@ namespace gamerecords
         public MainWindow()
         {
             InitializeComponent();
+            ChooseThemeCB.ItemsSource = new List<string>{ "Стандартная", "По заданию" };
+            ChooseThemeCB.SelectedIndex = 0;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -36,6 +38,24 @@ namespace gamerecords
             };
             timer.Start();
         }
+        void ApplyTheme(string themePath)
+        {
+            var uri = new Uri(themePath, UriKind.Relative);
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+        }
+
+        private void ChooseThemeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch(ChooseThemeCB.SelectedItem.ToString())
+            {
+                case "Стандартная": ApplyTheme("Styles/DictionaryDefault.xaml"); break;
+                case "По заданию": ApplyTheme("Styles/DictionaryTask.xaml"); break;
+                default: break;
+            }
+        }
+
         void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
@@ -47,5 +67,7 @@ namespace gamerecords
         {
             this.Close();
         }
+
+
     }
 }

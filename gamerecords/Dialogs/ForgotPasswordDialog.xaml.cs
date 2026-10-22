@@ -47,6 +47,7 @@ namespace gamerecords.Dialogs
                     Core.Context.SaveChanges();
                 }
                 MessageBox.Show("Пароль изменён");
+                this.Close();
             }
             else { MessageBox.Show("Заполните все поля!"); }
         }

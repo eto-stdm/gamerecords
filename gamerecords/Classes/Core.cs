@@ -26,7 +26,7 @@ namespace gamerecords.Classes
         public static void ShowCaptcha()
         {
             CaptchaDialog dialog = new CaptchaDialog();
-            bool? result = dialog.ShowDialog();
+            dialog.ShowDialog();
         }
     }
 }

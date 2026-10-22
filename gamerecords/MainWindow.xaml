@@ -10,9 +10,14 @@
         WindowState="Maximized"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
-        Style="{StaticResource MyWindowStyle}">
+        Style="{DynamicResource MyWindowStyle}">
     <Grid>
-        <Button x:Name="CloseBtn" Content="✗" Style="{StaticResource ButtonExit}" Click="CloseBtn_Click"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock Text="Смена темы:" Foreground="White" Margin="10" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChooseThemeCB" Style="{DynamicResource ComboBoxTheme}" SelectionChanged="ChooseThemeCB_SelectionChanged"/>
+        </StackPanel>
+        
+        <Button x:Name="CloseBtn" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
         <Frame Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
         <TextBlock x:Name="DateTimeNow" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="White"/>
     </Grid>
