@@ -58,7 +58,7 @@ namespace gamerecords.Pages
                     };
                     Core.Context.Players.Add(newplayer);
                     Core.Context.SaveChanges();
-                    NavigationService.Navigate(new CatalogPage());
+                    NavigationService.Navigate(new MainPage());
                 }
             }
             else { MessageBox.Show("Заполните все данные!"); } // потом заменить на красивое окно

@@ -22,10 +22,20 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class CatalogPage : Page
     {
-        public CatalogPage()
+        string Search { get; set; }
+        public CatalogPage(string Search)
         {
             InitializeComponent();
-            GamesLB.ItemsSource = Core.Context.Games.ToList();
+            this.Search = Search;
+
+            if (Search != "")
+            {
+                GamesLB.ItemsSource = Core.Context.Games.Where(x => x.name.ToLower().Contains(Search.ToLower())).ToList();
+            }
+            else
+            {
+                GamesLB.ItemsSource = Core.Context.Games.ToList();
+            }
 
             List<string> platforms = new List<string>() { "Все платформы" };
             foreach (Platforms platform in Core.Context.Platforms.ToList())
@@ -35,7 +45,7 @@ namespace gamerecords.Pages
             PlatformCB.ItemsSource = platforms;
             PlatformCB.SelectedIndex = 0;
 
-            List<string> sort = new List<string>() 
+            List<string> sort = new List<string>()
             {
                 "Названию",
                 "Году релиза (возрастание)",
@@ -47,7 +57,11 @@ namespace gamerecords.Pages
             };
             SortByCB.ItemsSource = sort;
             SortByCB.SelectedIndex = 5;
+            
         }
+
+        public CatalogPage() : this(null) { }
+
 
         private void PlatformCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

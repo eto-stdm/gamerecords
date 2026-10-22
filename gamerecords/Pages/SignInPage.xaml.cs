@@ -33,7 +33,7 @@ namespace gamerecords.Pages
         private void RedirectAfterCorrect(Players player)
         {
             Core.current_player = player;
-            NavigationService.Navigate(new CatalogPage());
+            NavigationService.Navigate(new MainPage());
         }
 
         private void SignInBtn_Click(object sender, RoutedEventArgs e)
