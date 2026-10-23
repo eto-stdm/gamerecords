@@ -5,10 +5,72 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:gamerecords.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1000"
       Title="GamePage">
 
-    <Grid>
-        <TextBlock x:Name="test" Text="test" Foreground="White"/>
-    </Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Border Width="100" Height="150" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+                    <Border.Background>
+                        <ImageBrush x:Name="GameIB" Stretch="UniformToFill"/>
+                    </Border.Background>
+                </Border>
+                <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" FontSize="20" Foreground="White" Width="400" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" FontSize="20" Foreground="White" Width="300" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+            </Grid>
+        </Border>
+
+        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+            <StackPanel>
+                <Grid HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="245"/>
+                        <ColumnDefinition Width="245"/>
+                        <ColumnDefinition Width="245"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Платформа" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Сортировать по" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
+                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" Margin="10"/>
+                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="10"/>
+                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1" Width="150" Content="Случайная игра" HorizontalAlignment="Right" Margin="10"/>
+                </Grid>
+                <ListBox x:Name="GamesLB" Width="730" Height="600" Background="#233a3d" BorderBrush="#233a3d" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="100" Height="200" Margin="5">
+                                <WrapPanel>
+                                    <Border Width="100" Height="150">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
+                                        </Border.Background>
+                                    </Border>
+                                    <TextBlock Text="{Binding name}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                </WrapPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </Page>
