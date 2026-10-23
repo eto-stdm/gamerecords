@@ -36,6 +36,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="created_year" Type="date" Nullable="false" />
           <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="rules" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="GamesCategories">
           <Key>
@@ -44,6 +45,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="game_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="rules" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="GamesGenres">
           <Key>
@@ -107,6 +109,7 @@
           <Property Name="total_time" Type="time" Precision="7" Nullable="false" />
           <Property Name="platform_id" Type="int" Nullable="false" />
           <Property Name="video" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -404,6 +407,7 @@
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="created_year" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rules" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GamesGenres" Relationship="Self.FK__GamesGenr__game___4316F928" FromRole="Games" ToRole="GamesGenres" />
           <NavigationProperty Name="Guides" Relationship="Self.FK__Guides__game_id__3F466844" FromRole="Games" ToRole="Guides" />
           <NavigationProperty Name="GamesCategories" Relationship="Self.FK_GamesCategories_Games" FromRole="Games" ToRole="GamesCategories" />
@@ -416,6 +420,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="game_id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="rules" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_GamesCategories_Categories" FromRole="GamesCategories" ToRole="Categories" />
           <NavigationProperty Name="Games" Relationship="Self.FK_GamesCategories_Games" FromRole="GamesCategories" ToRole="Games" />
           <NavigationProperty Name="Records" Relationship="Self.FK_Records_GamesCategories" FromRole="GamesCategories" ToRole="Records" />
@@ -496,6 +501,7 @@
           <Property Name="total_time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="platform_id" Type="Int32" Nullable="false" />
           <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="GamesCategories" Relationship="Self.FK_Records_GamesCategories" FromRole="Records" ToRole="GamesCategories" />
           <NavigationProperty Name="GamesPlatforms" Relationship="Self.FK_Records_GamesPlatforms" FromRole="Records" ToRole="GamesPlatforms" />
           <NavigationProperty Name="Players" Relationship="Self.FK__Records__player___412EB0B6" FromRole="Records" ToRole="Players" />
@@ -797,6 +803,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="created_year" ColumnName="created_year" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="rules" ColumnName="rules" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -806,6 +813,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="game_id" ColumnName="game_id" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="rules" ColumnName="rules" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -876,6 +884,7 @@
                 <ScalarProperty Name="total_time" ColumnName="total_time" />
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

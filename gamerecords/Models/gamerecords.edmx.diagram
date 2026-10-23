@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8a445e2f3d254b4fa3bc6aa0a9a1e161" Name="Diagram1">
-        <EntityTypeShape EntityType="gamerecordsModel.Categories" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+      <Diagram DiagramId="8038bb0b76b942cf91ebc69328b11aac" Name="Diagram1">
+        <EntityTypeShape EntityType="gamerecordsModel.Categories" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Contacts" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Countries" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Games" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.GamesCategories" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Games" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.GamesCategories" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.GamesGenres" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.GamesPlatforms" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Genres" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.GamesPlatforms" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Genres" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Guides" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Platforms" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Platforms" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Players" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gamerecordsModel.Records" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamerecordsModel.Records" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.Roles" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="gamerecordsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="gamerecordsModel.FK_GamesCategories_Categories" ManuallyRouted="false" />

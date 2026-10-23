@@ -9,13 +9,14 @@
       Title="GamePage">
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+        <Border Padding="10" Background="#233a3d" CornerRadius="10" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -26,41 +27,84 @@
                         <ImageBrush x:Name="GameIB" Stretch="UniformToFill"/>
                     </Border.Background>
                 </Border>
-                <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" FontSize="20" Foreground="White" Width="400" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" FontSize="20" Foreground="White" Width="300" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+                <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Margin="0,10,10,10" Width="110" Click="GameLeaderboardBtn_Click"/>
+                    <Button x:Name="GameGuidesBtn" Content="Гайды" Margin="10" Width="110" Click="GameGuidesBtn_Click"/>
+                    <Button x:Name="GameStatsBtn" Content="Статистика" Margin="10" Width="110" Click="GameStatsBtn_Click"/>
+                </StackPanel>
             </Grid>
         </Border>
 
-        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+        <Border Padding="10" Background="#233a3d" CornerRadius="10" x:Name="GameLeaderboardB">
             <StackPanel>
                 <Grid HorizontalAlignment="Center" Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="245"/>
-                        <ColumnDefinition Width="245"/>
-                        <ColumnDefinition Width="245"/>
+                        <ColumnDefinition Width="710"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Платформа" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Сортировать по" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
-                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" Margin="10"/>
-                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="10"/>
-                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1" Width="150" Content="Случайная игра" HorizontalAlignment="Right" Margin="10"/>
+
+                    <StackPanel x:Name="CategoryBtnSP" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Button Content="any%" Padding="5" Margin="10"/>
+                        <Button Content="no%" Padding="5" Margin="10"/>
+                        <Button Content="o7" Padding="5" Margin="10"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="320"/>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="130"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="0" Width="100" Content="Таблица лидеров" HorizontalAlignment="Center" Margin="10"/>
+                        <Button x:Name="RulesBtn" Grid.Column="2" Width="100" Content="Правила" HorizontalAlignment="Center" Margin="10" Click="RulesBtn_Click"/>
+                        <Button x:Name="SubmitRunBtn" Grid.Column="4" Width="100" Content="Выложить забег" HorizontalAlignment="Center" Margin="10" Click="SubmitRunBtn_Click"/>
+                    </Grid>
                 </Grid>
-                <ListBox x:Name="GamesLB" Width="730" Height="600" Background="#233a3d" BorderBrush="#233a3d" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                <Grid Margin="10,0,10,10" Width="730" Background="DeepPink">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Center" Text="Игрок" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Время" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Дата" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="Платформа" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                </Grid>
+
+                <ListBox x:Name="LeaderboardLB" Width="730" Height="400" Background="#233a3d" BorderBrush="#233a3d" MouseDoubleClick="LeaderboardLB_MouseDoubleClick" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="100" Height="200" Margin="5">
-                                <WrapPanel>
-                                    <Border Width="100" Height="150">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
-                                        </Border.Background>
-                                    </Border>
-                                    <TextBlock Text="{Binding name}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
-                                </WrapPanel>
+                            <Grid Width="700" Height="30" Margin="5" ToolTip="Дважды нажмите для просмотра видео">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Players.nickname}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding total_time}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                    <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding date, StringFormat=dd.MM.yyyy}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                    <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding GamesPlatforms.Platforms.platform}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -71,6 +115,12 @@
                     </ListBox.ItemsPanel>
                 </ListBox>
             </StackPanel>
+        </Border>
+
+        <Border Padding="10" Background="#233a3d" CornerRadius="10" x:Name="GameGuidesB" Visibility="Collapsed">
+        </Border>
+        
+        <Border Padding="10" Background="#233a3d" CornerRadius="10" x:Name="GameStatsB" Visibility="Collapsed">
         </Border>
     </StackPanel>
 </Page>

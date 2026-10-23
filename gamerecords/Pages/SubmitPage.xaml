@@ -9,6 +9,6 @@
       Title="SubmitPage">
 
     <Grid>
-        
+        <TextBlock x:Name="test" Text="" Foreground="White"/>
     </Grid>
 </Page>

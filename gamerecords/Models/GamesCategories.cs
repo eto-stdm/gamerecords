@@ -22,6 +22,7 @@ namespace gamerecords.Models
         public int id { get; set; }
         public int game_id { get; set; }
         public int category_id { get; set; }
+        public string rules { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual Games Games { get; set; }
