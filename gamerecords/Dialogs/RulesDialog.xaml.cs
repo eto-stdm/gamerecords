@@ -20,13 +20,13 @@ namespace gamerecords.Dialogs
     /// </summary>
     public partial class RulesDialog : Window
     {
-        Games Game { get; set; }
-        public RulesDialog(Games game)
+        GamesCategories Gamecat { get; set; }
+        public RulesDialog(GamesCategories gamecat)
         {
             InitializeComponent();
-            this.Game = game;
+            this.Gamecat = gamecat;
 
-            test.Text = game.rules;
+            RulesTB.Text = $"Правила игры:\n{gamecat.Games.rules}\nПравила категории:\n{gamecat.rules}";
         }
     }
 }

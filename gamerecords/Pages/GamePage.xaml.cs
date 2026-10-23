@@ -44,13 +44,26 @@ namespace gamerecords.Pages
             GameTagsTB.Text = "Теги: " + textPlatforms.Substring(0, textPlatforms.Length - 2);
 
 
+
+
             //List<Records> records = new List<Records>()
             //{
 
             //}; // добавление заголовка
             //records.AddRange(Core.Context.Records.ToList());
             //LeaderboardLB.ItemsSource = records;
-            LeaderboardLB.ItemsSource = Core.Context.Records.ToList();
+
+            List<GamesCategories> gamesCategories = Core.Context.GamesCategories.Where(x => x.game_id == game.id).ToList();
+            List<string> cat = new List<string>();
+            foreach (GamesCategories gamec in gamesCategories)
+            {
+                cat.Add(Core.Context.Categories.FirstOrDefault(x => x.id == gamec.category_id).category);
+            }
+
+            CategoryCB.ItemsSource = cat;
+            CategoryCB.SelectedIndex = 0;
+
+            ChangingCategory();
         }
         private void Load()
         {
@@ -89,13 +102,31 @@ namespace gamerecords.Pages
 
         private void RulesBtn_Click(object sender, RoutedEventArgs e)
         {
-            RulesDialog dialog = new RulesDialog(Game);
+
+            RulesDialog dialog = new RulesDialog(FindGameCategory());
             dialog.ShowDialog();
         }
 
         private void SubmitRunBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SubmitPage(Game));
+        }
+
+        private GamesCategories FindGameCategory()
+        {
+            string catname = CategoryCB.SelectedItem.ToString();
+            return Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == catname && x.game_id == Game.id);
+        }
+
+        private void ChangingCategory()
+        {
+            string catname = CategoryCB.SelectedItem.ToString();
+            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname).ToList();
+        }
+
+        private void CategoryCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChangingCategory();
         }
     }
 }

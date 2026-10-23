@@ -48,11 +48,7 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel x:Name="CategoryBtnSP" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <Button Content="any%" Padding="5" Margin="10"/>
-                        <Button Content="no%" Padding="5" Margin="10"/>
-                        <Button Content="o7" Padding="5" Margin="10"/>
-                    </StackPanel>
+                    <ComboBox x:Name="CategoryCB" Grid.Row="0" HorizontalAlignment="Left" Margin="10" Width="200" SelectionChanged="CategoryCB_SelectionChanged"/>
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -65,7 +61,7 @@
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
 
-                        <Button Grid.Column="0" Width="100" Content="Таблица лидеров" HorizontalAlignment="Center" Margin="10"/>
+                        <TextBlock Grid.Column="0" Width="100" Text="Таблица лидеров" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
                         <Button x:Name="RulesBtn" Grid.Column="2" Width="100" Content="Правила" HorizontalAlignment="Center" Margin="10" Click="RulesBtn_Click"/>
                         <Button x:Name="SubmitRunBtn" Grid.Column="4" Width="100" Content="Выложить забег" HorizontalAlignment="Center" Margin="10" Click="SubmitRunBtn_Click"/>
                     </Grid>

@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="RulesDialog" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="test" Text=""/>
+        <ScrollViewer Margin="10">
+            <TextBlock x:Name="RulesTB"/>
+        </ScrollViewer>
     </Grid>
 </Window>
