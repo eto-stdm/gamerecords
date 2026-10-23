@@ -4,12 +4,12 @@
 Учебная группа: 4ИСИП-123 <br/> 
 
 ## Скриншоты приложения:<br/>
-![alt text](Images/SignInPage.PNG) 
-![alt text](Images/SignUpPage.PNG) 
-![alt text](Images/CatalogPage.PNG) 
-![alt text](Images/GamePage.PNG) 
-![alt text](Images/SubmitPage.PNG) 
-![alt text](Images/RulesDialog.PNG) 
-![alt text](Images/ProfilePage.PNG) 
-![alt text](Images/AdminPanel.PNG) 
-![alt text](Images/ForgotPasswordDialog.PNG) 
+![alt text](Images/SignInPage.png) 
+![alt text](Images/SignUpPage.png) 
+![alt text](Images/CatalogPage.png) 
+![alt text](Images/GamePage.png) 
+![alt text](Images/SubmitPage.png) 
+![alt text](Images/RulesDialog.png) 
+![alt text](Images/ProfilePage.png) 
+![alt text](Images/AdminPanel.png) 
+![alt text](Images/ForgotPasswordDialog.png) 
