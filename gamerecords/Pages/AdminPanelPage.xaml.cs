@@ -42,7 +42,20 @@ namespace gamerecords.Pages
 
             if (selectRecord == null) return;
 
-            Process.Start(selectRecord.video);
+            try
+            {
+                Process.Start(selectRecord.video);
+            }
+            catch
+            {
+                MessageBox.Show("Видео нечитаемо, удалить рекорд?");
+                Core.Context.Records.Remove(selectRecord);
+                Core.Context.SaveChanges();
+                MessageBox.Show("Рекорд не прошёл проверку и был удалён из базы данных!");
+                UpdateListBox();
+                return;
+            }
+
 
             VerifyDialog dialog = new VerifyDialog();
 

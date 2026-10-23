@@ -60,6 +60,7 @@ namespace gamerecords.Pages
                     Core.Context.SaveChanges();
                     NavigationService.Navigate(new MainPage());
                 }
+                else { MessageBox.Show("Такой пользователь уже существует!"); }
             }
             else { MessageBox.Show("Заполните все данные!"); } // потом заменить на красивое окно
             //x=16sin3(t)x equals 16 sine cubed t 

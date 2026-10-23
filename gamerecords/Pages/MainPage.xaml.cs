@@ -24,15 +24,26 @@ namespace gamerecords.Pages
         public MainPage()
         {
             InitializeComponent();
-            if (Core.current_player.theme != null)
-            {
-                switch (Core.current_player.theme)
+            if (Core.current_player == null) { }
+            else { 
+                if (Core.current_player.theme != null)
                 {
-                    case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
-                    case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
-                    default: break;
+                    switch (Core.current_player.theme)
+                    {
+                        case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
+                        case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
+                        default: break;
+                    }
                 }
+
+                if (Core.current_player.role_id == 1) { AdminBtn.Visibility = Visibility.Visible; }
+                else { AdminBtn.Visibility = Visibility.Collapsed; }
             }
+        }
+
+        private void AdminBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.NavigationService.Navigate(new AdminPanelPage());
         }
 
         private void GamesBtn_Click(object sender, RoutedEventArgs e)

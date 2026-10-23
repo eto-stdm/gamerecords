@@ -26,6 +26,7 @@
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Background="#188f6e" Panel.ZIndex="50"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Margin="10" Panel.ZIndex="50">
+            <Button x:Name="AdminBtn" Content="Админ" Style="{DynamicResource ButtonMenu}" Click="AdminBtn_Click" Visibility="Collapsed"/>
             <Image Style="{DynamicResource LogoMain}"/>
             <Button x:Name="GamesBtn" Content="Игры" Style="{DynamicResource ButtonMenu}" Click="GamesBtn_Click"/>
             <TextBox x:Name="SearchTB" Width="300" Margin="50,0,10,0"/>
