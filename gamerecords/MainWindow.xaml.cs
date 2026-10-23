@@ -1,4 +1,5 @@
 ﻿using gamerecords.Dialogs;
+using gamerecords.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,21 +40,18 @@ namespace gamerecords
             };
             timer.Start();
         }
-        void ApplyTheme(string themePath)
-        {
-            var uri = new Uri(themePath, UriKind.Relative);
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-        }
-
         private void ChooseThemeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch(ChooseThemeCB.SelectedItem.ToString())
             {
-                case "Стандартная": ApplyTheme("Styles/DictionaryDefault.xaml"); break;
-                case "По заданию": ApplyTheme("Styles/DictionaryTask.xaml"); break;
+                case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
+                case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
                 default: break;
+            }
+            if (Core.current_player != null)
+            {
+                Core.current_player.theme = ChooseThemeCB.SelectedItem.ToString();
+                Core.Context.SaveChanges();
             }
         }
 

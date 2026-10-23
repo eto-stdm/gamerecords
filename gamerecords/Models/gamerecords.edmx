@@ -98,6 +98,7 @@
           <Property Name="countryid" Type="int" />
           <Property Name="image" Type="nvarchar(max)" />
           <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="theme" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Records">
           <Key>
@@ -486,6 +487,7 @@
           <Property Name="countryid" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="theme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contacts" Relationship="Self.FK__Contacts__player__3D5E1FD2" FromRole="Players" ToRole="Contacts" />
           <NavigationProperty Name="Countries" Relationship="Self.FK__Players__country__3E52440B" FromRole="Players" ToRole="Countries" />
           <NavigationProperty Name="Guides" Relationship="Self.FK__Guides__author_i__403A8C7D" FromRole="Players" ToRole="Guides" />
@@ -874,6 +876,7 @@
                 <ScalarProperty Name="countryid" ColumnName="countryid" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="theme" ColumnName="theme" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

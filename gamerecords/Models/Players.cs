@@ -28,6 +28,7 @@ namespace gamerecords.Models
         public Nullable<int> countryid { get; set; }
         public string image { get; set; }
         public System.DateTime created_at { get; set; }
+        public string theme { get; set; }
     
         public virtual ICollection<Contacts> Contacts { get; set; }
         public virtual Countries Countries { get; set; }

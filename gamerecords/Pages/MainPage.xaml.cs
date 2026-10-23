@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gamerecords.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace gamerecords.Pages
         public MainPage()
         {
             InitializeComponent();
+            if (Core.current_player.theme != null)
+            {
+                switch (Core.current_player.theme)
+                {
+                    case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
+                    case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
+                    default: break;
+                }
+            }
         }
 
         private void GamesBtn_Click(object sender, RoutedEventArgs e)
