@@ -56,12 +56,14 @@ namespace gamerecords.Pages
             CategoryCB.SelectedIndex = 0;
 
             ChangingCategory();
+
+            //GuidesLB.ItemsSource = Core.Context.Guides.Where(x => x.Games.id == Game.id).ToList();
         }
         private void Load()
         {
             GameLeaderboardB.Visibility = Visibility.Visible;
-            GameGuidesB.Visibility = Visibility.Collapsed;
-            GameStatsB.Visibility = Visibility.Collapsed;
+            //GameGuidesB.Visibility = Visibility.Collapsed;
+            //GameStatsB.Visibility = Visibility.Collapsed;
         }
 
         private void GameLeaderboardBtn_Click(object sender, RoutedEventArgs e)
@@ -72,15 +74,15 @@ namespace gamerecords.Pages
         private void GameGuidesBtn_Click(object sender, RoutedEventArgs e)
         {
             GameLeaderboardB.Visibility = Visibility.Collapsed;
-            GameGuidesB.Visibility = Visibility.Visible;
-            GameStatsB.Visibility = Visibility.Collapsed;
+            //GameGuidesB.Visibility = Visibility.Visible;
+            //GameStatsB.Visibility = Visibility.Collapsed;
         }
 
         private void GameStatsBtn_Click(object sender, RoutedEventArgs e)
         {
             GameLeaderboardB.Visibility = Visibility.Collapsed;
-            GameGuidesB.Visibility = Visibility.Collapsed;
-            GameStatsB.Visibility = Visibility.Visible;
+            //GameGuidesB.Visibility = Visibility.Collapsed;
+            //GameStatsB.Visibility = Visibility.Visible;
         }
 
         private void LeaderboardLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -113,7 +115,7 @@ namespace gamerecords.Pages
         private void ChangingCategory()
         {
             string catname = CategoryCB.SelectedItem.ToString();
-            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname).ToList();
+            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.is_verified == true).ToList();
         }
 
         private void CategoryCB_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -64,40 +64,42 @@ namespace gamerecords.Pages
         {
             if (TimeTB.Text != "" && VideoTB.Text != "")
             {
+
+                if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan time) == false) { MessageBox.Show("Неверно заполненные поля!"); }
+                
+                DateTime dateTime = new DateTime();
+                if (Convert.ToBoolean(JustFinishedRB.IsChecked)) { dateTime = DateTime.Now; }
+                else
+                {
+                    if (TimeTB.Text != "" && DateTimeDP != null)
+                    {
+                        if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan datetimetime) == false) { MessageBox.Show("Неверно заполненные поля!"); }
+                        dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
+                        dateTime = dateTime.Add(time);
+                    }
+                    else { MessageBox.Show("Заполните все необходимые поля!"); }
+                }
+                string categorystr = CategoryCB.SelectedItem.ToString();
+                string platformstr = PlatformCB.SelectedItem.ToString();
+
+                Records newrecord = new Records()
+                {
+                    category_id = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr).id,
+                    player_id = Core.current_player.id,
+                    total_time = time,
+                    platform_id = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr).id,
+                    video = VideoTB.Text,
+                    date = dateTime,
+                };
+
+                List<Records> tempRec = Core.Context.Records.ToList();
                 try
                 {
-                    TimeSpan time = TimeSpan.Parse(TimeTB.Text);
-                    DateTime dateTime;
-                    if (Convert.ToBoolean(JustFinishedRB.IsChecked)) { dateTime = DateTime.Now; }
-                    else
-                    {
-                        if (TimeTB.Text != "" && DateTimeDP != null)
-                        {
-                            TimeSpan datetimetime = TimeSpan.Parse(TimeTB.Text);
-                            dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
-                            dateTime = dateTime.Add(time);
-                        }
-                        else { MessageBox.Show("Заполните все необходимые поля!"); return; }
-                    }
-                    string categorystr = CategoryCB.SelectedItem.ToString();
-                    string platformstr = PlatformCB.SelectedItem.ToString();
-
-                    Records newrecord = new Records()
-                    {
-                        category_id = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr).id,
-                        player_id = Core.current_player.id,
-                        total_time = time,
-                        platform_id = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr).id,
-                        video = VideoTB.Text,
-                        date = dateTime,
-                    };
-
-                    List<Records> tempRec = Core.Context.Records.ToList();
                     bool isexist = Core.Context.Records.Any(x =>
-                                                            x.category_id == newrecord.category_id &&
-                                                            x.player_id == newrecord.player_id &&
-                                                            x.total_time == newrecord.total_time &&
-                                                            x.platform_id == newrecord.platform_id);
+                                        x.category_id == newrecord.category_id &&
+                                        x.player_id == newrecord.player_id &&
+                                        x.total_time == newrecord.total_time &&
+                                        x.platform_id == newrecord.platform_id);
                     if (isexist)
                     {
                         MessageBox.Show("Подобный рекорд уже существует!");
@@ -108,7 +110,7 @@ namespace gamerecords.Pages
                         Core.Context.SaveChanges();
                         MessageBox.Show("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами.");
                         NavigationService.Navigate(new CatalogPage());
-                    } 
+                    }
                 }
                 catch { MessageBox.Show("Неверно заполненные поля!"); }
             }

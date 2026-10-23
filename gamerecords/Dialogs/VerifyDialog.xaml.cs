@@ -10,19 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace gamerecords.Pages
+namespace gamerecords.Dialogs
 {
     /// <summary>
-    /// Логика взаимодействия для ResultPage.xaml
+    /// Логика взаимодействия для VerifyDialog.xaml
     /// </summary>
-    public partial class ResultPage : Page
+    public partial class VerifyDialog : Window
     {
-        public ResultPage()
+        public VerifyDialog()
         {
             InitializeComponent();
+        }
+        private void YesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
+
+        private void NoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }
