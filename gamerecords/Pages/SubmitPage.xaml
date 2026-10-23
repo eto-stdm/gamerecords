@@ -5,10 +5,85 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:gamerecords.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="SubmitPage">
 
-    <Grid>
-        <TextBlock x:Name="test" Text="" Foreground="White"/>
-    </Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Padding="10" Background="#233a3d" CornerRadius="10" Margin="0,0,0,10">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="700">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="20" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Опубликовать забег" Foreground="White" />
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Категоризация" Foreground="White" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Определяет, в каком лидерборде будет находиться забег" Foreground="White"  TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Категория *" Foreground="White" />
+                    <ComboBox x:Name="CategoryCB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Время забега" Foreground="White" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Определяет положение забега в лидерборде" Foreground="White"  TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Время *" Foreground="White" />
+                    <TextBox x:Name="TimeTB" Height="30" Width="100" Margin="10,0,10,10" ToolTip="Вводите время в формате: hh.mm.ss" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Дата забега" Foreground="White" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Когда был совершён забег?" Foreground="White"  TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Дата и время *" Foreground="White" />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="JustFinishedRB" GroupName="DateTimeGN" Content="Только что" Foreground="White" Margin="10,0,10,10" VerticalContentAlignment="Center" Checked="JustFinishedRB_Checked"/>
+                        <RadioButton x:Name="CustomRB" GroupName="DateTimeGN" Content="Кастомное" Foreground="White" Margin="10,0,10,10" VerticalContentAlignment="Center" Checked="CustomRB_Checked"/>
+                        <StackPanel x:Name="DateTimeSP" Orientation="Horizontal" Visibility="Hidden">
+                            <DatePicker x:Name="DateTimeDP" Margin="10,0,10,10"/>
+                            <TextBox x:Name="DateTimeTB" Width="100" Margin="10,0,10,10" ToolTip="Вводите время в формате: hh.mm.ss"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Видео" Foreground="White" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Модераторы этой игры требуют видеодоказательство для верификации забега" Foreground="White"  TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="URL видео *" Foreground="White" />
+                    <TextBox x:Name="VideoTB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Другое" Foreground="White" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Эти значения не влияют на положение в лидерборде" Foreground="White"  TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Платформа *" Foreground="White" />
+                    <ComboBox x:Name="PlatformCB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
+                    <Button x:Name="SubmitRunBtn" Content="Опубликовать" HorizontalAlignment="Right" Margin="10" Click="SubmitRunBtn_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
 </Page>

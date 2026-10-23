@@ -20,7 +20,8 @@ namespace gamerecords.Models
         public System.TimeSpan total_time { get; set; }
         public int platform_id { get; set; }
         public string video { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
+        public System.DateTime date { get; set; }
+        public bool is_verified { get; set; }
     
         public virtual GamesCategories GamesCategories { get; set; }
         public virtual GamesPlatforms GamesPlatforms { get; set; }

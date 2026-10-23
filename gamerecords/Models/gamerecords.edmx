@@ -109,7 +109,8 @@
           <Property Name="total_time" Type="time" Precision="7" Nullable="false" />
           <Property Name="platform_id" Type="int" Nullable="false" />
           <Property Name="video" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="date" Type="date" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="is_verified" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -501,7 +502,8 @@
           <Property Name="total_time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="platform_id" Type="Int32" Nullable="false" />
           <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_verified" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="GamesCategories" Relationship="Self.FK_Records_GamesCategories" FromRole="Records" ToRole="GamesCategories" />
           <NavigationProperty Name="GamesPlatforms" Relationship="Self.FK_Records_GamesPlatforms" FromRole="Records" ToRole="GamesPlatforms" />
           <NavigationProperty Name="Players" Relationship="Self.FK__Records__player___412EB0B6" FromRole="Records" ToRole="Players" />
@@ -885,6 +887,7 @@
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="video" ColumnName="video" />
                 <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="is_verified" ColumnName="is_verified" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -45,14 +45,6 @@ namespace gamerecords.Pages
 
 
 
-
-            //List<Records> records = new List<Records>()
-            //{
-
-            //}; // добавление заголовка
-            //records.AddRange(Core.Context.Records.ToList());
-            //LeaderboardLB.ItemsSource = records;
-
             List<GamesCategories> gamesCategories = Core.Context.GamesCategories.Where(x => x.game_id == game.id).ToList();
             List<string> cat = new List<string>();
             foreach (GamesCategories gamec in gamesCategories)
@@ -109,7 +101,7 @@ namespace gamerecords.Pages
 
         private void SubmitRunBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SubmitPage(Game));
+            NavigationService.Navigate(new SubmitPage(FindGameCategory()));
         }
 
         private GamesCategories FindGameCategory()
