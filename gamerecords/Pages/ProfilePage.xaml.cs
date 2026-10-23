@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using gamerecords.Classes;
+using gamerecords.Models;
 
 namespace gamerecords.Pages
 {
@@ -23,6 +25,9 @@ namespace gamerecords.Pages
         public ProfilePage()
         {
             InitializeComponent();
+
+            NickNameTB.Text += Core.current_player.nickname;
+            RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.player_id == Core.current_player.id).ToList();
         }
     }
 }

@@ -60,5 +60,10 @@ namespace gamerecords.Pages
         {
             MainPageFrame.NavigationService.Navigate(new ProfilePage());
         }
+        private void AccountExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Core.current_player = null;
+            NavigationService.Navigate(new SignInPage());
+        }
     }
 }

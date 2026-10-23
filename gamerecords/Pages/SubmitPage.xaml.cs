@@ -84,10 +84,10 @@ namespace gamerecords.Pages
 
                 Records newrecord = new Records()
                 {
-                    category_id = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr).id,
+                    category_id = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr && x.Games.id == GameCat.game_id).id,
                     player_id = Core.current_player.id,
                     total_time = time,
-                    platform_id = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr).id,
+                    platform_id = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr && x.Games.id == GameCat.game_id).id,
                     video = VideoTB.Text,
                     date = dateTime,
                 };

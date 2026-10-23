@@ -18,7 +18,7 @@
         </StackPanel>
 
         <Button x:Name="CloseBtn" Panel.ZIndex="100" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
-        <Frame Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainFrame" Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
         <TextBlock x:Name="DateTimeNow" Panel.ZIndex="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="White"/>
     </Grid>
 </Window>
