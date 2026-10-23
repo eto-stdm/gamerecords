@@ -13,12 +13,12 @@
         Style="{DynamicResource MyWindowStyle}">
     <Grid>
         <StackPanel Orientation="Horizontal" Panel.ZIndex="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <TextBlock Text="Смена темы:" Foreground="White" Margin="10" VerticalAlignment="Center"/>
+            <TextBlock Text="Смена темы:" Style="{DynamicResource RegularTextMain}"/>
             <ComboBox x:Name="ChooseThemeCB" Style="{DynamicResource ComboBoxTheme}" SelectionChanged="ChooseThemeCB_SelectionChanged"/>
         </StackPanel>
 
         <Button x:Name="CloseBtn" Panel.ZIndex="100" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
         <Frame x:Name="MainFrame" Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
-        <TextBlock x:Name="DateTimeNow" Panel.ZIndex="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="White"/>
+        <TextBlock x:Name="DateTimeNow" Panel.ZIndex="100" Style="{DynamicResource ClockMain}"/>
     </Grid>
 </Window>

@@ -7,9 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1000"
       Title="CatalogPage">
-    
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                Style="{DynamicResource StackPanelCenteredCatalog}">
+        <Border Padding="10" Background="#233a3d" CornerRadius="10"
+                Style="{DynamicResource BorderCatalog}">
             <StackPanel>
                 <Grid HorizontalAlignment="Center" Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
@@ -21,23 +23,45 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Платформа" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Сортировать по" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="10"/>
-                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" Margin="10" SelectionChanged="PlatformCB_SelectionChanged"/>
-                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="10" SelectionChanged="SortByCB_SelectionChanged"/>
-                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1" Width="150" Content="Случайная игра" HorizontalAlignment="Right" Margin="10" Click="RandomGameBtn_Click"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="0"
+                               Text="Платформа" FontSize="20" Foreground="White"
+                               VerticalAlignment="Center" Margin="10"/>
+
+                    <TextBlock Grid.Column="1" Grid.Row="0"
+                               Text="Сортировать по" FontSize="20" Foreground="White"
+                               VerticalAlignment="Center" Margin="10"/>
+
+                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1"
+                              Style="{DynamicResource ComboBoxPlatformCatalog}"
+                              SelectionChanged="PlatformCB_SelectionChanged"/>
+
+                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1"
+                              Style="{DynamicResource ComboBoxSortByCatalog}"
+                              SelectionChanged="SortByCB_SelectionChanged"/>
+
+                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1"
+                            Width="150" Content="Случайная игра"
+                            HorizontalAlignment="Right" Margin="10"
+                            Click="RandomGameBtn_Click"/>
                 </Grid>
-                <ListBox x:Name="GamesLB" Width="730" Height="600" Background="#233a3d" BorderBrush="#233a3d" VirtualizingPanel.ScrollUnit="Pixel" MouseDoubleClick="GamesLB_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                <ListBox x:Name="GamesLB" Style="{DynamicResource ListBoxGamesCatalog}"
+                         MouseDoubleClick="GamesLB_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="100" Height="210" Margin="5">
+                            <Grid Width="100" Height="210" Margin="5"
+                                 Style="{DynamicResource GameItemGridCatalog}">
                                 <WrapPanel>
                                     <Border Width="100" Height="150">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
                                         </Border.Background>
                                     </Border>
-                                    <TextBlock Text="{Binding name}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                    <TextBlock Text="{Binding name}"
+                                               Foreground="White"
+                                               TextWrapping="Wrap"
+                                               Margin="0,10,0,0"/>
                                 </WrapPanel>
                             </Grid>
                         </DataTemplate>
