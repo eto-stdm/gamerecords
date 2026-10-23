@@ -24,19 +24,24 @@ namespace gamerecords.Pages
     public partial class CatalogPage : Page
     {
         string Search { get; set; }
-        readonly List<Games> CurrentGames = new List<Games>();
+        List<Games> SearchedGames = new List<Games>();
+        List<Games> CurrentGames = new List<Games>();
+        bool isSearch;
+
         public CatalogPage(string Search)
         {
             InitializeComponent();
             this.Search = Search;
 
-            if (Search != "")
+            if (Search != "" && Search != null)
             {
                 CurrentGames = Core.Context.Games.Where(x => x.name.ToLower().Contains(Search.ToLower())).ToList();
+                isSearch = true;
             }
             else
             {
                 CurrentGames = Core.Context.Games.ToList();
+                isSearch = false;
             }
             GamesLB.ItemsSource = CurrentGames.OrderBy(x => x.name);
 
@@ -54,50 +59,76 @@ namespace gamerecords.Pages
                 "Названию (убывание)",
                 "Году релиза (возрастание)",
                 "Году релиза (убывание)",
-                "Количеству игроков (возрастание)",
-                "Количеству игроков (убывание)",
+                //"Количеству игроков (возрастание)",
+                //"Количеству игроков (убывание)",
             };
             SortByCB.ItemsSource = sort;
             SortByCB.SelectedIndex = 0;
             
         }
 
-        //public CatalogPage() : this(null) { }
+        public CatalogPage() : this(null) { }
 
         private void Sort()
         {
+            if (SortByCB.SelectedItem == null)
+            {
+                return;
+            }
 
-        }
-
-        private void PlatformCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (PlatformCB.SelectedIndex == 0) { GamesLB.ItemsSource = Core.Context.Games.ToList(); }
-            else { GamesLB.ItemsSource = Core.Context.Games.Where().ToList(); }
-            Sort();
-        }
-
-        private void CountGamesPlayers(List<Games> games)
-        {
-            List<>
-            games
-
-
-            //docs = docs.OrderBy(d => docsIds.IndexOf(d.Id)).ToList();
-
-        }
-
-        private void SortByCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             switch (SortByCB.SelectedItem.ToString())
             {
                 case "Названию (возрастание)": GamesLB.ItemsSource = CurrentGames.OrderBy(x => x.name); break;
                 case "Названию (убывание)": GamesLB.ItemsSource = CurrentGames.OrderByDescending(x => x.name); break;
                 case "Году релиза (возрастание)": GamesLB.ItemsSource = CurrentGames.OrderBy(x => x.created_year); break;
                 case "Году релиза (убывание)": GamesLB.ItemsSource = CurrentGames.OrderByDescending(x => x.created_year); break;
-                case "Количеству игроков (возрастание)": break;
-                case "Количеству игроков (убывание)": break;
+                //case "Количеству игроков (возрастание)": break;
+                //case "Количеству игроков (убывание)": break;
                 default: break;
             }
+            //GamesLB.ItemsSource = CurrentGames;
+        }
+
+        private void PlatformCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PlatformCB.SelectedIndex == 0 && isSearch == false)
+            {
+                CurrentGames = Core.Context.Games.ToList();
+            }
+            else if (PlatformCB.SelectedIndex == 0 && isSearch == true)
+            {
+                //pass
+            }
+            else
+            {
+                string temp = PlatformCB.SelectedItem.ToString();
+                Platforms seletcedPlatform = Core.Context.Platforms.FirstOrDefault(x => x.platform == temp);
+                List<GamesPlatforms> gamesPlatforms = Core.Context.GamesPlatforms.Where(x => x.platform_id == seletcedPlatform.id).ToList();
+                List<Games> selectedGames = new List<Games>();
+                foreach (GamesPlatforms gamepl in gamesPlatforms) 
+                {
+                    selectedGames.Add(Core.Context.Games.First(x => x.id == gamepl.game_id));
+                }
+                CurrentGames = selectedGames;
+                GamesLB.ItemsSource = CurrentGames;
+            }
+            Sort();
+        }
+
+        //private void CountGamesPlayers(List<Games> games)
+        //{
+        //    //List<>
+        //    //games
+
+
+        //    //docs = docs.OrderBy(d => docsIds.IndexOf(d.Id)).ToList();
+
+        //}
+
+        private void SortByCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Sort();
+            //GamesLB.ItemsSource = CurrentGames;
         }
 
         private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
