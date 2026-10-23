@@ -140,5 +140,16 @@ namespace gamerecords.Pages
 
             NavigationService.Navigate(new GamePage(games[gameid]));
         }
+
+        private void GamesLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectBook = GamesLB.SelectedItem as Games;
+
+            if (selectBook == null) return;
+
+            GamePage page = new GamePage(selectBook);
+
+            NavigationService.Navigate(page);
+        }
     }
 }
