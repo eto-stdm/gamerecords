@@ -58,6 +58,7 @@ namespace gamerecords.Pages
                     };
                     Core.Context.Players.Add(newplayer);
                     Core.Context.SaveChanges();
+                    Core.current_player = newplayer;
                     NavigationService.Navigate(new MainPage());
                 }
                 else { MessageBox.Show("Такой пользователь уже существует!"); }
