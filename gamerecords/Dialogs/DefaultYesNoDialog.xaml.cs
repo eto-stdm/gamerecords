@@ -15,16 +15,22 @@ using System.Windows.Shapes;
 namespace gamerecords.Dialogs
 {
     /// <summary>
-    /// Логика взаимодействия для VerifyDialog.xaml
+    /// Логика взаимодействия для DefaultYesNoDialog.xaml
     /// </summary>
-    public partial class VerifyDialog : Window
+    public partial class DefaultYesNoDialog : Window
     {
+        string Message { get; set; }
         /// <summary>
-        /// Конструктор окна VerifyDialog
+        /// Конструктор окна DefaultYesNoDialog
         /// </summary>
-        public VerifyDialog()
+        /// <param name="message">Сообщение</param>
+        public DefaultYesNoDialog(string message)
         {
             InitializeComponent();
+            Message = message;
+
+            TextTB.Text = Message;
+            Message = message;
         }
 
         /// <summary>

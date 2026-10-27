@@ -71,11 +71,7 @@ namespace gamerecords
         /// </summary>
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            ExitDialog dialog = new ExitDialog();
-            dialog.Owner = Application.Current.MainWindow;
-            if (dialog.ShowDialog() == true) { this.Close(); }
+            if (Core.ShowAppDialog(() => new DefaultYesNoDialog("Вы действительно хотите выйти?")) == true) { this.Close(); }
         }
-
-
     }
 }

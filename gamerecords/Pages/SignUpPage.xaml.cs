@@ -1,5 +1,6 @@
 ﻿using gamerecords.Classes;
 using gamerecords.Models;
+using gamerecords.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace gamerecords.Pages
                     if (s != " (нет)")
                     {
                         cid = Core.Context.Countries.FirstOrDefault(x => x.country == s).id;
-                    }    
+                    }
                     Players newplayer = new Players
                     {
                         role_id = 2,
@@ -70,9 +71,9 @@ namespace gamerecords.Pages
                     Core.current_player = newplayer;
                     NavigationService.Navigate(new MainPage());
                 }
-                else { MessageBox.Show("Такой пользователь уже существует!"); }
+                else { Core.ShowAppDialog(() => new DefaultOKDialog("Такой пользователь уже существует!")); }
             }
-            else { MessageBox.Show("Заполните все данные!"); } // потом заменить на красивое окно
+            else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все данные!")); }
         }
 
         /// <summary>

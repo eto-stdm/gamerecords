@@ -56,31 +56,31 @@ namespace gamerecords.Pages
                 if (player.password == enteredHashedPassword && failedPassword < attemptAmount) { RedirectAfterCorrect(player);  }
                 else if (player.password == enteredHashedPassword && failedPassword >= attemptAmount) 
                 {
-                    Core.ShowCaptcha();
+                    Core.ShowAppDialog(() => new CaptchaDialog());
                     RedirectAfterCorrect(player);
                 }
                 else if (player.password != enteredHashedPassword && failedPassword < attemptAmount - 1)
                 {
                     failedPassword++;
-                    MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Неверный пароль!"));
                 }
                 else
                 {
                     failedPassword++;
-                    MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
-                    Core.ShowCaptcha();
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Неверный пароль!"));
+                    Core.ShowAppDialog(() => new CaptchaDialog());
                 }
             }
             else if (failedPassword < attemptAmount - 1)
             {
                 failedPassword++;
-                MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
+                Core.ShowAppDialog(() => new DefaultOKDialog("Неверный пароль!"));
             }
             else
             {
                 failedPassword++;
-                MessageBox.Show("Неверный пароль!"); /*диалог неверный пароль*/
-                Core.ShowCaptcha();
+                Core.ShowAppDialog(() => new DefaultOKDialog("Неверный пароль!"));
+                Core.ShowAppDialog(() => new CaptchaDialog());
             }
         }
 
@@ -89,9 +89,7 @@ namespace gamerecords.Pages
         /// </summary>
         private void ForgotPasswordHL_Click(object sender, RoutedEventArgs e)
         {
-            ForgotPasswordDialog dialog = new ForgotPasswordDialog(LoginTB.Text);
-            dialog.Owner = Application.Current.MainWindow;
-            bool? result = dialog.ShowDialog();
+            Core.ShowAppDialog(() => new ForgotPasswordDialog(LoginTB.Text));
         }
 
         /// <summary>

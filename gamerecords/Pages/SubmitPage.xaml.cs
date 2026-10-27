@@ -1,4 +1,5 @@
 ﻿using gamerecords.Classes;
+using gamerecords.Dialogs;
 using gamerecords.Models;
 using System;
 using System.Collections.Generic;
@@ -82,7 +83,7 @@ namespace gamerecords.Pages
             if (TimeTB.Text != "" && VideoTB.Text != "")
             {
 
-                if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan time) == false) { MessageBox.Show("Неверно заполненные поля!"); }
+                if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan time) == false) { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
                 
                 DateTime dateTime = new DateTime();
                 if (Convert.ToBoolean(JustFinishedRB.IsChecked)) { dateTime = DateTime.Now; }
@@ -90,11 +91,11 @@ namespace gamerecords.Pages
                 {
                     if (TimeTB.Text != "" && DateTimeDP != null)
                     {
-                        if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan datetimetime) == false) { MessageBox.Show("Неверно заполненные поля!"); }
+                        if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan datetimetime) == false) { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
                         dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
                         dateTime = dateTime.Add(time);
                     }
-                    else { MessageBox.Show("Заполните все необходимые поля!"); /**/ }
+                    else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!")); }
                 }
                 string categorystr = CategoryCB.SelectedItem.ToString();
                 string platformstr = PlatformCB.SelectedItem.ToString();
@@ -119,19 +120,19 @@ namespace gamerecords.Pages
                                         x.platform_id == newrecord.platform_id);
                     if (isexist)
                     {
-                        MessageBox.Show("Подобный рекорд уже существует!"); /**/
+                        Core.ShowAppDialog(() => new DefaultOKDialog("Подобный рекорд уже существует!"));
                     }
                     else
                     {
                         Core.Context.Records.Add(newrecord);
                         Core.Context.SaveChanges();
-                        MessageBox.Show("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."); /**/
+                        Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
                         NavigationService.Navigate(new CatalogPage());
                     }
                 }
-                catch { MessageBox.Show("Неверно заполненные поля!"); /**/ }
+                catch { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
             }
-            else { MessageBox.Show("Заполните все необходимые поля!"); /**/  }
+            else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!"));  }
         }
     }
 }

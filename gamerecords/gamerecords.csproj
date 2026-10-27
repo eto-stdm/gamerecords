@@ -66,8 +66,11 @@
     <Compile Include="Dialogs\CaptchaDialog.xaml.cs">
       <DependentUpon>CaptchaDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ExitDialog.xaml.cs">
-      <DependentUpon>ExitDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\DefaultOKDialog.xaml.cs">
+      <DependentUpon>DefaultOKDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DefaultYesNoDialog.xaml.cs">
+      <DependentUpon>DefaultYesNoDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ForgotPasswordDialog.xaml.cs">
       <DependentUpon>ForgotPasswordDialog.xaml</DependentUpon>
@@ -76,7 +79,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\ExitDialog.xaml">
+    <Page Include="Dialogs\DefaultOKDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DefaultYesNoDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,10 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\RulesDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\VerifyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,9 +105,6 @@
     </Compile>
     <Compile Include="Dialogs\RulesDialog.xaml.cs">
       <DependentUpon>RulesDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\VerifyDialog.xaml.cs">
-      <DependentUpon>VerifyDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -273,24 +273,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\speedrun.png" />
-    <Resource Include="Images\angry birds.png" />
-    <Resource Include="Images\bad piggies.png" />
-    <Resource Include="Images\celeste.png" />
-    <Resource Include="Images\ghostrunner.png" />
-    <Resource Include="Images\hollow knight.png" />
-    <Resource Include="Images\katana zero.png" />
-    <Resource Include="Images\minecraft.png" />
-    <Resource Include="Images\mirrors edge.png" />
-    <Resource Include="Images\neon white.png" />
-    <Resource Include="Images\nier automata.png" />
-    <Resource Include="Images\peak.png" />
-    <Resource Include="Images\tboi.png" />
-    <Resource Include="Images\th16.png" />
-    <Resource Include="Images\the messenger.png" />
-    <Resource Include="Images\ultrakill.png" />
+    <Resource Include="Images\Covers\angry birds.png" />
+    <Resource Include="Images\Covers\bad piggies.png" />
+    <Resource Include="Images\Covers\celeste.png" />
+    <Resource Include="Images\Covers\ghostrunner.png" />
+    <Resource Include="Images\Covers\hollow knight.png" />
+    <Resource Include="Images\Covers\katana zero.png" />
+    <Resource Include="Images\Covers\minecraft.png" />
+    <Resource Include="Images\Covers\mirrors edge.png" />
+    <Resource Include="Images\Covers\neon white.png" />
+    <Resource Include="Images\Covers\nier automata.png" />
+    <Resource Include="Images\Covers\peak.png" />
+    <Resource Include="Images\Covers\tboi.png" />
+    <Resource Include="Images\Covers\th16.png" />
+    <Resource Include="Images\Covers\the messenger.png" />
+    <Resource Include="Images\Covers\ultrakill.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\vvvvvv.png" />
+    <Resource Include="Images\Covers\vvvvvv.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\gamerecords.Context.tt">
@@ -303,6 +303,9 @@
       <DependentUpon>gamerecords.edmx</DependentUpon>
       <LastGenOutput>gamerecords.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Avatars\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

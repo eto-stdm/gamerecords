@@ -1,19 +1,20 @@
-﻿<Window x:Class="gamerecords.Dialogs.VerifyDialog"
+﻿<Window x:Class="gamerecords.Dialogs.DefaultYesNoDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gamerecords.Dialogs"
         mc:Ignorable="d"
-        Title="VerifyDialog"
+        Title="DefaultYesNoDialog"
         WindowStartupLocation="CenterOwner"
         Height="200" Width="250">
-    
+
     <StackPanel Style="{DynamicResource StackPanelCentered}">
-        <TextBlock Text="Рекорд соответствует требованиям?" Style="{DynamicResource TextVerify}"/>
+        <TextBlock x:Name="TextTB" Text="Текст" Style="{DynamicResource TextExit}"/>
+
         <StackPanel Style="{DynamicResource SPSignIn}">
-            <Button x:Name="YesBtn" Content="Да" Style="{DynamicResource BtnVerify}" Click="YesBtn_Click"/>
-            <Button x:Name="NoBtn" Content="Нет" Style="{DynamicResource BtnVerify}" Click="NoBtn_Click"/>
+            <Button x:Name="YesBtn" Content="Да" Style="{DynamicResource BtnExit}" Click="YesBtn_Click"/>
+            <Button x:Name="NoBtn" Content="Нет" Style="{DynamicResource BtnExit}" Click="NoBtn_Click"/>
         </StackPanel>
     </StackPanel>
 </Window>

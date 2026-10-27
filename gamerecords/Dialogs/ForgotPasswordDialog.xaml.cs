@@ -44,7 +44,7 @@ namespace gamerecords.Dialogs
         /// </summary>
         private void ChangePasswordBtn_Click(object sender, RoutedEventArgs e)
         {
-            Core.ShowCaptcha();
+            Core.ShowAppDialog(() => new CaptchaDialog());
             Players player = Core.Context.Players.FirstOrDefault(p => p.nickname == LoginTB.Text.ToLower());
             
             if (player != null && PasswordTB.Password != "")
@@ -55,10 +55,13 @@ namespace gamerecords.Dialogs
                     player.password = newpass;
                     Core.Context.SaveChanges();
                 }
-                MessageBox.Show("Пароль изменён");
+                Core.ShowAppDialog(() => new DefaultOKDialog("Пароль изменён"));
                 this.Close();
             }
-            else { MessageBox.Show("Заполните все поля!"); }
+            else
+            {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!"));
+            }
         }
     }
 }

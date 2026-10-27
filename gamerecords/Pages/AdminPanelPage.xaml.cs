@@ -49,30 +49,30 @@ namespace gamerecords.Pages
             var selectRecord = RecordsLB.SelectedItem as Records;
             if (selectRecord == null) return;
 
+            
             try { Process.Start(selectRecord.video); }
             catch
             {
-                MessageBox.Show("Видео нечитаемо, удалить рекорд?");
+                Core.ShowAppDialog(() => new DefaultYesNoDialog("Видео нечитаемо, удалить рекорд?"));
                 Core.Context.Records.Remove(selectRecord);
                 Core.Context.SaveChanges();
-                MessageBox.Show("Рекорд не прошёл проверку и был удалён из базы данных!");
+
+                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и был удалён из базы данных!"));
                 UpdateListBox();
                 return;
             }
 
-            VerifyDialog dialog = new VerifyDialog();
-            dialog.Owner = Application.Current.MainWindow;
-            if (dialog.ShowDialog() == true)
+            if (Core.ShowAppDialog(() => new DefaultYesNoDialog("Рекорд соответствует требованиям?")) == true)
             {
                 selectRecord.is_verified = true;
                 Core.Context.SaveChanges();
-                MessageBox.Show("Рекорд был верифицирован!");
+                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд был верифицирован!"));
             }
             else
             {
                 Core.Context.Records.Remove(selectRecord);
                 Core.Context.SaveChanges();
-                MessageBox.Show("Рекорд не прошёл проверку и был удалён из базы данных!");
+                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и был удалён из базы данных!"));
             }
             UpdateListBox();
         }
