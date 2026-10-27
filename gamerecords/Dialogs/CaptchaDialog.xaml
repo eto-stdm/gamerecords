@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="CaptchaDialog"
         Closing="Window_Closing"
+        WindowStartupLocation="CenterOwner"
         Height="200" Width="200">
 
     <StackPanel Style="{DynamicResource StackPanelCentered}">

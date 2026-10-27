@@ -61,12 +61,12 @@ namespace gamerecords.Pages
             }
 
             VerifyDialog dialog = new VerifyDialog();
+            dialog.Owner = Application.Current.MainWindow;
             if (dialog.ShowDialog() == true)
             {
                 selectRecord.is_verified = true;
                 Core.Context.SaveChanges();
                 MessageBox.Show("Рекорд был верифицирован!");
-
             }
             else
             {

@@ -115,6 +115,7 @@ namespace gamerecords.Pages
         private void RulesBtn_Click(object sender, RoutedEventArgs e)
         {
             RulesDialog dialog = new RulesDialog(FindGameCategory());
+            dialog.Owner = System.Windows.Application.Current.MainWindow;
             dialog.ShowDialog();
         }
 

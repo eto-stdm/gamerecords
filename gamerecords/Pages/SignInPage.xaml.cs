@@ -90,6 +90,7 @@ namespace gamerecords.Pages
         private void ForgotPasswordHL_Click(object sender, RoutedEventArgs e)
         {
             ForgotPasswordDialog dialog = new ForgotPasswordDialog(LoginTB.Text);
+            dialog.Owner = Application.Current.MainWindow;
             bool? result = dialog.ShowDialog();
         }
 

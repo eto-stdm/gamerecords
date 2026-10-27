@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,15 +59,22 @@ namespace gamerecords.Dialogs
         /// <summary>
         /// Обработка нажатия клавишы "Ввести"
         /// </summary>
-        private void CheckCaptchaB_Click(object sender, RoutedEventArgs e)
+        private async void CheckCaptchaB_Click(object sender, RoutedEventArgs e)
         {
             if (EnterCaptchaTB.Text == null || EnterCaptchaTB.Text != CaptchaTB.Text)
             {
+                CaptchaTB.Foreground = new SolidColorBrush(Colors.Red);
+                await Task.Delay(500);
+                Thread.Sleep(500);
                 EnterCaptchaTB.Clear();
                 CaptchaText();
+                CaptchaTB.Foreground = new SolidColorBrush(Colors.Black);
             }
             else
             {
+                CaptchaTB.Foreground = new SolidColorBrush(Colors.LightGreen);
+                await Task.Delay(500);
+                Thread.Sleep(500);
                 canClose = true;
                 this.Close();
             }

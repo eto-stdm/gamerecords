@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gamerecords.Dialogs"
         mc:Ignorable="d"
-        Title="VerifyDialog" Height="200" Width="250">
+        Title="VerifyDialog"
+        WindowStartupLocation="CenterOwner"
+        Height="200" Width="250">
     
     <StackPanel Style="{DynamicResource StackPanelCentered}">
         <TextBlock Text="Рекорд соответствует требованиям?" Style="{DynamicResource TextVerify}"/>

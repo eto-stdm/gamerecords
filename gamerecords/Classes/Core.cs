@@ -25,6 +25,7 @@ namespace gamerecords.Classes
         public static void ShowCaptcha()
         {
             CaptchaDialog dialog = new CaptchaDialog();
+            dialog.Owner = Application.Current.MainWindow;
             dialog.ShowDialog();
         }
 
