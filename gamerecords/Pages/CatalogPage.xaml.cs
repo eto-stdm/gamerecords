@@ -28,6 +28,15 @@ namespace gamerecords.Pages
         List<Games> CurrentGames = new List<Games>();
         bool isSearch;
 
+        /// <summary>
+        /// Конструктор страницы CatalogPage (c аргументом null)
+        /// </summary>
+        public CatalogPage() : this(null) { }
+
+        /// <summary>
+        /// Конструктор страницы CatalogPage (с аргументом не null)
+        /// </summary>
+        /// <param name="Search">Поисковая строка</param>
         public CatalogPage(string Search)
         {
             InitializeComponent();
@@ -67,14 +76,12 @@ namespace gamerecords.Pages
             
         }
 
-        public CatalogPage() : this(null) { }
-
+        /// <summary>
+        /// Общая функция для сортировки игр в ListBox
+        /// </summary>
         private void Sort()
         {
-            if (SortByCB.SelectedItem == null)
-            {
-                return;
-            }
+            if (SortByCB.SelectedItem == null) { return; }
 
             switch (SortByCB.SelectedItem.ToString())
             {
@@ -89,6 +96,9 @@ namespace gamerecords.Pages
             //GamesLB.ItemsSource = CurrentGames;
         }
 
+        /// <summary>
+        /// Обработка изменения платформы
+        /// </summary>
         private void PlatformCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (PlatformCB.SelectedIndex == 0 && isSearch == false)
@@ -115,6 +125,9 @@ namespace gamerecords.Pages
             Sort();
         }
 
+        /// <summary>
+        /// Подсчёт количества спидранеров в определённой игре
+        /// </summary>
         //private void CountGamesPlayers(List<Games> games)
         //{
         //    //List<>
@@ -125,12 +138,18 @@ namespace gamerecords.Pages
 
         //}
 
+        /// <summary>
+        /// Обработка изменения "сортировки по..."
+        /// </summary>
         private void SortByCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Sort();
             //GamesLB.ItemsSource = CurrentGames;
         }
 
+        /// <summary>
+        /// Обработка нажатия по кнопке "Случайная игра"
+        /// </summary>
         private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
         {
             List<Games> games = Core.Context.Games.ToList();
@@ -141,6 +160,9 @@ namespace gamerecords.Pages
             NavigationService.Navigate(new GamePage(games[gameid]));
         }
 
+        /// <summary>
+        /// Обработка двойного нажатия по игре
+        /// </summary>
         private void GamesLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selectBook = GamesLB.SelectedItem as Games;

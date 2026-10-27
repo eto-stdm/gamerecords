@@ -24,28 +24,32 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class AdminPanelPage : Page
     {
+        /// <summary>
+        /// Конструктор страницы AdminPanelPage
+        /// </summary>
         public AdminPanelPage()
         {
             InitializeComponent();
-
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Обновление ListBox
+        /// </summary>
         private void UpdateListBox()
         {
             RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.is_verified == false).ToList();
         }
 
+        /// <summary>
+        /// Обработка двойного нажатия на запись в ListBox
+        /// </summary>
         private void RecordsLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selectRecord = RecordsLB.SelectedItem as Records;
-
             if (selectRecord == null) return;
 
-            try
-            {
-                Process.Start(selectRecord.video);
-            }
+            try { Process.Start(selectRecord.video); }
             catch
             {
                 MessageBox.Show("Видео нечитаемо, удалить рекорд?");
@@ -56,9 +60,7 @@ namespace gamerecords.Pages
                 return;
             }
 
-
             VerifyDialog dialog = new VerifyDialog();
-
             if (dialog.ShowDialog() == true)
             {
                 selectRecord.is_verified = true;

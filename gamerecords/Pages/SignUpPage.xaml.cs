@@ -22,21 +22,30 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class SignUpPage : Page
     {
+        /// <summary>
+        /// Конструктор страницы SignUpPage
+        /// </summary>
         public SignUpPage()
         {
             InitializeComponent();
+
+            // Добавление стран в ListBox
             List<string> countries = new List<string>();
             foreach (Countries country in Core.Context.Countries.ToList())
             {
                 countries.Add(Convert.ToString(country.country));
             }
             CountryTB.ItemsSource = countries;
+
+            // По умолчанию страна не выбрана
             CountryTB.SelectedIndex = 18;
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку "Зарегистрироваться"
+        /// </summary>
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
-
             if (LoginTB.Text != "" && PasswordTB.Password != "")
             {
                 Players play = Core.Context.Players.FirstOrDefault(x => x.nickname == LoginTB.Text);
@@ -64,7 +73,14 @@ namespace gamerecords.Pages
                 else { MessageBox.Show("Такой пользователь уже существует!"); }
             }
             else { MessageBox.Show("Заполните все данные!"); } // потом заменить на красивое окно
-            //x=16sin3(t)x equals 16 sine cubed t 
+        }
+
+        /// <summary>
+        /// Обработка нажатия на кнопку "Войти"
+        /// </summary>
+        private void HyperLinkSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SignInPage());
         }
     }
 }

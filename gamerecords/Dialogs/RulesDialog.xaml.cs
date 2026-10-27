@@ -21,6 +21,11 @@ namespace gamerecords.Dialogs
     public partial class RulesDialog : Window
     {
         GamesCategories Gamecat { get; set; }
+
+        /// <summary>
+        /// Конструктор окна RulesDialog
+        /// </summary>
+        /// <param name="gamecat">Категория игры</param>
         public RulesDialog(GamesCategories gamecat)
         {
             InitializeComponent();

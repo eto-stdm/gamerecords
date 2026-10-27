@@ -8,12 +8,11 @@
         Title="CaptchaDialog"
         Closing="Window_Closing"
         Height="200" Width="200">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Введите капчу:" FontSize="20" Margin="10, 10, 10, 10" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="CaptchaTB" Text="Капча" FontSize="20" HorizontalAlignment="Center" Margin="10, 0, 10, 10"/>
-            <TextBox x:Name="EnterCaptchaTB" Margin="10, 0, 10, 10"/>
-            <Button x:Name="CheckCaptchaB" Content="Ввести" Width="60" Margin="10, 0, 10, 10" Click="CheckCaptchaB_Click"/>
-        </StackPanel>
-    </Grid>
+
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
+        <TextBlock Text="Введите капчу:" Style="{DynamicResource FirstTextCaptcha}"/>
+        <TextBlock x:Name="CaptchaTB" Text="Капча" Style="{DynamicResource OtherTextCaptcha}"/>
+        <TextBox x:Name="EnterCaptchaTB" Style="{DynamicResource TextBoxCaptcha}"/>
+        <Button x:Name="CheckCaptchaB" Content="Ввести" Style="{DynamicResource ButtonCaptcha}" Click="CheckCaptchaB_Click"/>
+    </StackPanel>
 </Window>

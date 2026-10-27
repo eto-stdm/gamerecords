@@ -8,26 +8,28 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPanelPage">
 
-    <StackPanel  Style="{DynamicResource StackPanelCentered}">
+    <!--Заголовок-->
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
         <TextBlock Text="Панель администратора" Style="{DynamicResource HeaderAdminPanel}"/>
         <TextBlock Text="Проверка рекордов" Style="{DynamicResource HeaderAdminPanel}"/>
 
+        <!--Основная часть-->
         <StackPanel Style="{DynamicResource StackPanelCentered}">
             <Border Style="{DynamicResource BorderUsual}">
                 <StackPanel>
                     <Grid Style="{DynamicResource GridCenteredAdminPanel}">
-                        <ListBox x:Name="RecordsLB" Style="{DynamicResource ListBoxAdminPanel}" MouseDoubleClick="RecordsLB_MouseDoubleClick">
+                        <ListBox x:Name="RecordsLB" Style="{DynamicResource ListBoxUsual}" MouseDoubleClick="RecordsLB_MouseDoubleClick">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <StackPanel Style="{DynamicResource StackPanelCentered}">
                                             <TextBlock Text="{Binding Players.nickname, StringFormat=Никнейм: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh:mm:ss}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesPlatfoms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
-                                        </WrapPanel>
+                                        </StackPanel>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

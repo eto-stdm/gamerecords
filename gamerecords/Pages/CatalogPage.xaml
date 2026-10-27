@@ -8,12 +8,10 @@
       d:DesignHeight="800" d:DesignWidth="1000"
       Title="CatalogPage">
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
-                Style="{DynamicResource StackPanelCenteredCatalog}">
-        <Border Padding="10" Background="#233a3d" CornerRadius="10"
-                Style="{DynamicResource BorderCatalog}">
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
+        <Border Style="{DynamicResource BorderUsual}">
             <StackPanel>
-                <Grid HorizontalAlignment="Center" Margin="0,0,0,20">
+                <Grid Style="{DynamicResource GridCentered}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="245"/>
                         <ColumnDefinition Width="245"/>
@@ -23,45 +21,27 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="0"
-                               Text="Платформа" FontSize="20" Foreground="White"
-                               VerticalAlignment="Center" Margin="10"/>
 
-                    <TextBlock Grid.Column="1" Grid.Row="0"
-                               Text="Сортировать по" FontSize="20" Foreground="White"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1"
-                              Style="{DynamicResource ComboBoxPlatformCatalog}"
-                              SelectionChanged="PlatformCB_SelectionChanged"/>
-
-                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1"
-                              Style="{DynamicResource ComboBoxSortByCatalog}"
-                              SelectionChanged="SortByCB_SelectionChanged"/>
-
-                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1"
-                            Width="150" Content="Случайная игра"
-                            HorizontalAlignment="Right" Margin="10"
-                            Click="RandomGameBtn_Click"/>
+                    <!--Панель сортировки и фильтрации-->
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Платформа" Style="{DynamicResource MiniHeaderCatalog}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Сортировать по" Style="{DynamicResource MiniHeaderCatalog}"/>
+                    <ComboBox x:Name="PlatformCB" Grid.Column="0" Grid.Row="1" Style="{DynamicResource CBCatalog}" SelectionChanged="PlatformCB_SelectionChanged"/>
+                    <ComboBox x:Name="SortByCB" Grid.Column="1" Grid.Row="1" Style="{DynamicResource CBCatalog}" SelectionChanged="SortByCB_SelectionChanged"/>
+                    <Button x:Name="RandomGameBtn" Grid.Column="2" Grid.Row="1" Content="Случайная игра" Style="{DynamicResource ButtonRandomGameCatalog}" Click="RandomGameBtn_Click"/>
                 </Grid>
 
-                <ListBox x:Name="GamesLB" Style="{DynamicResource ListBoxGamesCatalog}"
-                         MouseDoubleClick="GamesLB_MouseDoubleClick">
+                <!--ListBox с играми-->
+                <ListBox x:Name="GamesLB" Style="{DynamicResource ListBoxUsual}" MouseDoubleClick="GamesLB_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="100" Height="210" Margin="5"
-                                 Style="{DynamicResource GameItemGridCatalog}">
+                            <Grid Style="{DynamicResource GridLBCatalog}">
                                 <WrapPanel>
-                                    <Border Width="100" Height="150">
+                                    <Border Style="{DynamicResource BorderLBCatalog}">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
                                         </Border.Background>
                                     </Border>
-                                    <TextBlock Text="{Binding name}"
-                                               Foreground="White"
-                                               TextWrapping="Wrap"
-                                               Margin="0,10,0,0"/>
+                                    <TextBlock Text="{Binding name}" Style="{DynamicResource TBLBCatalog}"/>
                                 </WrapPanel>
                             </Grid>
                         </DataTemplate>

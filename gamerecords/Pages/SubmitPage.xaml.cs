@@ -23,11 +23,17 @@ namespace gamerecords.Pages
     public partial class SubmitPage : Page
     {
         GamesCategories GameCat { get; set; }
+
+        /// <summary>
+        /// Конструктор страницы SubmitPage
+        /// </summary>
+        /// <param name="gamecat">Категория игры</param>
         public SubmitPage(GamesCategories gamecat)
         {
             InitializeComponent();
             this.GameCat = gamecat;
 
+            // Инициализация CategoryCB
             List<GamesCategories> gamesCategories = Core.Context.GamesCategories.Where(x => x.game_id == GameCat.game_id).ToList();
             List<string> cat = new List<string>();
             foreach (GamesCategories gamec in gamesCategories)
@@ -38,6 +44,7 @@ namespace gamerecords.Pages
             int indexOfCat = cat.IndexOf(GameCat.Categories.category);
             CategoryCB.SelectedIndex = indexOfCat;
 
+            // Инициализация PlatformCB
             List<GamesPlatforms> gamesPlatforms = Core.Context.GamesPlatforms.Where(x => x.game_id == GameCat.game_id).ToList();
             List<string> plat = new List<string>();
             foreach (GamesPlatforms gamec in gamesPlatforms)
@@ -47,19 +54,29 @@ namespace gamerecords.Pages
             PlatformCB.ItemsSource = plat;
             PlatformCB.SelectedIndex = 0;
 
+            // Значение по умолчанию - Только что [закончил играть]
             JustFinishedRB.IsChecked = true;
         }
 
+        /// <summary>
+        /// Обработка отметки "Только что [закончил играть]"
+        /// </summary>
         private void JustFinishedRB_Checked(object sender, RoutedEventArgs e)
         {
             DateTimeSP.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Обработка отметки "Кастомное [время окончания игры]"
+        /// </summary>
         private void CustomRB_Checked(object sender, RoutedEventArgs e)
         {
             DateTimeSP.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку "Опубликовать [забег]"
+        /// </summary>
         private void SubmitRunBtn_Click(object sender, RoutedEventArgs e)
         {
             if (TimeTB.Text != "" && VideoTB.Text != "")
@@ -77,7 +94,7 @@ namespace gamerecords.Pages
                         dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
                         dateTime = dateTime.Add(time);
                     }
-                    else { MessageBox.Show("Заполните все необходимые поля!"); }
+                    else { MessageBox.Show("Заполните все необходимые поля!"); /**/ }
                 }
                 string categorystr = CategoryCB.SelectedItem.ToString();
                 string platformstr = PlatformCB.SelectedItem.ToString();
@@ -102,19 +119,19 @@ namespace gamerecords.Pages
                                         x.platform_id == newrecord.platform_id);
                     if (isexist)
                     {
-                        MessageBox.Show("Подобный рекорд уже существует!");
+                        MessageBox.Show("Подобный рекорд уже существует!"); /**/
                     }
                     else
                     {
                         Core.Context.Records.Add(newrecord);
                         Core.Context.SaveChanges();
-                        MessageBox.Show("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами.");
+                        MessageBox.Show("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."); /**/
                         NavigationService.Navigate(new CatalogPage());
                     }
                 }
-                catch { MessageBox.Show("Неверно заполненные поля!"); }
+                catch { MessageBox.Show("Неверно заполненные поля!"); /**/ }
             }
-            else { MessageBox.Show("Заполните все необходимые поля!"); }
+            else { MessageBox.Show("Заполните все необходимые поля!"); /**/  }
         }
     }
 }

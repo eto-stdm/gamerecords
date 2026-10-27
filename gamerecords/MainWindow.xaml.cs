@@ -22,14 +22,23 @@ namespace gamerecords
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Конструктор окна MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+
+            // Добавление тем в список
             ChooseThemeCB.ItemsSource = new List<string>{ "Стандартная", "По заданию" };
             ChooseThemeCB.SelectedIndex = 0;
         }
+        /// <summary>
+        /// Логика при загрузке окна MainWindow
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Создание таймера, тикающего каждую секунду
             var timer = new System.Windows.Threading.DispatcherTimer
             {
                 Interval = new TimeSpan(0, 0, 1),
@@ -40,6 +49,9 @@ namespace gamerecords
             };
             timer.Start();
         }
+        /// <summary>
+        /// Обработка изменения темы
+        /// </summary>
         private void ChooseThemeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch(ChooseThemeCB.SelectedItem.ToString())
@@ -54,14 +66,9 @@ namespace gamerecords
                 Core.Context.SaveChanges();
             }
         }
-
-        //void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        //{
-        //    if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
-        //    MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No) { e.Cancel = true; }
-        //    else { e.Cancel = false; }
-        //}
-
+        /// <summary>
+        /// Обработка кнопки закрытия приложения
+        /// </summary>
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             ExitDialog dialog = new ExitDialog();

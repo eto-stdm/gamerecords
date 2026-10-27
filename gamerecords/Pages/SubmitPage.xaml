@@ -8,9 +8,10 @@
       d:DesignHeight="800" d:DesignWidth="800"
       Title="SubmitPage">
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Border Padding="10" Background="#233a3d" CornerRadius="10" Margin="0,0,0,10">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="700">
+    <!--Блок-->
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
+        <Border Style="{DynamicResource BorderUsual}">
+            <Grid Style="{DynamicResource GridSubmit}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="1*"/>
@@ -25,63 +26,69 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Margin="20" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Опубликовать забег" Foreground="White" />
+                <!--Строка 1-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Опубликовать забег" Style="{DynamicResource FirstTBSubmit}"/>
 
-                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Категоризация" Foreground="White" />
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Определяет, в каком лидерборде будет находиться забег" Foreground="White"  TextWrapping="Wrap"/>
+                <!--Строка 2-->
+                <StackPanel Grid.Row="1" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Категоризация" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBlock Text="Определяет, в каком лидерборде будет находиться забег" Style="{DynamicResource OtherSPTBSubmit}"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Категория *" Foreground="White" />
-                    <ComboBox x:Name="CategoryCB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Время забега" Foreground="White" />
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Определяет положение забега в лидерборде" Foreground="White"  TextWrapping="Wrap"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Время *" Foreground="White" />
-                    <TextBox x:Name="TimeTB" Height="30" Width="100" Margin="10,0,10,10" ToolTip="Вводите время в формате: hh.mm.ss" HorizontalAlignment="Left"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Категория *" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <ComboBox x:Name="CategoryCB" Style="{DynamicResource CBSubmit}"/>
                 </StackPanel>
 
-
-                <StackPanel Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Дата забега" Foreground="White" />
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Когда был совершён забег?" Foreground="White"  TextWrapping="Wrap"/>
+                <!--Строка 3-->
+                <StackPanel Grid.Row="2" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Время забега" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBlock Text="Определяет положение забега в лидерборде" Style="{DynamicResource OtherSPTBSubmit}"/>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Дата и время *" Foreground="White" />
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton x:Name="JustFinishedRB" GroupName="DateTimeGN" Content="Только что" Foreground="White" Margin="10,0,10,10" VerticalContentAlignment="Center" Checked="JustFinishedRB_Checked"/>
-                        <RadioButton x:Name="CustomRB" GroupName="DateTimeGN" Content="Кастомное" Foreground="White" Margin="10,0,10,10" VerticalContentAlignment="Center" Checked="CustomRB_Checked"/>
-                        <StackPanel x:Name="DateTimeSP" Orientation="Horizontal" Visibility="Hidden">
-                            <DatePicker x:Name="DateTimeDP" Margin="10,0,10,10"/>
-                            <TextBox x:Name="DateTimeTB" Width="100" Margin="10,0,10,10" ToolTip="Вводите время в формате: hh.mm.ss"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Время *" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBox x:Name="TimeTB" Style="{DynamicResource TimeTBSubmit}"/>
+                </StackPanel>
+
+                <!--Строка 4-->
+                <StackPanel Grid.Row="3" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Дата забега" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBlock Text="Когда был совершён забег?" Style="{DynamicResource OtherSPTBSubmit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Дата и время *" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <StackPanel Style="{DynamicResource StackPanelOrientHor}">
+                        <RadioButton x:Name="JustFinishedRB" GroupName="DateTimeGN" Content="Только что" Style="{DynamicResource RBSubmit}" Checked="JustFinishedRB_Checked"/>
+                        <RadioButton x:Name="CustomRB" GroupName="DateTimeGN" Content="Кастомное" Style="{DynamicResource RBSubmit}" Checked="CustomRB_Checked"/>
+                        <StackPanel x:Name="DateTimeSP" Style="{DynamicResource StackPanelOrientHor}" Visibility="Collapsed">
+                            <DatePicker x:Name="DateTimeDP" Style="{DynamicResource DPSubmit}"/>
+                            <TextBox x:Name="DateTimeTB" Style="{DynamicResource TimeTBSubmit}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Row="4" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Видео" Foreground="White" />
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Модераторы этой игры требуют видеодоказательство для верификации забега" Foreground="White"  TextWrapping="Wrap"/>
+                <!--Строка 5-->
+                <StackPanel Grid.Row="4" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Видео" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBlock Text="Модераторы этой игры требуют видеодоказательство для верификации забега" Style="{DynamicResource OtherSPTBSubmit}"/>
                 </StackPanel>
-                <StackPanel Grid.Row="4" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="URL видео *" Foreground="White" />
-                    <TextBox x:Name="VideoTB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+                <StackPanel Grid.Row="4" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="URL видео *" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBox x:Name="VideoTB" Style="{DynamicResource VideoTBSubmit}"/>
+                </StackPanel>
+                
+                <!--Строка 6-->
+                <StackPanel Grid.Row="5" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Другое" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <TextBlock Text="Эти значения не влияют на положение в лидерборде" Style="{DynamicResource OtherSPTBSubmit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Платформа *" Style="{DynamicResource FirstSPTBSubmit}"/>
+                    <ComboBox x:Name="PlatformCB" Style="{DynamicResource CBSubmit}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="5" Grid.Column="0" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Другое" Foreground="White" />
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,10" Text="Эти значения не влияют на положение в лидерборде" Foreground="White"  TextWrapping="Wrap"/>
-                </StackPanel>
-                <StackPanel Grid.Row="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Платформа *" Foreground="White" />
-                    <ComboBox x:Name="PlatformCB" Width="450" Height="30" HorizontalAlignment="Left" Margin="10,0,10,10"/>
-                </StackPanel>
-
-                <StackPanel Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" >
-                    <Button x:Name="SubmitRunBtn" Content="Опубликовать" HorizontalAlignment="Right" Margin="10" Click="SubmitRunBtn_Click"/>
+                <!--Строка 7-->
+                <StackPanel Grid.Row="6" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <Button x:Name="SubmitRunBtn" Content="Опубликовать" Style="{DynamicResource ButtonSubmit}" Click="SubmitRunBtn_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

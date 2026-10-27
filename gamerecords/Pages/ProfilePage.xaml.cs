@@ -22,10 +22,14 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
+        /// <summary>
+        /// Конструктор страницы ProfilePage
+        /// </summary>
         public ProfilePage()
         {
             InitializeComponent();
 
+            // Вывод никнейма и его рекордов
             NickNameTB.Text += Core.current_player.nickname;
             RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.player_id == Core.current_player.id).ToList();
         }

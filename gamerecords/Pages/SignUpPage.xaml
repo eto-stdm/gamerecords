@@ -8,36 +8,49 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SignUpPage">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
         <Image Style="{DynamicResource LogoSignIn}"/>
-        <Border Padding="10" Background="#233a3d" CornerRadius="10">
+        <Border Style="{DynamicResource BorderUsual}">
+            
             <StackPanel>
+                
+                <!--Заголовок-->
                 <TextBlock Text="Создание аккаунта" Style="{DynamicResource HeaderSignIn}"/>
-                <StackPanel HorizontalAlignment="Center">
+
+                <!--Логин-->
+                <StackPanel Style="{DynamicResource StackPanelCentered}">
                     <TextBlock Text="Логин" Style="{DynamicResource RegularTextSignIn}"/>
                     <TextBox x:Name="LoginTB" Style="{DynamicResource TextBoxSignIn}"/>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center">
+                
+                <StackPanel Style="{DynamicResource StackPanelCentered}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
+
+                        <!--Пароль-->
                         <TextBlock Text="Пароль" Style="{DynamicResource RegularTextSignIn}" Grid.Column="0"/>
                     </Grid>
                     <PasswordBox x:Name="PasswordTB" Style="{DynamicResource PasswordSignIn}"/>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center">
+
+                <!--Страна-->
+                <StackPanel Style="{DynamicResource StackPanelCentered}">
                     <TextBlock Text="Страна (опционально)" Style="{DynamicResource RegularTextSignIn}"/>
                     <ComboBox x:Name="CountryTB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboItemSignUp}"/>
                 </StackPanel>
-                <!-- сделать добавление аватара -->
+               
                 <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{DynamicResource RegularTextSignIn}"/>
+                <!-- Сделать добавление аватара -->
+
+                <!--Регистрация-->
                 <Button x:Name="SignUpBtn" Content="Зарегистрироваться" Style="{DynamicResource ButtonSignIn}" Click="SignUpBtn_Click"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Style="{DynamicResource SPSignIn}">
                     <TextBlock Text="Уже есть аккаунт?" Style="{DynamicResource RegularTextSignIn}"/>
-                    <TextBlock Grid.Column="1" Margin="5,0,10,10">
-                       <Hyperlink Style="{DynamicResource HyperlinkSignIn}" NavigateUri="/Pages/SignInPage.xaml">Войти</Hyperlink>
+                    <TextBlock Grid.Column="1" Style="{DynamicResource TextNewSignIn}">
+                       <Hyperlink x:Name="HyperLinkSignIn" Style="{DynamicResource HyperlinkSignIn}" Click="HyperLinkSignIn_Click">Войти</Hyperlink>
                     </TextBlock>
                 </StackPanel>
             </StackPanel>

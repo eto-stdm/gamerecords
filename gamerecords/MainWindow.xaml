@@ -9,16 +9,17 @@
         WindowStyle="None"
         WindowState="Maximized"
         Loaded="Window_Loaded"
-        
         Style="{DynamicResource MyWindowStyle}">
+
+    <!--Кнопки поверх всего-->
     <Grid>
-        <StackPanel Orientation="Horizontal" Panel.ZIndex="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <StackPanel Style="{DynamicResource SPMain}">
             <TextBlock Text="Смена темы:" Style="{DynamicResource RegularTextMain}"/>
             <ComboBox x:Name="ChooseThemeCB" Style="{DynamicResource ComboBoxTheme}" SelectionChanged="ChooseThemeCB_SelectionChanged"/>
         </StackPanel>
 
-        <Button x:Name="CloseBtn" Panel.ZIndex="100" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
-        <Frame x:Name="MainFrame" Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
-        <TextBlock x:Name="DateTimeNow" Panel.ZIndex="100" Style="{DynamicResource ClockMain}"/>
+        <Button x:Name="CloseBtn" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
+        <Frame x:Name="MainFrame" Style="{DynamicResource FrameMain}"/>
+        <TextBlock x:Name="DateTimeNow" Style="{DynamicResource ClockMain}"/>
     </Grid>
 </Window>

@@ -23,16 +23,25 @@ namespace gamerecords.Dialogs
     /// </summary>
     public partial class ForgotPasswordDialog : Window
     {
-        string login {  set; get; }
+        string Login {  set; get; }
+
+        /// <summary>
+        /// Конструктор окна ForgotPasswordDialog
+        /// </summary>
+        /// <param name="login">Логин</param>
         public ForgotPasswordDialog(string login)
         {
             InitializeComponent();
-            this.login = login;
+            this.Login = login;
             LoginTB.Text = login;
 
+            // Автоматический ввод логина, если он введён на предыдущей странице
             if (login != "") { LoginTB.IsEnabled = false;  }
         }
-
+        
+        /// <summary>
+        /// Отбработка кнопки "Поменять пароль"
+        /// </summary>
         private void ChangePasswordBtn_Click(object sender, RoutedEventArgs e)
         {
             Core.ShowCaptcha();

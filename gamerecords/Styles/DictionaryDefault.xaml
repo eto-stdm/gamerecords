@@ -1,110 +1,31 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--#region test-->
+    <!--#endregion-->
 
-    <!-- MainWindow -->
-    <Style x:Key="LogoMain" TargetType="Image">
-        <Setter Property="Source" Value="/Images/speedrun.png"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Margin" Value="50,0"/>
-    </Style>
-
-    <Style x:Key="RegularTextMain" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-
-    <Style x:Key="ClockMain" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="VerticalAlignment" Value="Bottom"/>
-    </Style>
-
-    <Style x:Key="ButtonMenu" TargetType="Button">
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Background" Value="#188f6e"/>
-        <Setter Property="BorderBrush" Value="#188f6e" />
-        <Setter Property="Margin" Value="50,0"/>
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Style.Resources>
-    </Style>
-
-    <Style x:Key="ComboBoxTheme" TargetType="ComboBox">
-        <Setter Property="Background" Value="#111618"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Margin" Value="0,10,10,10"/>
-
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Style.Resources>
-    </Style>
-
-    <Style x:Key="ButtonExit" TargetType="Button">
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Background" Value="Red"/>
-        <Setter Property="BorderBrush" Value="Red" />
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Style.Resources>
-    </Style>
-    <!-- MainWindow -->
-
-    
-
-    <!-- AdminPanelPage -->
-    <Style x:Key="HeaderAdminPanel" TargetType="TextBlock">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Margin" Value="10"/>
-    </Style>
-    
-    <Style x:Key="RegularAdminPanel" TargetType="TextBlock">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
-        <Setter Property="Margin" Value="0,10,10,0"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-    </Style>
-
-    <Style x:Key="ListBoxAdminPanel" TargetType="ListBox">
+    <!--#region Общие стили-->
+    <Style x:Key="ListBoxUsual" TargetType="ListBox">
         <Setter Property="Width" Value="730"/>
         <Setter Property="Height" Value="600"/>
         <Setter Property="Background" Value="#233a3d"/>
         <Setter Property="BorderBrush" Value="#233a3d"/>
         <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
-        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
     </Style>
 
-    <Style x:Key="GridCenteredAdminPanel" TargetType="Grid">
+    <Style x:Key="ListBoxSmall" TargetType="ListBox">
+        <Setter Property="Width" Value="730"/>
+        <Setter Property="Height" Value="400"/>
+        <Setter Property="Background" Value="#233a3d"/>
+        <Setter Property="BorderBrush" Value="#233a3d"/>
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+    </Style>
+
+    <Style x:Key="GridCentered" TargetType="Grid">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0,0,0,20"/>
     </Style>
@@ -125,91 +46,286 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-    <!-- AdminPanelPage -->
 
+    <Style x:Key="WrapPanelOrientHor" TargetType="WrapPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
 
+    <Style x:Key="GameImgBorder" TargetType="Border">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="150"/>
+    </Style>
 
-    <!-- CatalogPage -->
-    <!-- Стиль для StackPanel центрального выравнивания -->
-    <Style x:Key="StackPanelCenteredCatalog" TargetType="StackPanel">
+    <Style x:Key="SPSignIn" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Window" x:Key="MyWindowStyle">
+        <Setter Property="Background" Value="#111618"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--Страницы-->
+    <!--#region AdminPanelPage -->
+    <Style x:Key="HeaderAdminPanel" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style x:Key="RegularAdminPanel" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region CatalogPage-->
+
+    <Style x:Key="MiniHeaderCatalog" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-    </Style>
-
-    <!-- Стиль для Border с фоном и округлением -->
-    <Style x:Key="BorderCatalog" TargetType="Border">
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Background" Value="#233a3d"/>
-        <Setter Property="CornerRadius" Value="10"/>
-    </Style>
-
-    <!-- Стиль для Grid с центрированием элементов -->
-    <Style x:Key="GridCenteredCatalog" TargetType="Grid">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="0,0,0,20"/>
-    </Style>
-
-    <!-- Стиль для ComboBox (Платформа) -->
-    <Style x:Key="ComboBoxPlatformCatalog" TargetType="ComboBox">
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
 
-    <!-- Стиль для ComboBox (Сортировка) -->
-    <Style x:Key="ComboBoxSortByCatalog" TargetType="ComboBox">
+    <Style x:Key="CBCatalog" TargetType="ComboBox">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
-    <!-- Стиль для Button (Случайная игра) -->
     <Style x:Key="ButtonRandomGameCatalog" TargetType="Button">
         <Setter Property="Width" Value="150"/>
-        <Setter Property="Content" Value="Случайная игра"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
-    <!-- Стиль для ListBox -->
-    <Style x:Key="ListBoxGamesCatalog" TargetType="ListBox">
-        <Setter Property="Width" Value="730"/>
-        <Setter Property="Height" Value="600"/>
-        <Setter Property="Background" Value="#233a3d"/>
-        <Setter Property="BorderBrush" Value="#233a3d"/>
-        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
-    </Style>
-
-    <!-- Стиль для DataTemplate в ListBox -->
-    <DataTemplate x:Key="GameItemTemplate">
-        <Grid Width="100" Height="210" Margin="5">
-            <WrapPanel>
-                <Border Width="100" Height="150">
-                    <Border.Background>
-                        <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
-                    </Border.Background>
-                </Border>
-                <TextBlock Text="{Binding name}" Foreground="White" TextWrapping="Wrap" Margin="0,10,0,0"/>
-            </WrapPanel>
-        </Grid>
-    </DataTemplate>
-
-    <!-- Стиль для Grid внутри ListBox -->
-    <Style x:Key="GameItemGridCatalog" TargetType="Grid">
-        <Setter Property="Width" Value="730"/>
+    <Style x:Key="GridLBCatalog" TargetType="Grid">
+        <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="210"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
-    <!-- CatalogPage -->
 
-    
-    
-    <!-- GamePage -->
-    
-    <!-- GamePage -->
+    <Style x:Key="TBLBCatalog" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
 
+    <Style x:Key="BorderLBCatalog" TargetType="Border">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="150"/>
+    </Style>
+    <!--#endregion-->
     
-    <!-- SignInPage / SignUpPage -->
+    <!--#region GamePage-->
+    <Style x:Key="GridLBGame" TargetType="Grid">
+        <Setter Property="Width" Value="700"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+        <!--#region Основная инфо-->
+    <Style x:Key="BorderGame" TargetType="Border">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="#233a3d"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+    </Style>
+
+    <Style x:Key="HeaderGame" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+    </Style>
+
+    <Style x:Key="ButtonFirstGame" TargetType="Button">
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Margin" Value="0,10,10,10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="ButtonOtherGame" TargetType="Button">
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+        <!--#endregion-->
+    
+        <!--#region Лидерборд-->
+    <Style x:Key="ComboBoxLeaderGame" TargetType="ComboBox">
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10"/>
+
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="ButtonLeaderGame" TargetType="Button">
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="GridLeaderGame" TargetType="Grid">
+        <Setter Property="Background" Value="DeepPink"/>
+        <Setter Property="Width" Value="730"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+
+    <Style x:Key="TextLeaderGame" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
+        <!--#endregion-->
+
+        <!--#region Список гайдов-->
+    <Style x:Key="SPGuidesGame" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+        <!--#endregion-->
+    
+        <!--#region Статистика-->
+        <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region MainPage-->
+    <Style x:Key="GridMain" TargetType="Grid">
+        <Setter Property="Margin" Value="0,0,0,20"/>
+    </Style>
+
+    <Style x:Key="BorderMain" TargetType="Border">
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="Panel.ZIndex" Value="50"/>
+    </Style>
+
+    <Style x:Key="StackPanelMain" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Panel.ZIndex" Value="50"/>
+    </Style>
+
+    <Style x:Key="LogoMain" TargetType="Image">
+        <Setter Property="Source" Value="/Images/speedrun.png"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="50,0"/>
+    </Style>
+
+    <Style x:Key="ButtonMenu" TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Margin" Value="50,0"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="TBMain" TargetType="TextBox">
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Margin" Value="50,0,10,0"/>
+    </Style>
+
+    <Style x:Key="SearchBtnMenu" TargetType="Button">
+        <Setter Property="Margin" Value="0,0,50,0"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="FramePageMain" TargetType="Frame">
+        <Setter Property="NavigationUIVisibility" Value="Hidden"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Source" Value="/Pages/CatalogPage.xaml"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ProfilePage-->
+    <Style x:Key="HeaderTextProfile" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TextProfile" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region SignInPage / SignUpPage-->
     <Style x:Key="LogoSignIn" TargetType="Image">
         <Setter Property="Source" Value="/Images/speedrun.png"/>
         <Setter Property="Width" Value="200"/>
@@ -284,6 +400,15 @@
         </Style.Resources>
     </Style>
 
+    <Style x:Key="TextPassSignIn" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="10,0,10,5"/>
+    </Style>
+
+    <Style x:Key="TextNewSignIn" TargetType="TextBlock">
+        <Setter Property="Margin" Value="5,0,10,10"/>
+    </Style>
+
     <Style x:Key="ComboBoxSignUp" TargetType="ComboBox">
         <Setter Property="Background" Value="#111618"/>
         <Setter Property="Foreground" Value="Black"/>
@@ -319,15 +444,219 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
-
-
-
-
-
-
-
-    <Style TargetType="Window" x:Key="MyWindowStyle">
-        <Setter Property="Background" Value="#111618"/>
+    <!--#region SubmitPage-->
+    <Style x:Key="GridSubmit" TargetType="Grid">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="700"/>
     </Style>
+
+    <Style x:Key="FirstTBSubmit" TargetType="TextBlock">
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="FirstSPTBSubmit" TargetType="TextBlock">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="OtherSPTBSubmit" TargetType="TextBlock">
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="CBSubmit" TargetType="ComboBox">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Width" Value="450"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="SPSubmit" TargetType="StackPanel">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TimeTBSubmit" TargetType="TextBox">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="ToolTip" Value="Вводите время в формате: hh.mm.ss"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="VideoTBSubmit" TargetType="TextBox">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="450"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="RBSubmit" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="DPSubmit" TargetType="DatePicker">
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+
+    <Style x:Key="ButtonSubmit" TargetType="Button">
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+    <!--#endregion-->
+
+    <!--Окна-->
+    <!--#region MainWindow-->
+    <Style x:Key="FrameMain" TargetType="Frame">
+        <Setter Property="Source" Value="Pages/SignInPage.xaml"/>
+        <Setter Property="NavigationUIVisibility" Value="Hidden"/>
+    </Style>
+
+    <Style x:Key="SPMain" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Panel.ZIndex" Value="100"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="RegularTextMain" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ClockMain" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Panel.ZIndex" Value="100"/>
+    </Style>
+
+    <Style x:Key="ComboBoxTheme" TargetType="ComboBox">
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,10,10,10"/>
+
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="ButtonExit" TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="Red"/>
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="Panel.ZIndex" Value="100"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region CaptchaDialog-->
+    <Style x:Key="FirstTextCaptcha" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="OtherTextCaptcha" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TextBoxCaptcha" TargetType="TextBox">
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+
+    <Style x:Key="ButtonCaptcha" TargetType="Button">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ExitDialog-->
+    <Style x:Key="TextExit" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="BtnExit" TargetType="Button">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ForgotPasswordDialog-->
+    <!--#endregion-->
+
+    <!--#region RulesDialog-->
+    <!--#endregion-->
+
+    <!--#region VerifyDialog-->
+    <Style x:Key="TextVerify" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="BtnVerify" TargetType="Button">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Margin" Value="10,0,10,10"/>
+    </Style>
+    <!--#endregion-->
+    
 </ResourceDictionary>

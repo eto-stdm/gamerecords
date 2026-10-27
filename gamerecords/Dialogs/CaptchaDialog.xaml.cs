@@ -21,11 +21,19 @@ namespace gamerecords.Dialogs
     public partial class CaptchaDialog : Window
     {
         bool canClose = false;
+
+        /// <summary>
+        /// Конструктор окна CaptchaDialog
+        /// </summary>
         public CaptchaDialog()
         {
             InitializeComponent();
             CaptchaText();
         }
+
+        /// <summary>
+        /// Генерация капчи
+        /// </summary>
         private void CaptchaText()
         {
             List<char> letters = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
@@ -47,6 +55,9 @@ namespace gamerecords.Dialogs
             CaptchaTB.Text = textcap;
         }
 
+        /// <summary>
+        /// Обработка нажатия клавишы "Ввести"
+        /// </summary>
         private void CheckCaptchaB_Click(object sender, RoutedEventArgs e)
         {
             if (EnterCaptchaTB.Text == null || EnterCaptchaTB.Text != CaptchaTB.Text)
@@ -61,8 +72,12 @@ namespace gamerecords.Dialogs
             }
         }
 
+        /// <summary>
+        /// Обработка закрытия окна
+        /// </summary>
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            // Не закрывать, если капча решена неправильно
             if (!canClose) { e.Cancel = true; }
         }
     }

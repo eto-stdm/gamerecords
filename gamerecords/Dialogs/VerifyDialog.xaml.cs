@@ -19,15 +19,25 @@ namespace gamerecords.Dialogs
     /// </summary>
     public partial class VerifyDialog : Window
     {
+        /// <summary>
+        /// Конструктор окна VerifyDialog
+        /// </summary>
         public VerifyDialog()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Обработка нажатия на кнопку "Да"
+        /// </summary>
         private void YesBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку "Нет"
+        /// </summary>
         private void NoBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

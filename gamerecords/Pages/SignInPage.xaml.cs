@@ -25,17 +25,27 @@ namespace gamerecords.Pages
     {
         int failedPassword = 0;
 
+        /// <summary>
+        /// Конструктор страницы SignInPage
+        /// </summary>
         public SignInPage()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Переход на основную страницу после корректного ввода пароля
+        /// </summary>
+        /// <param name="player">Текущий пользователь</param>
         private void RedirectAfterCorrect(Players player)
         {
             Core.current_player = player;
             NavigationService.Navigate(new MainPage());
         }
 
+        /// <summary>
+        /// Обработка кнопки "Войти"
+        /// </summary>
         private void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
             int attemptAmount = 3;
@@ -74,12 +84,18 @@ namespace gamerecords.Pages
             }
         }
 
+        /// <summary>
+        /// Обработка кнопки "Забыли пароль?"
+        /// </summary>
         private void ForgotPasswordHL_Click(object sender, RoutedEventArgs e)
         {
             ForgotPasswordDialog dialog = new ForgotPasswordDialog(LoginTB.Text);
             bool? result = dialog.ShowDialog();
         }
 
+        /// <summary>
+        /// Обработка кнопки "Создать аккаунт"
+        /// </summary>
         private void SignUpHL_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SignUpPage());
