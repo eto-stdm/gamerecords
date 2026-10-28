@@ -29,13 +29,13 @@
 
         <!--Панель с кнопками-->
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6" Style="{DynamicResource StackPanelMain}">
-            <Button x:Name="AdminBtn" Content="Админ" Style="{DynamicResource ButtonMenu}" Click="AdminBtn_Click" Visibility="Collapsed"/>
             <Image Style="{DynamicResource LogoMain}"/>
-            <Button x:Name="GamesBtn" Content="Игры" Style="{DynamicResource ButtonMenu}" Click="GamesBtn_Click"/>
-            <TextBox x:Name="SearchTB" Style="{DynamicResource TBMain}"/>
-            <Button x:Name="SearchBtn" Content="🔍" Style="{DynamicResource SearchBtnMenu}" Click="SearchBtn_Click"/>
-            <Button x:Name="ProfileBtn" Content="Профиль" Style="{DynamicResource ButtonMenu}" Click="ProfileBtn_Click"/>
-            <Button x:Name="AccountExitBtn" Content="Выход" Style="{DynamicResource ButtonMenu}" Click="AccountExitBtn_Click"/>
+            <Button x:Name="AdminBtn" Content="👨🏽‍💻" Style="{DynamicResource ButtonMenu}" ToolTip="Панель администратора" Click="AdminBtn_Click" Visibility="Collapsed"/>
+            <Button x:Name="GamesBtn" Content="🎮" Style="{DynamicResource ButtonMenu}" ToolTip="Каталог игр" Click="GamesBtn_Click"/>
+            <TextBox x:Name="SearchTB" Style="{DynamicResource TBMain}" ToolTip="Поисковая строка"/>
+            <Button x:Name="SearchBtn" Content="🔍" Style="{DynamicResource SearchBtnMenu}" ToolTip="Кнопка поиска" Click="SearchBtn_Click"/>
+            <Button x:Name="ProfileBtn" Content="👤" Style="{DynamicResource ButtonMenu}" ToolTip="Профиль" Click="ProfileBtn_Click"/>
+            <Button x:Name="AccountExitBtn" Content="🚪" Style="{DynamicResource ButtonMenu}" ToolTip="Выход из профиля" Click="AccountExitBtn_Click"/>
         </StackPanel>
 
         <Frame x:Name="MainPageFrame" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource FramePageMain}" Source="/Pages/CatalogPage.xaml"/>

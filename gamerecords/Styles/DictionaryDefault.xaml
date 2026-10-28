@@ -86,12 +86,12 @@
     <!--#endregion-->
 
     <!--#region CatalogPage-->
-
     <Style x:Key="MiniHeaderCatalog" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="CBCatalog" TargetType="ComboBox">
@@ -100,7 +100,7 @@
         <Setter Property="Background" Value="#111618"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
-
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -109,12 +109,13 @@
     </Style>
 
     <Style x:Key="ButtonRandomGameCatalog" TargetType="Button">
-        <Setter Property="Width" Value="150"/>
+        <Setter Property="Width" Value="130"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#188f6e"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -132,11 +133,13 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="BorderLBCatalog" TargetType="Border">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="150"/>
+        <Setter Property="CornerRadius" Value="5"/>
     </Style>
     <!--#endregion-->
     
@@ -266,18 +269,18 @@
     <Style x:Key="LogoMain" TargetType="Image">
         <Setter Property="Source" Value="/Images/speedrun.png"/>
         <Setter Property="Width" Value="100"/>
-        <Setter Property="Margin" Value="50,0"/>
+        <Setter Property="Margin" Value="10,0"/>
     </Style>
 
     <Style x:Key="ButtonMenu" TargetType="Button">
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Background" Value="#188f6e"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
-        <Setter Property="Margin" Value="50,0"/>
+        <Setter Property="Margin" Value="20,0"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -287,11 +290,20 @@
 
     <Style x:Key="TBMain" TargetType="TextBox">
         <Setter Property="Width" Value="300"/>
-        <Setter Property="Margin" Value="50,0,10,0"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
     <Style x:Key="SearchBtnMenu" TargetType="Button">
-        <Setter Property="Margin" Value="0,0,50,0"/>
+        <Setter Property="Margin" Value="0,0,20,0"/>
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Foreground" Value="White"/>
@@ -460,6 +472,8 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
+        <Setter Property="FontSize" Value="20"/>
     </Style>
 
     <Style x:Key="FirstSPTBSubmit" TargetType="TextBlock">
@@ -467,6 +481,7 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="OtherSPTBSubmit" TargetType="TextBlock">
@@ -475,6 +490,8 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="#aeb3ba"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="CBSubmit" TargetType="ComboBox">
@@ -486,7 +503,7 @@
         <Setter Property="Width" Value="450"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -505,6 +522,15 @@
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="ToolTip" Value="Вводите время в формате: hh.mm.ss"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
     <Style x:Key="VideoTBSubmit" TargetType="TextBox">
@@ -512,25 +538,39 @@
         <Setter Property="Width" Value="450"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
     <Style x:Key="RBSubmit" TargetType="RadioButton">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="DPSubmit" TargetType="DatePicker">
         <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="BorderBrush" Value="#233a3d"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="ButtonSubmit" TargetType="Button">
         <Setter Property="Width" Value="110"/>
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="20"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#188f6e"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -557,6 +597,7 @@
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
     </Style>
 
     <Style x:Key="ClockMain" TargetType="TextBlock">
@@ -573,9 +614,10 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Width" Value="120"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="0,10,10,10"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
 
         <Style.Resources>
             <Style TargetType="Border">
@@ -658,7 +700,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="BtnExit" TargetType="Button">

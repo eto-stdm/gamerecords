@@ -22,12 +22,12 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="110"/>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="90"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Строка 1-->
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Опубликовать забег" Style="{DynamicResource FirstTBSubmit}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Опубликовать забег" Style="{DynamicResource FirstTBSubmit}"/>
 
                 <!--Строка 2-->
                 <StackPanel Grid.Row="1" Grid.Column="0" Style="{DynamicResource SPSubmit}">
@@ -56,14 +56,14 @@
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1" Style="{DynamicResource SPSubmit}">
                     <TextBlock Text="Дата и время *" Style="{DynamicResource FirstSPTBSubmit}"/>
-                    <StackPanel Style="{DynamicResource StackPanelOrientHor}">
+                    <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
                         <RadioButton x:Name="JustFinishedRB" GroupName="DateTimeGN" Content="Только что" Style="{DynamicResource RBSubmit}" Checked="JustFinishedRB_Checked"/>
                         <RadioButton x:Name="CustomRB" GroupName="DateTimeGN" Content="Кастомное" Style="{DynamicResource RBSubmit}" Checked="CustomRB_Checked"/>
-                        <StackPanel x:Name="DateTimeSP" Style="{DynamicResource StackPanelOrientHor}" Visibility="Collapsed">
+                        <WrapPanel x:Name="DateTimeSP" Style="{DynamicResource WrapPanelOrientHor}" Visibility="Visible">
                             <DatePicker x:Name="DateTimeDP" Style="{DynamicResource DPSubmit}"/>
                             <TextBox x:Name="DateTimeTB" Style="{DynamicResource TimeTBSubmit}"/>
-                        </StackPanel>
-                    </StackPanel>
+                        </WrapPanel>
+                    </WrapPanel>
                 </StackPanel>
 
                 <!--Строка 5-->
