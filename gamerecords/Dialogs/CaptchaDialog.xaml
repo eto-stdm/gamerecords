@@ -8,7 +8,8 @@
         Title="CaptchaDialog"
         Closing="Window_Closing"
         WindowStartupLocation="CenterOwner"
-        Height="200" Width="200">
+        Height="200" Width="200"
+        Style="{DynamicResource MyWindowStyle}">
 
     <StackPanel Style="{DynamicResource StackPanelCentered}">
         <TextBlock Text="Введите капчу:" Style="{DynamicResource FirstTextCaptcha}"/>

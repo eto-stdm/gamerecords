@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:gamerecords.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1000"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="CatalogPage">
 
     <StackPanel Style="{DynamicResource StackPanelCentered}">

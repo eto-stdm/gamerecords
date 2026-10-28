@@ -68,7 +68,7 @@ namespace gamerecords.Dialogs
                 Thread.Sleep(500);
                 EnterCaptchaTB.Clear();
                 CaptchaText();
-                CaptchaTB.Foreground = new SolidColorBrush(Colors.Black);
+                CaptchaTB.Foreground = new SolidColorBrush(Colors.White);
             }
             else
             {

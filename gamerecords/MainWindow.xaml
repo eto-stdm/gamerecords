@@ -9,6 +9,7 @@
         WindowStyle="None"
         WindowState="Maximized"
         Loaded="Window_Loaded"
+        Height="1080" Width="1920"
         Style="{DynamicResource MyWindowStyle}">
 
     <!--Кнопки поверх всего-->
@@ -19,7 +20,7 @@
         </StackPanel>
 
         <Button x:Name="CloseBtn" Content="✗" Style="{DynamicResource ButtonExit}" Click="CloseBtn_Click"/>
-        <Frame x:Name="MainFrame" Style="{DynamicResource FrameMain}"/>
+        <Frame x:Name="MainFrame" Style="{DynamicResource FrameMain}" Source="Pages/SignInPage.xaml"/>
         <TextBlock x:Name="DateTimeNow" Style="{DynamicResource ClockMain}"/>
     </Grid>
 </Window>

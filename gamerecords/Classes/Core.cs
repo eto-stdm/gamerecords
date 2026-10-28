@@ -52,8 +52,11 @@ namespace gamerecords.Classes
         {
             var uri = new Uri(themePath, UriKind.Relative);
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
+            // если фрейм до перезагрузки не был пустым, перезагружаем его
+            (Application.Current.MainWindow as MainWindow)?.MainFrame?.Refresh(); 
         }
     }
 }

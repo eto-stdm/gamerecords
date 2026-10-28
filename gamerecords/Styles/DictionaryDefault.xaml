@@ -308,7 +308,6 @@
     <Style x:Key="FramePageMain" TargetType="Frame">
         <Setter Property="NavigationUIVisibility" Value="Hidden"/>
         <Setter Property="Margin" Value="10"/>
-        <Setter Property="Source" Value="/Pages/CatalogPage.xaml"/>
     </Style>
     <!--#endregion-->
 
@@ -343,11 +342,13 @@
     <Style x:Key="RegularTextSignIn" TargetType="TextBlock">
         <Setter Property="Foreground" Value="#aeb3ba"/>
         <Setter Property="Margin" Value="10,0,0,5"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="HyperlinkSignIn" TargetType="Hyperlink">
         <Setter Property="Foreground" Value="#188f6e"/>
         <Setter Property="TextDecorations" Value="None"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="TextBoxSignIn" TargetType="TextBox">
@@ -392,6 +393,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#188f6e"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="BorderBrush" Value="#188f6e" />
         <Style.Resources>
             <Style TargetType="Border">
@@ -540,7 +542,6 @@
     <!--Окна-->
     <!--#region MainWindow-->
     <Style x:Key="FrameMain" TargetType="Frame">
-        <Setter Property="Source" Value="Pages/SignInPage.xaml"/>
         <Setter Property="NavigationUIVisibility" Value="Hidden"/>
     </Style>
 
@@ -607,36 +608,73 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
     </Style>
 
     <Style x:Key="OtherTextCaptcha" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
     <Style x:Key="TextBoxCaptcha" TargetType="TextBox">
         <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
     </Style>
 
     <Style x:Key="ButtonCaptcha" TargetType="Button">
-        <Setter Property="Width" Value="60"/>
+        <Setter Property="Width" Value="70"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="BorderBrush" Value="#188f6e" />
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </Style.Resources>
     </Style>
     <!--#endregion-->
 
-    <!--#region ExitDialog-->
+    <!--#region DefaultOKDialog / DefaultYesNoDialog-->
     <Style x:Key="TextExit" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
     </Style>
 
     <Style x:Key="BtnExit" TargetType="Button">
-        <Setter Property="Width" Value="60"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="25"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="BorderBrush" Value="#188f6e" />
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </Style.Resources>
     </Style>
     <!--#endregion-->
 
@@ -644,19 +682,28 @@
     <!--#endregion-->
 
     <!--#region RulesDialog-->
-    <!--#endregion-->
-
-    <!--#region VerifyDialog-->
-    <Style x:Key="TextVerify" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"/>
+    <Style x:Key="SVRules" TargetType="ScrollViewer">
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="Margin" Value="10"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="HeaderTextRules" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
-    <Style x:Key="BtnVerify" TargetType="Button">
-        <Setter Property="Width" Value="60"/>
-        <Setter Property="Margin" Value="10,0,10,10"/>
+    <Style x:Key="RegularTextRules" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     <!--#endregion-->
     

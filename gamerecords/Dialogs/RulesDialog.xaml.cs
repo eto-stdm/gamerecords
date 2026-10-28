@@ -31,7 +31,12 @@ namespace gamerecords.Dialogs
             InitializeComponent();
             this.Gamecat = gamecat;
 
-            RulesTB.Text = $"Правила игры:\n{gamecat.Games.rules}\nПравила категории:\n{gamecat.rules}";
+            TextGameRulesTB.Text = gamecat.Games.rules;
+            TextCategoryRulesTB.Text = gamecat.rules;
+
+            // если текста нет - заголовок скрывается
+            if (gamecat.Games.rules == null) { HeaderGameRulesTB.Visibility = Visibility.Collapsed; }
+            if (gamecat.rules == null) { HeaderCategoryRulesTB.Visibility = Visibility.Collapsed; }
         }
     }
 }

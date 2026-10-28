@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="DefaultOKDialog"
         WindowStartupLocation="CenterOwner"
-        Height="200" Width="200">
+        Height="200" Width="200"
+        Style="{DynamicResource MyWindowStyle}">
     
     <StackPanel Style="{DynamicResource StackPanelCentered}">
         <TextBlock x:Name="TextTB" Text="Текст" Style="{DynamicResource TextExit}"/>

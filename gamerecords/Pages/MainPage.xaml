@@ -38,6 +38,6 @@
             <Button x:Name="AccountExitBtn" Content="Выход" Style="{DynamicResource ButtonMenu}" Click="AccountExitBtn_Click"/>
         </StackPanel>
 
-        <Frame x:Name="MainPageFrame" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource FramePageMain}"/>
+        <Frame x:Name="MainPageFrame" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource FramePageMain}" Source="/Pages/CatalogPage.xaml"/>
     </Grid>
 </Page>
