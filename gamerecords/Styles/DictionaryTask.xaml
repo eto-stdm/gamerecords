@@ -266,7 +266,7 @@
     <Style x:Key="LogoMain" TargetType="Image">
         <Setter Property="Source" Value="/Images/speedrun.png"/>
         <Setter Property="Width" Value="100"/>
-        <Setter Property="Margin" Value="50,0"/>
+        <Setter Property="Margin" Value="10,0"/>
     </Style>
 
     <Style x:Key="ButtonMenu" TargetType="Button">

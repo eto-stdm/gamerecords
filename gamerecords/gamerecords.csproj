@@ -293,6 +293,9 @@
     <Resource Include="Images\Covers\vvvvvv.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\speedrun_small.png" />
+    <Resource Include="Images\Avatars\avatar_default.png" />
+    <Resource Include="Images\Covers\cover_default.png" />
     <Content Include="Models\gamerecords.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>gamerecords.edmx</DependentUpon>
@@ -304,9 +307,7 @@
       <LastGenOutput>gamerecords.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Avatars\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>

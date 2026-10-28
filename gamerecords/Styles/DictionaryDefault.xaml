@@ -308,8 +308,8 @@
     </Style>
 
     <Style x:Key="LogoMain" TargetType="Image">
-        <Setter Property="Source" Value="/Images/speedrun.png"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Source" Value="/Images/speedrun_small.png"/>
+        <Setter Property="Width" Value="30"/>
         <Setter Property="Margin" Value="10,0"/>
     </Style>
 
@@ -370,7 +370,7 @@
     <!--#region SignInPage / SignUpPage-->
     <Style x:Key="LogoSignIn" TargetType="Image">
         <Setter Property="Source" Value="/Images/speedrun.png"/>
-        <Setter Property="Width" Value="200"/>
+        <Setter Property="Width" Value="300"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
 
