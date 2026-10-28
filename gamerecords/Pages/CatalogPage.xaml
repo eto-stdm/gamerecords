@@ -36,7 +36,7 @@
                         <DataTemplate>
                             <Grid Style="{DynamicResource GridLBCatalog}">
                                 <WrapPanel>
-                                    <Border Style="{DynamicResource BorderLBCatalog}">
+                                    <Border Style="{DynamicResource GameImgBorder}">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding image}" Stretch="UniformToFill"/>
                                         </Border.Background>

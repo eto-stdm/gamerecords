@@ -20,7 +20,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
@@ -29,13 +29,15 @@
                         <ImageBrush x:Name="GameIB" Stretch="UniformToFill"/>
                     </Border.Background>
                 </Border>
-                <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" Style="{DynamicResource HeaderGame}"/>
-                <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" Style="{DynamicResource HeaderGame}"/>
-                <WrapPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Style="{DynamicResource WrapPanelOrientHor}">
-                    <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Style="{DynamicResource ButtonFirstGame}" Click="ChangeBorder"/>
-                    <Button x:Name="GameGuidesBtn" Content="Гайды" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
-                    <Button x:Name="GameStatsBtn" Content="Статистика" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
-                </WrapPanel>
+                <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" Style="{DynamicResource FirstHeaderGame}"/>
+                <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" Style="{DynamicResource SecondHeaderGame}"/>
+                <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Style="{DynamicResource BorderButtonsGame}">
+                    <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
+                        <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Style="{DynamicResource ButtonFirstGame}" Click="ChangeBorder"/>
+                        <Button x:Name="GameGuidesBtn" Content="Гайды" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
+                        <Button x:Name="GameStatsBtn" Content="Статистика" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
+                    </WrapPanel>
+                </Border>
             </Grid>
         </Border>
 
@@ -46,24 +48,24 @@
                 <!--Информация по категориям-->
                 <Grid Style="{DynamicResource GridCentered}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130"/>
-                        <ColumnDefinition Width="320"/>
-                        <ColumnDefinition Width="130"/>
-                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="360"/>
+                        <ColumnDefinition Width="360"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <!--<RowDefinition Height="50"/>-->
                     </Grid.RowDefinitions>
 
-                    <ComboBox x:Name="CategoryCB" Grid.Row="0" Grid.ColumnSpan="4" Style="{DynamicResource ComboBoxLeaderGame}" SelectionChanged="CategoryCB_SelectionChanged"/>
-                    <Button x:Name="LeaderboardBtn" Grid.Row="1" Grid.Column="0" Content="Таблица лидеров" Style="{DynamicResource ButtonLeaderGame}"/>
-                    <Button x:Name="RulesBtn" Grid.Row="1" Grid.Column="2" Content="Правила" Style="{DynamicResource ButtonLeaderGame}" Click="RulesBtn_Click"/>
-                    <Button x:Name="SubmitRunBtn" Grid.Row="1" Grid.Column="3" Content="Опубликовать забег" Style="{DynamicResource ButtonLeaderGame}" Click="SubmitRunBtn_Click"/>
+                    <ComboBox x:Name="CategoryCB" Grid.Column="0"  Style="{DynamicResource ComboBoxLeaderGame}" SelectionChanged="CategoryCB_SelectionChanged"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                        <Button x:Name="RulesBtn" Content="Правила" Style="{DynamicResource ButtonRulesLeaderGame}" Click="RulesBtn_Click"/>
+                        <Button x:Name="SubmitRunBtn" Content="Опубликовать забег" Style="{DynamicResource ButtonLeaderGame}" Click="SubmitRunBtn_Click"/>
+                    </StackPanel>
                 </Grid>
 
                 <!--Заголовок либерборда-->
-                <Grid Style="{DynamicResource GridLeaderGame}">
+                <Border>
+                    <Grid Style="{DynamicResource GridLeaderGame}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -71,17 +73,18 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Игрок" Style="{DynamicResource TextLeaderGame}"/>
                     <TextBlock Grid.Column="1" Text="Время" Style="{DynamicResource TextLeaderGame}"/>
                     <TextBlock Grid.Column="2" Text="Дата" Style="{DynamicResource TextLeaderGame}"/>
                     <TextBlock Grid.Column="3" Text="Платформа" Style="{DynamicResource TextLeaderGame}"/>
-                </Grid>
-                
+                    </Grid>
+                </Border>
+
                 <!--Список рекордов-->
-                <ListBox x:Name="LeaderboardLB" Style="{DynamicResource ListBoxSmall}" MouseDoubleClick="LeaderboardLB_MouseDoubleClick">
+                <ListBox x:Name="LeaderboardLB" Style="{DynamicResource ListBoxSmall}" Background="#1e262c" MouseDoubleClick="LeaderboardLB_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Style="{DynamicResource GridLBGame}" ToolTip="Дважды нажмите для просмотра видео">

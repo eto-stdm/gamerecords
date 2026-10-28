@@ -10,8 +10,8 @@
 
     <!--Заголовок-->
     <StackPanel Style="{DynamicResource StackPanelCentered}">
-        <TextBlock Text="Панель администратора" Style="{DynamicResource HeaderAdminPanel}"/>
-        <TextBlock Text="Проверка рекордов" Style="{DynamicResource HeaderAdminPanel}"/>
+        <TextBlock Text="Панель администратора" Style="{DynamicResource FirstTBAdminPanel}"/>
+        <TextBlock Text="Проверка рекордов" Style="{DynamicResource SecondTBAdminPanel}"/>
 
         <!--Основная часть-->
         <StackPanel Style="{DynamicResource StackPanelCentered}">
@@ -22,14 +22,14 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <StackPanel Style="{DynamicResource StackPanelCentered}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
                                             <TextBlock Text="{Binding Players.nickname, StringFormat=Никнейм: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh:mm:ss}" Style="{DynamicResource RegularAdminPanel}"/>
-                                            <TextBlock Text="{Binding GamesPlatfoms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
-                                        </StackPanel>
+                                            <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                        </WrapPanel>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

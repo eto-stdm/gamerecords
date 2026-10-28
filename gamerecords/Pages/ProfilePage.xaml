@@ -11,11 +11,11 @@
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         
         <!--Заголовок-->
-        <TextBlock Text="Профиль" Style="{DynamicResource HeaderTextProfile}"/>
-        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource HeaderTextProfile}"/>
-        <TextBlock Text="Мои рекорды" Style="{DynamicResource HeaderTextProfile}"/>
+        <TextBlock Text="Профиль" Style="{DynamicResource FirstTBAdminPanel}"/>
+        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource SecondTBAdminPanel}"/>
+        <TextBlock Text="Мои рекорды" Style="{DynamicResource SecondTBAdminPanel}"/>
 
-        <!--Вывод рекордов пользователя-->
+            <!--Вывод рекордов пользователя-->
         <StackPanel Style="{DynamicResource StackPanelCentered}">
             <Border Style="{DynamicResource BorderUsual}">
                 <StackPanel>
@@ -25,12 +25,12 @@
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
                                         <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
-                                            <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource TextProfile}"/>
-                                            <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource TextProfile}"/>
-                                            <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource TextProfile}"/>
-                                            <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh.mm.ss}" Style="{DynamicResource TextProfile}"/>
-                                            <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource TextProfile}"/>
-                                            <TextBlock Text="{Binding is_verified, StringFormat=Верифицирован?: {0}}" Style="{DynamicResource TextProfile}"/>
+                                            <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh.mm.ss}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding is_verified, StringFormat=Верифицирован?: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                         </WrapPanel>
                                     </Grid>
                                 </DataTemplate>

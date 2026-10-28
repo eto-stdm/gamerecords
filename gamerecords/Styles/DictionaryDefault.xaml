@@ -54,6 +54,7 @@
     <Style x:Key="GameImgBorder" TargetType="Border">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="150"/>
+        <Setter Property="CornerRadius" Value="5"/>
     </Style>
 
     <Style x:Key="SPSignIn" TargetType="StackPanel">
@@ -68,16 +69,23 @@
 
     <!--Страницы-->
     <!--#region AdminPanelPage -->
-    <Style x:Key="HeaderAdminPanel" TargetType="TextBlock">
+    <Style x:Key="FirstTBAdminPanel" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style x:Key="SecondTBAdminPanel" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="10,10,10,20"/>
     </Style>
 
     <Style x:Key="RegularAdminPanel" TargetType="TextBlock">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="Margin" Value="0,10,10,0"/>
@@ -135,20 +143,9 @@
         <Setter Property="Margin" Value="0,10,0,0"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
-
-    <Style x:Key="BorderLBCatalog" TargetType="Border">
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="150"/>
-        <Setter Property="CornerRadius" Value="5"/>
-    </Style>
     <!--#endregion-->
     
     <!--#region GamePage-->
-    <Style x:Key="GridLBGame" TargetType="Grid">
-        <Setter Property="Width" Value="700"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Margin" Value="5"/>
-    </Style>
         <!--#region Основная инфо-->
     <Style x:Key="BorderGame" TargetType="Border">
         <Setter Property="Padding" Value="10"/>
@@ -157,20 +154,38 @@
         <Setter Property="Margin" Value="0,0,0,10"/>
     </Style>
 
-    <Style x:Key="HeaderGame" TargetType="TextBlock">
+    <Style x:Key="FirstHeaderGame" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Extra Bold"/>
+    </Style>
+
+    <Style x:Key="SecondHeaderGame" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+    </Style>
+
+    <Style x:Key="BorderButtonsGame" TargetType="Border">
+        <Setter Property="Background" Value="#1e262c"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10"/>
     </Style>
 
     <Style x:Key="ButtonFirstGame" TargetType="Button">
-        <Setter Property="Width" Value="110"/>
-        <Setter Property="Margin" Value="0,10,10,10"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#188f6e"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="#1e262c"/>
+        <Setter Property="BorderBrush" Value="#1e262c"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -179,11 +194,13 @@
     </Style>
 
     <Style x:Key="ButtonOtherGame" TargetType="Button">
-        <Setter Property="Width" Value="110"/>
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#188f6e"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="#1e262c"/>
+        <Setter Property="BorderBrush" Value="#1e262c"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -193,6 +210,12 @@
         <!--#endregion-->
     
         <!--#region Лидерборд-->
+    <Style x:Key="GridLBGame" TargetType="Grid">
+        <Setter Property="Width" Value="700"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    
     <Style x:Key="ComboBoxLeaderGame" TargetType="ComboBox">
         <Setter Property="Background" Value="#111618"/>
         <Setter Property="Foreground" Value="Black"/>
@@ -201,7 +224,7 @@
         <Setter Property="Width" Value="200"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="10"/>
-
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5" />
@@ -209,13 +232,31 @@
         </Style.Resources>
     </Style>
 
+    <Style x:Key="ButtonRulesLeaderGame" TargetType="Button">
+        <Setter Property="Width" Value="130"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="BorderBrush" Value="#353c40"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
     <Style x:Key="ButtonLeaderGame" TargetType="Button">
-        <Setter Property="Width" Value="120"/>
+        <Setter Property="Width" Value="130"/>
+        <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#188f6e"/>
         <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
@@ -224,16 +265,16 @@
     </Style>
 
     <Style x:Key="GridLeaderGame" TargetType="Grid">
-        <Setter Property="Background" Value="DeepPink"/>
+        <Setter Property="Background" Value="#111618"/>
         <Setter Property="Width" Value="730"/>
-        <Setter Property="Margin" Value="10,0,10,10"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
 
     <Style x:Key="TextLeaderGame" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
         <!--#endregion-->
 
@@ -324,16 +365,6 @@
     <!--#endregion-->
 
     <!--#region ProfilePage-->
-    <Style x:Key="HeaderTextProfile" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-    </Style>
-
-    <Style x:Key="TextProfile" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Margin" Value="0,10,10,0"/>
-    </Style>
     <!--#endregion-->
     
     <!--#region SignInPage / SignUpPage-->
