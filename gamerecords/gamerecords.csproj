@@ -272,30 +272,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\speedrun.png" />
-    <Resource Include="Images\Covers\angry birds.png" />
-    <Resource Include="Images\Covers\bad piggies.png" />
-    <Resource Include="Images\Covers\celeste.png" />
-    <Resource Include="Images\Covers\ghostrunner.png" />
-    <Resource Include="Images\Covers\hollow knight.png" />
-    <Resource Include="Images\Covers\katana zero.png" />
-    <Resource Include="Images\Covers\minecraft.png" />
-    <Resource Include="Images\Covers\mirrors edge.png" />
-    <Resource Include="Images\Covers\neon white.png" />
-    <Resource Include="Images\Covers\nier automata.png" />
-    <Resource Include="Images\Covers\peak.png" />
-    <Resource Include="Images\Covers\tboi.png" />
-    <Resource Include="Images\Covers\th16.png" />
-    <Resource Include="Images\Covers\the messenger.png" />
-    <Resource Include="Images\Covers\ultrakill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Covers\vvvvvv.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\speedrun_small.png" />
-    <Resource Include="Images\Avatars\avatar_default.png" />
-    <Resource Include="Images\Covers\cover_default.png" />
     <Content Include="Models\gamerecords.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>gamerecords.edmx</DependentUpon>
@@ -313,4 +289,13 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+  <Folder Include="Images\" />
+</ItemGroup>
+<Target Name="BeforeBuild">
+  <ItemGroup>
+    <Resource Remove="Images\**\*" />
+    <Resource Include="Images\**\*" />
+  </ItemGroup>
+</Target>
 </Project>

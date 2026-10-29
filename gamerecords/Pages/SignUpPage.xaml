@@ -39,11 +39,16 @@
                 <!--Страна-->
                 <StackPanel Style="{DynamicResource StackPanelCentered}">
                     <TextBlock Text="Страна (опционально)" Style="{DynamicResource RegularTextSignIn}"/>
-                    <ComboBox x:Name="CountryTB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboItemSignUp}"/>
+                    <ComboBox x:Name="CountryTB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboBoxItemBase}"/>
                 </StackPanel>
                
                 <TextBlock Text="Показывается как флаг рядом с вашем именем." Style="{DynamicResource RegularTextSignIn}"/>
-                <!-- Сделать добавление аватара -->
+
+                <!--Аватар-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Аватарка (опционально)" Style="{DynamicResource RegularTextSignIn}" VerticalAlignment="Center"/>
+                    <Button x:Name="AvatarBtn" Content="Загрузить" Style="{DynamicResource ButtonAvatarSignUp}" Click="AvatarBtn_Click"/>
+                </StackPanel>
 
                 <!--Регистрация-->
                 <Button x:Name="SignUpBtn" Content="Зарегистрироваться" Style="{DynamicResource ButtonSignIn}" Click="SignUpBtn_Click"/>

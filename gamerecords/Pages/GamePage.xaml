@@ -33,9 +33,9 @@
                 <TextBlock x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" Style="{DynamicResource SecondHeaderGame}"/>
                 <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Style="{DynamicResource BorderButtonsGame}">
                     <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
-                        <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Style="{DynamicResource ButtonFirstGame}" Click="ChangeBorder"/>
-                        <Button x:Name="GameGuidesBtn" Content="Гайды" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
-                        <Button x:Name="GameStatsBtn" Content="Статистика" Style="{DynamicResource ButtonOtherGame}" Click="ChangeBorder"/>
+                        <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
+                        <Button x:Name="GameGuidesBtn" Content="Гайды" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
+                        <Button x:Name="GameStatsBtn" Content="Статистика" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
                     </WrapPanel>
                 </Border>
             </Grid>
@@ -84,7 +84,7 @@
                 </Border>
 
                 <!--Список рекордов-->
-                <ListBox x:Name="LeaderboardLB" Style="{DynamicResource ListBoxSmall}" Background="#1e262c" MouseDoubleClick="LeaderboardLB_MouseDoubleClick">
+                <ListBox x:Name="LeaderboardLB" Style="{DynamicResource ListBoxLeaderGame}" MouseDoubleClick="LeaderboardLB_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Style="{DynamicResource GridLBGame}" ToolTip="Дважды нажмите для просмотра видео">

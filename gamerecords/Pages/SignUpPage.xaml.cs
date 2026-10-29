@@ -1,8 +1,10 @@
 ﻿using gamerecords.Classes;
-using gamerecords.Models;
 using gamerecords.Dialogs;
+using gamerecords.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace gamerecords.Pages
 {
@@ -82,6 +85,38 @@ namespace gamerecords.Pages
         private void HyperLinkSignIn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SignInPage());
+        }
+
+        /// <summary>
+        /// Обработка нажатия на кнопку "Загрузить" [аватарку]
+        /// </summary>
+        private void AvatarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Выберите изображение";
+            openFileDialog.Filter = "Вся поддерживаемая графика|*.jpg;*.jpeg;*.png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
+
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    string sourceFilePath = openFileDialog.FileName;
+
+                    string targetFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/Avatars");
+
+                    string fileName = System.IO.Path.GetFileName(sourceFilePath);
+                    string destinationFilePath = System.IO.Path.Combine(targetFolder, fileName);
+                    File.Copy(sourceFilePath, destinationFilePath, true);
+
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Картинка успешно сохранена!"));
+                }
+                catch (Exception ex)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog($"Ошибка при сохранении!"));
+                }
+
+            }
         }
     }
 }
