@@ -50,31 +50,49 @@ namespace gamerecords.Pages
         /// </summary>
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTB.Text != "" && PasswordTB.Password != "")
+            string password = PasswordTB.Password;
+
+            if (LoginTB.Text != "" && password != "")
             {
-                Players play = Core.Context.Players.FirstOrDefault(x => x.nickname == LoginTB.Text);
-                if (play == null)
+                if (password.Length < 6)
                 {
-                    string s = CountryTB.Text;
-                    int? cid = null;
-                    if (s != " (нет)")
-                    {
-                        cid = Core.Context.Countries.FirstOrDefault(x => x.country == s).id;
-                    }
-                    Players newplayer = new Players
-                    {
-                        role_id = 2,
-                        nickname = LoginTB.Text,
-                        password = Core.GetHash(PasswordTB.Password),
-                        countryid = cid,
-                        created_at = DateTime.Now,
-                    };
-                    Core.Context.Players.Add(newplayer);
-                    Core.Context.SaveChanges();
-                    Core.current_player = newplayer;
-                    NavigationService.Navigate(new MainPage());
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Пароль слишком короткий, должно быть минимум 6 символов!"));
                 }
-                else { Core.ShowAppDialog(() => new DefaultOKDialog("Такой пользователь уже существует!")); }
+                else if (!password.All(c => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Используйте только английскую раскладку и цифры!"));
+                }
+
+                else if (!password.Any(char.IsDigit))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Добавьте хотя бы одну цифру!"));
+                }
+                else
+                {
+                    Players play = Core.Context.Players.FirstOrDefault(x => x.nickname == LoginTB.Text);
+                    if (play == null)
+                    {
+                        string s = CountryTB.Text;
+                        int? cid = null;
+                        if (s != " (нет)")
+                        {
+                            cid = Core.Context.Countries.FirstOrDefault(x => x.country == s).id;
+                        }
+                        Players newplayer = new Players
+                        {
+                            role_id = 2,
+                            nickname = LoginTB.Text,
+                            password = Core.GetHash(password),
+                            countryid = cid,
+                            created_at = DateTime.Now,
+                        };
+                        Core.Context.Players.Add(newplayer);
+                        Core.Context.SaveChanges();
+                        Core.current_player = newplayer;
+                        NavigationService.Navigate(new MainPage());
+                    }
+                    else { Core.ShowAppDialog(() => new DefaultOKDialog("Пользователь с таким логином уже существует!")); }
+                }
             }
             else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все данные!")); }
         }
@@ -111,7 +129,7 @@ namespace gamerecords.Pages
 
                     Core.ShowAppDialog(() => new DefaultOKDialog("Картинка успешно сохранена!"));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Core.ShowAppDialog(() => new DefaultOKDialog($"Ошибка при сохранении!"));
                 }

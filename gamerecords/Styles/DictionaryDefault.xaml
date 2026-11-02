@@ -161,6 +161,7 @@
 
     <Style x:Key="MyWindowStyle" TargetType="Window">
         <Setter Property="Background" Value="#111618"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
     </Style>
     <!--#endregion-->
 
