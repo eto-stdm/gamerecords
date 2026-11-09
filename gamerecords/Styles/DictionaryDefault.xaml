@@ -474,6 +474,7 @@
 
     <Style x:Key="TimeTBSubmit" TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseSubmit}">
         <Setter Property="Width" Value="100"/>
+        <Setter Property="MaxLength" Value="8"/>
         <Setter Property="ToolTip" Value="Вводите время в формате: hh.mm.ss"/>
     </Style>
 

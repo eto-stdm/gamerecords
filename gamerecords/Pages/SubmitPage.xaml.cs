@@ -57,6 +57,10 @@ namespace gamerecords.Pages
 
             // Значение по умолчанию - Только что [закончил играть]
             JustFinishedRB.IsChecked = true;
+
+            TimeTB.Text = "00:00:00";
+            DateTimeTB.Text = "00:00:00";
+            DateTimeDP.SelectedDate = DateTime.Now;
         }
 
         /// <summary>
@@ -80,59 +84,75 @@ namespace gamerecords.Pages
         /// </summary>
         private void SubmitRunBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (TimeTB.Text != "" && VideoTB.Text != "")
+            // Проверка на заполненность времени забега и видео
+            if (string.IsNullOrEmpty(TimeTB.Text) || string.IsNullOrEmpty(VideoTB.Text))
             {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!"));
+                return;
+            }
 
-                if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan time) == false) { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
-                
-                DateTime dateTime = new DateTime();
-                if (Convert.ToBoolean(JustFinishedRB.IsChecked)) { dateTime = DateTime.Now; }
-                else
+            // Парсинг времени забега
+            if (!TimeSpan.TryParse(TimeTB.Text, out TimeSpan time))
+            {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Время забега заполнено неверно!"));
+                return;
+            }
+
+            DateTime dateTime = new DateTime();
+
+            // Если выбрано текущее время
+            if (JustFinishedRB.IsChecked == true) { dateTime = DateTime.Now; }
+            else
+            {
+                // Проверка на заполненность кастомной даты и времени
+                if (string.IsNullOrEmpty(DateTimeTB.Text) || DateTimeDP.SelectedDate == null)
                 {
-                    if (TimeTB.Text != "" && DateTimeDP != null)
-                    {
-                        if (TimeSpan.TryParse(TimeTB.Text, out TimeSpan datetimetime) == false) { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
-                        dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
-                        dateTime = dateTime.Add(time);
-                    }
-                    else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!")); }
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Заполните дату и время забега!"));
+                    return;
                 }
+
+                if (TimeSpan.TryParse(DateTimeTB.Text, out TimeSpan datetimetime) == false)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Время в дате забега заполнено неверно"));
+                    return;
+                }
+                dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
+                dateTime = dateTime.Add(datetimetime);
+            }
+
+            //try
+            //{
                 string categorystr = CategoryCB.SelectedItem.ToString();
                 string platformstr = PlatformCB.SelectedItem.ToString();
 
+                int catid = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr && x.Games.id == GameCat.game_id).id;
+                int platid = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr && x.Games.id == GameCat.game_id).id;
+
+                bool isexist = Core.Context.Records.Any(x => x.category_id == catid && x.player_id == Core.current_player.id && x.total_time == time && x.platform_id == platid);
+
+                if (isexist)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Подобный рекорд уже существует!"));
+                    return;
+                }
+
                 Records newrecord = new Records()
                 {
-                    category_id = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr && x.Games.id == GameCat.game_id).id,
+                    category_id = catid,
                     player_id = Core.current_player.id,
                     total_time = time,
-                    platform_id = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr && x.Games.id == GameCat.game_id).id,
+                    platform_id = platid,
                     video = VideoTB.Text,
                     date = dateTime,
                 };
 
-                List<Records> tempRec = Core.Context.Records.ToList();
-                try
-                {
-                    bool isexist = Core.Context.Records.Any(x =>
-                                        x.category_id == newrecord.category_id &&
-                                        x.player_id == newrecord.player_id &&
-                                        x.total_time == newrecord.total_time &&
-                                        x.platform_id == newrecord.platform_id);
-                    if (isexist)
-                    {
-                        Core.ShowAppDialog(() => new DefaultOKDialog("Подобный рекорд уже существует!"));
-                    }
-                    else
-                    {
-                        Core.Context.Records.Add(newrecord);
-                        Core.Context.SaveChanges();
-                        Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
-                        NavigationService.Navigate(new CatalogPage());
-                    }
-                }
-                catch { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); }
-            }
-            else { Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!"));  }
+                Core.Context.Records.Add(newrecord);
+                Core.Context.SaveChanges();
+                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
+                NavigationService.Navigate(new CatalogPage());
+                return;
+            //}
+            //catch { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); } // не помню зачем
         }
     }
 }

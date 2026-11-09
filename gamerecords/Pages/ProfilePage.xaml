@@ -20,7 +20,7 @@
             <Border Style="{DynamicResource BorderUsual}">
                 <StackPanel>
                     <Grid Style="{DynamicResource GridCentered}">
-                        <ListBox x:Name="RecordsLB" Style="{DynamicResource ListBoxSmall}">
+                        <ListBox x:Name="RecordsLB" Style="{DynamicResource ListBoxSmall}" MouseDoubleClick="RecordsLB_MouseDoubleClick">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
@@ -28,7 +28,7 @@
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
-                                            <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh.mm.ss}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh:mm:ss}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding is_verified, StringFormat=Верифицирован?: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                         </WrapPanel>

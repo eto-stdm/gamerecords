@@ -60,7 +60,7 @@ namespace gamerecords.Dialogs
             }
             else
             {
-                Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!"));
+                Core.ShowAppDialog(() => new DefaultOKDialog("Заполните все необходимые поля!")); // поправить сообщение на случай несущестующего пользователя
             }
         }
     }

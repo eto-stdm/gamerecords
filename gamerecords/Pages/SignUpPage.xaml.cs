@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,6 +30,8 @@ namespace gamerecords.Pages
         /// <summary>
         /// Конструктор страницы SignUpPage
         /// </summary>
+        string fullPath = "";
+        string avatarPath = "";
         public SignUpPage()
         {
             InitializeComponent();
@@ -39,10 +42,13 @@ namespace gamerecords.Pages
             {
                 countries.Add(Convert.ToString(country.country));
             }
+            countries.Sort();
             CountryTB.ItemsSource = countries;
 
             // По умолчанию страна не выбрана
-            CountryTB.SelectedIndex = 18;
+            CountryTB.SelectedIndex = 0;
+
+            PasswordTB.ToolTip = "Разрешённые специальные символы: !@#$%^&*()_+-=[]{};,.?";
         }
 
         /// <summary>
@@ -54,18 +60,35 @@ namespace gamerecords.Pages
 
             if (LoginTB.Text != "" && password != "")
             {
-                if (password.Length < 6)
-                {
-                    Core.ShowAppDialog(() => new DefaultOKDialog("Пароль слишком короткий, должно быть минимум 6 символов!"));
-                }
-                else if (!password.All(c => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')))
-                {
-                    Core.ShowAppDialog(() => new DefaultOKDialog("Используйте только английскую раскладку и цифры!"));
-                }
+                string special = "!@#$%^&*()_+-=[]{};,.?";
 
-                else if (!password.Any(char.IsDigit))
+                if (LoginTB.Text.Length < 6)
                 {
-                    Core.ShowAppDialog(() => new DefaultOKDialog("Добавьте хотя бы одну цифру!"));
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Логин слишком короткий, должно быть минимум 6 символов!")); return;
+                }
+                else if (LoginTB.Text.Length > 30)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Логин слишком длинный, должно быть не больше 30 символов!")); return;
+                }
+                else if (password.Length < 6)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Пароль слишком короткий, должно быть минимум 6 символов!")); return;
+                }
+                else if (LoginTB.Text.Length > 50)
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Пароль слишком длинный, должно быть не больше 50 символов!")); return;
+                }
+                else if (!LoginTB.Text.All(c => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Для логина используйте только английскую раскладку и цифры!")); return;
+                }
+                else if (!password.All(c => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || special.Contains(c)))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Для пароля используйте только английскую раскладку, цифры и специальные символы!")); return;
+                }
+                else if (!password.Any(char.IsDigit) || !password.Any(char.IsDigit))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Добавьте хотя бы одну цифру!")); return;
                 }
                 else
                 {
@@ -78,12 +101,24 @@ namespace gamerecords.Pages
                         {
                             cid = Core.Context.Countries.FirstOrDefault(x => x.country == s).id;
                         }
+                        if (avatarPath == "")
+                        {
+                            avatarPath = "/Images/Avatars/avatar_default.png";
+                        }
+                        else
+                        {
+                            int ind = fullPath.LastIndexOf("\\");
+                            string tempPath = fullPath.Substring(0, ind);
+                            avatarPath = $"/Images/Avatars/avatar_{LoginTB.Text}.png";
+                            File.Move(fullPath, $"{tempPath}/avatar_{LoginTB.Text}.png");
+                        }
                         Players newplayer = new Players
                         {
                             role_id = 2,
-                            nickname = LoginTB.Text,
+                            nickname = LoginTB.Text.ToLower(),
                             password = Core.GetHash(password),
                             countryid = cid,
+                            image = avatarPath,
                             created_at = DateTime.Now,
                         };
                         Core.Context.Players.Add(newplayer);
@@ -102,6 +137,10 @@ namespace gamerecords.Pages
         /// </summary>
         private void HyperLinkSignIn_Click(object sender, RoutedEventArgs e)
         {
+            if (avatarPath != "")
+            {
+                File.Delete(fullPath);
+            }
             NavigationService.Navigate(new SignInPage());
         }
 
@@ -119,19 +158,28 @@ namespace gamerecords.Pages
             {
                 try
                 {
+                    if (avatarPath != "")
+                    {
+                        File.Delete(fullPath);
+                    }
+
                     string sourceFilePath = openFileDialog.FileName;
 
                     string targetFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/Avatars");
 
-                    string fileName = System.IO.Path.GetFileName(sourceFilePath);
+                    string fileName = System.IO.Path.GetFileName(sourceFilePath); // получение имени файла
                     string destinationFilePath = System.IO.Path.Combine(targetFolder, fileName);
                     File.Copy(sourceFilePath, destinationFilePath, true);
+
+                    fullPath = destinationFilePath;
+                    int index = destinationFilePath.IndexOf("../.."); 
+                    avatarPath = destinationFilePath.Substring(index + 5).Replace("\\", "/");
 
                     Core.ShowAppDialog(() => new DefaultOKDialog("Картинка успешно сохранена!"));
                 }
                 catch (Exception)
                 {
-                    Core.ShowAppDialog(() => new DefaultOKDialog($"Ошибка при сохранении!"));
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Ошибка при сохранении!"));
                 }
 
             }
