@@ -12,7 +12,33 @@
         
         <!--Заголовок-->
         <TextBlock Text="Профиль" Style="{DynamicResource FirstTBAdminPanel}"/>
-        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource SecondTBAdminPanel}"/>
+        <StackPanel Orientation="Horizontal">
+            <Border Style="{DynamicResource BorderUsual}" Width="750">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <Image x:Name="ProfileImg" Height="100" Width="100" Margin="10"/>
+                        <Button x:Name="AvatarBtn" Content="Изменить аватар" Style="{DynamicResource ButtonAvatarSignUp}" Click="AvatarBtn_Click"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource SecondTBAdminPanel}" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="CountryTB" Text="Страна: " Style="{DynamicResource SecondTBAdminPanel}" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock x:Name="RecordsAmountTB" Text="Кол-во забегов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="RecordsOKTB" Text="Верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="RecordsNoTB" Text="Не верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
         <TextBlock Text="Мои рекорды" Style="{DynamicResource SecondTBAdminPanel}"/>
 
             <!--Вывод рекордов пользователя-->
@@ -24,7 +50,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16">
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>

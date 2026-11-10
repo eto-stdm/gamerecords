@@ -178,7 +178,9 @@
     </Style>
 
     <Style x:Key="RegularAdminPanel" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBaseRegular}">
-        <Setter Property="Margin" Value="0,10,10,0"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="LineHeight" Value="16"/>
     </Style>
     <!--#endregion-->
 

@@ -181,7 +181,6 @@ namespace gamerecords.Pages
                 {
                     Core.ShowAppDialog(() => new DefaultOKDialog("Ошибка при сохранении!"));
                 }
-
             }
         }
     }
