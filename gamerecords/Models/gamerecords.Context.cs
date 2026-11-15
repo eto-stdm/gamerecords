@@ -38,6 +38,7 @@ namespace gamerecords.Models
         public DbSet<Players> Players { get; set; }
         public DbSet<Records> Records { get; set; }
         public DbSet<Roles> Roles { get; set; }
+        public DbSet<Statuses> Statuses { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

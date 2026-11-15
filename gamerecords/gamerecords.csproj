@@ -206,6 +206,9 @@
     <Compile Include="Models\Roles.cs">
       <DependentUpon>gamerecords.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Statuses.cs">
+      <DependentUpon>gamerecords.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>gamerecords.tt</DependentUpon>
     </Compile>
@@ -271,6 +274,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Models\gamerecords.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -283,19 +294,10 @@
       <LastGenOutput>gamerecords.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-  <Folder Include="Images\" />
-</ItemGroup>
-<Target Name="BeforeBuild">
-  <ItemGroup>
-    <Resource Remove="Images\**\*" />
-    <Resource Include="Images\**\*" />
-  </ItemGroup>
-</Target>
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <Resource Remove="Images\**\*" />
+      <Resource Include="Images\**\*" />
+    </ItemGroup>
+  </Target>
 </Project>

@@ -22,7 +22,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center" ToolTip="{Binding video, StringFormat=Видео: {0}}">
                                             <TextBlock Text="{Binding Players.nickname, StringFormat=Никнейм: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>

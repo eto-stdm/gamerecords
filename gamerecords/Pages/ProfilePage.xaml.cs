@@ -41,8 +41,9 @@ namespace gamerecords.Pages
             CountryTB.Text += $"{Core.current_player.Countries.country} {Core.current_player.Countries.image}";
             ProfileImg.Source = new BitmapImage(new Uri(Core.current_player.image, UriKind.Relative));
             RecordsAmountTB.Text += userRecords.Count();
-            RecordsOKTB.Text += userRecords.Where(x => x.is_verified == true).Count();
-            RecordsNoTB.Text += userRecords.Where(x => x.is_verified == false).Count();
+            RecordsCheckTB.Text += userRecords.Where(x => x.status_id == 1).Count();
+            RecordsOKTB.Text += userRecords.Where(x => x.status_id == 2).Count();
+            RecordsNoTB.Text += userRecords.Where(x => x.status_id == 3).Count();
 
             RecordsLB.ItemsSource = userRecords;
         }

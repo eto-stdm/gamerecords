@@ -61,6 +61,7 @@ namespace gamerecords.Pages
             TimeTB.Text = "00:00:00";
             DateTimeTB.Text = "00:00:00";
             DateTimeDP.SelectedDate = DateTime.Now;
+            VideoTB.Text = "https://www.";
         }
 
         /// <summary>
@@ -84,6 +85,14 @@ namespace gamerecords.Pages
         /// </summary>
         private void SubmitRunBtn_Click(object sender, RoutedEventArgs e)
         {
+            // Проверка на валидность ссылки
+            if (!(Uri.TryCreate(VideoTB.Text, UriKind.Absolute, out Uri videoOut)
+            && (videoOut.Scheme == Uri.UriSchemeHttp || videoOut.Scheme == Uri.UriSchemeHttps)))
+            {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Ссылка на видео не работает!"));
+                return;
+            }
+
             // Проверка на заполненность времени забега и видео
             if (string.IsNullOrEmpty(TimeTB.Text) || string.IsNullOrEmpty(VideoTB.Text))
             {
@@ -91,8 +100,14 @@ namespace gamerecords.Pages
                 return;
             }
 
+            if (VideoTB.Text == "https://www.")
+            {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Заполните ссылку на видео!"));
+                return;
+            }
+
             // Парсинг времени забега
-            if (!TimeSpan.TryParse(TimeTB.Text, out TimeSpan time))
+            if (!TimeSpan.TryParse(TimeTB.Text, out TimeSpan time) || (time.Hours > 23) || (time.Days > 0))
             {
                 Core.ShowAppDialog(() => new DefaultOKDialog("Время забега заполнено неверно!"));
                 return;
@@ -111,9 +126,15 @@ namespace gamerecords.Pages
                     return;
                 }
 
-                if (TimeSpan.TryParse(DateTimeTB.Text, out TimeSpan datetimetime) == false)
+                if (DateTimeDP.SelectedDate < Core.Context.Games.FirstOrDefault(x => x.id == GameCat.game_id).created_year)
                 {
-                    Core.ShowAppDialog(() => new DefaultOKDialog("Время в дате забега заполнено неверно"));
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Дата забега не может быть раньше даты выхода игры!"));
+                    return;
+                }
+
+                if (!TimeSpan.TryParse(DateTimeTB.Text, out TimeSpan datetimetime) || (datetimetime.Hours > 23) || (datetimetime.Days > 0))
+                {
+                    Core.ShowAppDialog(() => new DefaultOKDialog("Время в дате забега заполнено неверно!"));
                     return;
                 }
                 dateTime = Convert.ToDateTime(DateTimeDP.SelectedDate);
@@ -122,35 +143,36 @@ namespace gamerecords.Pages
 
             //try
             //{
-                string categorystr = CategoryCB.SelectedItem.ToString();
-                string platformstr = PlatformCB.SelectedItem.ToString();
+            string categorystr = CategoryCB.SelectedItem.ToString();
+            string platformstr = PlatformCB.SelectedItem.ToString();
 
-                int catid = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr && x.Games.id == GameCat.game_id).id;
-                int platid = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr && x.Games.id == GameCat.game_id).id;
+            int catid = Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == categorystr && x.Games.id == GameCat.game_id).id;
+            int platid = Core.Context.GamesPlatforms.FirstOrDefault(x => x.Platforms.platform == platformstr && x.Games.id == GameCat.game_id).id;
 
-                bool isexist = Core.Context.Records.Any(x => x.category_id == catid && x.player_id == Core.current_player.id && x.total_time == time && x.platform_id == platid);
+            bool isexist = Core.Context.Records.Any(x => x.category_id == catid && x.player_id == Core.current_player.id && x.total_time == time && x.platform_id == platid);
 
-                if (isexist)
-                {
-                    Core.ShowAppDialog(() => new DefaultOKDialog("Подобный рекорд уже существует!"));
-                    return;
-                }
-
-                Records newrecord = new Records()
-                {
-                    category_id = catid,
-                    player_id = Core.current_player.id,
-                    total_time = time,
-                    platform_id = platid,
-                    video = VideoTB.Text,
-                    date = dateTime,
-                };
-
-                Core.Context.Records.Add(newrecord);
-                Core.Context.SaveChanges();
-                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
-                NavigationService.Navigate(new CatalogPage());
+            if (isexist)
+            {
+                Core.ShowAppDialog(() => new DefaultOKDialog("Подобный рекорд уже существует!"));
                 return;
+            }
+
+            Records newrecord = new Records()
+            {
+                category_id = catid,
+                player_id = Core.current_player.id,
+                total_time = time,
+                platform_id = platid,
+                video = VideoTB.Text,
+                date = dateTime,
+                status_id = 1,
+            };
+
+            Core.Context.Records.Add(newrecord);
+            Core.Context.SaveChanges();
+            Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
+            NavigationService.Navigate(new CatalogPage());
+            return;
             //}
             //catch { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); } // не помню зачем
         }

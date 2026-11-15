@@ -21,10 +21,11 @@ namespace gamerecords.Models
         public int platform_id { get; set; }
         public string video { get; set; }
         public System.DateTime date { get; set; }
-        public bool is_verified { get; set; }
+        public int status_id { get; set; }
     
         public virtual GamesCategories GamesCategories { get; set; }
         public virtual GamesPlatforms GamesPlatforms { get; set; }
         public virtual Players Players { get; set; }
+        public virtual Statuses Statuses { get; set; }
     }
 }

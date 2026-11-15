@@ -33,6 +33,7 @@
 
                     <StackPanel Grid.Column="2">
                         <TextBlock x:Name="RecordsAmountTB" Text="Кол-во забегов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="RecordsCheckTB" Text="На проверке: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock x:Name="RecordsOKTB" Text="Верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock x:Name="RecordsNoTB" Text="Не верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
@@ -50,13 +51,13 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center" ToolTip="{Binding video, StringFormat=Видео: {0}}">
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh:mm:ss}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
-                                            <TextBlock Text="{Binding is_verified, StringFormat=Верифицирован?: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                            <TextBlock Text="{Binding Statuses.status, StringFormat=Статус: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                         </WrapPanel>
                                     </Grid>
                                 </DataTemplate>

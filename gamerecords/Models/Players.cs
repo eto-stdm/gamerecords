@@ -33,7 +33,7 @@ namespace gamerecords.Models
         public virtual ICollection<Contacts> Contacts { get; set; }
         public virtual Countries Countries { get; set; }
         public virtual ICollection<Guides> Guides { get; set; }
-        public virtual Roles Roles { get; set; }
         public virtual ICollection<Records> Records { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

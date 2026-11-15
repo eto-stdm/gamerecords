@@ -38,7 +38,7 @@ namespace gamerecords.Pages
         /// </summary>
         private void UpdateListBox()
         {
-            RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.is_verified == false).ToList();
+            RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.status_id == 1).ToList();
         }
 
         /// <summary>
@@ -49,30 +49,27 @@ namespace gamerecords.Pages
             var selectRecord = RecordsLB.SelectedItem as Records;
             if (selectRecord == null) return;
 
-            
+
             try { Process.Start(selectRecord.video); }
             catch
             {
-                Core.ShowAppDialog(() => new DefaultYesNoDialog("Видео нечитаемо, удалить рекорд?"));
-                Core.Context.Records.Remove(selectRecord);
+                Core.ShowAppDialog(() => new DefaultOKDialog("Ссылка на видео нечитаема, рекорд будет неверефицирован"));
                 Core.Context.SaveChanges();
-
-                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и был удалён из базы данных!"));
                 UpdateListBox();
                 return;
             }
 
             if (Core.ShowAppDialog(() => new DefaultYesNoDialog("Рекорд соответствует требованиям?")) == true)
             {
-                selectRecord.is_verified = true;
+                selectRecord.status_id = 2;
                 Core.Context.SaveChanges();
                 Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд был верифицирован!"));
             }
             else
             {
-                Core.Context.Records.Remove(selectRecord);
+                selectRecord.status_id = 3;
                 Core.Context.SaveChanges();
-                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и был удалён из базы данных!"));
+                Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и не будет отображаться в лидерборде!"));
             }
             UpdateListBox();
         }

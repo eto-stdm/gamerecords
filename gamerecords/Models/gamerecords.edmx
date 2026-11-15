@@ -93,10 +93,10 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="role_id" Type="int" Nullable="false" />
-          <Property Name="nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nickname" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="countryid" Type="int" />
-          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" Nullable="false" />
           <Property Name="created_at" Type="datetime" Nullable="false" />
           <Property Name="theme" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -111,7 +111,7 @@
           <Property Name="platform_id" Type="int" Nullable="false" />
           <Property Name="video" Type="nvarchar(max)" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="is_verified" Type="bit" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -119,6 +119,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="role" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -190,30 +197,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Players__country__3E52440B">
-          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
-          <End Role="Players" Type="Self.Players" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Countries">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Players">
-              <PropertyRef Name="countryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Players__role_id__440B1D61">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Players" Type="Self.Players" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Players">
-              <PropertyRef Name="role_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Records__player___412EB0B6">
           <End Role="Players" Type="Self.Players" Multiplicity="1" />
           <End Role="Records" Type="Self.Records" Multiplicity="*" />
@@ -274,6 +257,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Players_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="countryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Records_GamesCategories">
           <End Role="GamesCategories" Type="Self.GamesCategories" Multiplicity="1" />
           <End Role="Records" Type="Self.Records" Multiplicity="*" />
@@ -298,6 +305,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Records_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище gamerecordsModelContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
@@ -312,6 +331,7 @@
           <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Contacts__player__3D5E1FD2" Association="Self.FK__Contacts__player__3D5E1FD2">
             <End Role="Players" EntitySet="Players" />
@@ -333,14 +353,6 @@
             <End Role="Games" EntitySet="Games" />
             <End Role="Guides" EntitySet="Guides" />
           </AssociationSet>
-          <AssociationSet Name="FK__Players__country__3E52440B" Association="Self.FK__Players__country__3E52440B">
-            <End Role="Countries" EntitySet="Countries" />
-            <End Role="Players" EntitySet="Players" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Players__role_id__440B1D61" Association="Self.FK__Players__role_id__440B1D61">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Players" EntitySet="Players" />
-          </AssociationSet>
           <AssociationSet Name="FK__Records__player___412EB0B6" Association="Self.FK__Records__player___412EB0B6">
             <End Role="Players" EntitySet="Players" />
             <End Role="Records" EntitySet="Records" />
@@ -361,12 +373,24 @@
             <End Role="Platforms" EntitySet="Platforms" />
             <End Role="GamesPlatforms" EntitySet="GamesPlatforms" />
           </AssociationSet>
+          <AssociationSet Name="FK_Players_Countries" Association="Self.FK_Players_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Roles" Association="Self.FK_Players_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
           <AssociationSet Name="FK_Records_GamesCategories" Association="Self.FK_Records_GamesCategories">
             <End Role="GamesCategories" EntitySet="GamesCategories" />
             <End Role="Records" EntitySet="Records" />
           </AssociationSet>
           <AssociationSet Name="FK_Records_GamesPlatforms" Association="Self.FK_Records_GamesPlatforms">
             <End Role="GamesPlatforms" EntitySet="GamesPlatforms" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Statuses" Association="Self.FK_Records_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
             <End Role="Records" EntitySet="Records" />
           </AssociationSet>
         </EntityContainer>
@@ -399,7 +423,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Players" Relationship="Self.FK__Players__country__3E52440B" FromRole="Countries" ToRole="Players" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Players_Countries" FromRole="Countries" ToRole="Players" />
         </EntityType>
         <EntityType Name="Games">
           <Key>
@@ -482,17 +506,17 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="role_id" Type="Int32" Nullable="false" />
-          <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nickname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="countryid" Type="Int32" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="theme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contacts" Relationship="Self.FK__Contacts__player__3D5E1FD2" FromRole="Players" ToRole="Contacts" />
-          <NavigationProperty Name="Countries" Relationship="Self.FK__Players__country__3E52440B" FromRole="Players" ToRole="Countries" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Players_Countries" FromRole="Players" ToRole="Countries" />
           <NavigationProperty Name="Guides" Relationship="Self.FK__Guides__author_i__403A8C7D" FromRole="Players" ToRole="Guides" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK__Players__role_id__440B1D61" FromRole="Players" ToRole="Roles" />
           <NavigationProperty Name="Records" Relationship="Self.FK__Records__player___412EB0B6" FromRole="Players" ToRole="Records" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Players_Roles" FromRole="Players" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Records">
           <Key>
@@ -505,10 +529,11 @@
           <Property Name="platform_id" Type="Int32" Nullable="false" />
           <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="is_verified" Type="Boolean" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GamesCategories" Relationship="Self.FK_Records_GamesCategories" FromRole="Records" ToRole="GamesCategories" />
           <NavigationProperty Name="GamesPlatforms" Relationship="Self.FK_Records_GamesPlatforms" FromRole="Records" ToRole="GamesPlatforms" />
           <NavigationProperty Name="Players" Relationship="Self.FK__Records__player___412EB0B6" FromRole="Records" ToRole="Players" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_Records_Statuses" FromRole="Records" ToRole="Statuses" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -516,7 +541,15 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Players" Relationship="Self.FK__Players__role_id__440B1D61" FromRole="Roles" ToRole="Players" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Players_Roles" FromRole="Roles" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Statuses" FromRole="Statuses" ToRole="Records" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -552,7 +585,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Players__country__3E52440B">
+        <Association Name="FK_Players_Countries">
           <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
           <ReferentialConstraint>
@@ -672,7 +705,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Players__role_id__440B1D61">
+        <Association Name="FK__Records__player___412EB0B6">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
           <ReferentialConstraint>
@@ -684,15 +729,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Records__player___412EB0B6">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+        <Association Name="FK_Records_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
           <End Role="Records" Type="Self.Records" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Players">
+            <Principal Role="Statuses">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Records">
-              <PropertyRef Name="player_id" />
+              <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -710,6 +755,7 @@
           <EntitySet Name="Players" EntityType="Self.Players" />
           <EntitySet Name="Records" EntityType="Self.Records" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_GamesCategories_Categories" Association="Self.FK_GamesCategories_Categories">
             <End Role="Categories" EntitySet="Categories" />
@@ -719,7 +765,7 @@
             <End Role="Players" EntitySet="Players" />
             <End Role="Contacts" EntitySet="Contacts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Players__country__3E52440B" Association="Self.FK__Players__country__3E52440B">
+          <AssociationSet Name="FK_Players_Countries" Association="Self.FK_Players_Countries">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
@@ -759,12 +805,16 @@
             <End Role="Players" EntitySet="Players" />
             <End Role="Guides" EntitySet="Guides" />
           </AssociationSet>
-          <AssociationSet Name="FK__Players__role_id__440B1D61" Association="Self.FK__Players__role_id__440B1D61">
+          <AssociationSet Name="FK__Records__player___412EB0B6" Association="Self.FK__Records__player___412EB0B6">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Roles" Association="Self.FK_Players_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
-          <AssociationSet Name="FK__Records__player___412EB0B6" Association="Self.FK__Records__player___412EB0B6">
-            <End Role="Players" EntitySet="Players" />
+          <AssociationSet Name="FK_Records_Statuses" Association="Self.FK_Records_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
             <End Role="Records" EntitySet="Records" />
           </AssociationSet>
         </EntityContainer>
@@ -890,7 +940,7 @@
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="video" ColumnName="video" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="is_verified" ColumnName="is_verified" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -899,6 +949,14 @@
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="gamerecordsModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

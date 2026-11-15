@@ -143,7 +143,7 @@ namespace gamerecords.Pages
         private void ChangingCategory()
         {
             string catname = CategoryCB.SelectedItem.ToString();
-            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.is_verified == true).ToList();
+            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.status_id == 2).ToList();
         }
 
         /// <summary>
