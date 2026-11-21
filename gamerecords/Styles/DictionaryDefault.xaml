@@ -8,7 +8,8 @@
     <SolidColorBrush x:Key="GreenBackBrush" Color="#233a3d"/>
     <SolidColorBrush x:Key="LightGrayBrush" Color="#aeb3ba"/>
     <!--#endregion-->
-    
+
+    <!--#region Общие стили-->
     <Style x:Key="ComboBoxBase" TargetType="ComboBox">
         <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="Foreground" Value="White"/>
@@ -83,20 +84,6 @@
         </Setter>
     </Style>
 
-    <!--
-    <Style x:Key="ComboBoxBaseold" TargetType="ComboBox">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Style.Resources>
-    </Style> -->
-
     <Style x:Key="ComboBoxItemBase" TargetType="ComboBoxItem">
         <Setter Property="Padding" Value="8,4"/>
         <Setter Property="Foreground" Value="White"/>
@@ -117,8 +104,6 @@
         </Setter>
     </Style>
 
-
-    <!--#region Общие стили-->
     <Style x:Key="ButtonBase" TargetType="Button">
         <Setter Property="Foreground" Value="White"/>
         <Style.Resources>
@@ -242,6 +227,8 @@
 
     <Style x:Key="WrapPanelOrientHor" TargetType="WrapPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="ItemHeight" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="MyWindowStyle" TargetType="Window">
@@ -328,6 +315,13 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="120"/>
         <Setter Property="Margin" Value="0,0,10,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="SPMainGame" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
     </Style>
     <!--#endregion-->
 
@@ -387,6 +381,11 @@
     <!--#endregion-->
 
     <!--#region Статистика-->
+    <Style x:Key="ChartGame" TargetType="WindowsFormsHost">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
     <!--#endregion-->
     <!--#endregion-->
 
@@ -441,6 +440,27 @@
     <!--#endregion-->
 
     <!--#region ProfilePage-->
+    <Style x:Key="BorderProfile" TargetType="Border" BasedOn="{StaticResource BorderUsual}">
+        <Setter Property="Width" Value="750"/>
+    </Style>
+
+    <Style x:Key="ImgProfile" TargetType="Image">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style x:Key="StatProfile" TargetType="TextBlock" BasedOn="{StaticResource SecondTBAdminPanel}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ComboBoxProfile" TargetType="ComboBox" BasedOn="{StaticResource ComboBoxSignUp}">
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+    <Style x:Key="TextSecondGame" TargetType="TextBlock" BasedOn="{StaticResource TextLeaderGame}">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+    </Style>
     <!--#endregion-->
 
     <!--#region SignInPage / SignUpPage-->
@@ -698,5 +718,22 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
     <!--#endregion-->
-    
+
+    <!--#region AddGuidesPage-->
+    <Style x:Key="ButtonBack" TargetType="Button" BasedOn="{StaticResource ButtonMenu}">
+        <Setter Property="ToolTip" Value="Назад"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,0,30,0"/>
+    </Style>
+
+    <Style x:Key="ButtonBackGame" TargetType="Button" BasedOn="{StaticResource ButtonBack}">
+        <Setter Property="Margin" Value="0,0,0,0"/>
+    </Style>
+
+    <Style x:Key="TextGuides" TargetType="TextBox" BasedOn="{StaticResource VideoTBSubmit}">
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Height" Value="150"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <!--#endregion-->
 </ResourceDictionary>

@@ -8,12 +8,12 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ProfilePage">
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
         
         <!--Заголовок-->
         <TextBlock Text="Профиль" Style="{DynamicResource FirstTBAdminPanel}"/>
-        <StackPanel Orientation="Horizontal">
-            <Border Style="{DynamicResource BorderUsual}" Width="750">
+        <StackPanel Style="{DynamicResource SPSignIn}">
+            <Border Style="{DynamicResource BorderProfile}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
@@ -21,30 +21,30 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                        <Image x:Name="ProfileImg" Height="100" Width="100" Margin="10"/>
+                    <StackPanel Grid.Column="0" Style="{DynamicResource StackPanelCentered}">
+                        <Image x:Name="ProfileImg" Style="{DynamicResource ImgProfile}"/>
                         <Button x:Name="AvatarBtn" Content="Изменить аватар" Style="{DynamicResource ButtonAvatarSignUp}" Click="AvatarBtn_Click"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource SecondTBAdminPanel}" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="CountryTB" Text="Страна: " Style="{DynamicResource SecondTBAdminPanel}" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" Style="{DynamicResource StackPanelCentered}">
+                        <TextBlock x:Name="NickNameTB" Text="Никнейм: " Style="{DynamicResource SecondTBAdminPanel}"/>
+                        <TextBlock x:Name="CountryTB" Text="Страна: " Style="{DynamicResource SecondTBAdminPanel}"/>
                     </StackPanel>
 
-                    <StackPanel x:Name="RecordsStatSP" Grid.Column="2" VerticalAlignment="Center">
-                        <TextBlock x:Name="RecordsAmountTB" Text="Кол-во забегов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="RecordsCheckTB" Text="На проверке: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="RecordsOKTB" Text="Верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="RecordsNoTB" Text="Не верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <StackPanel x:Name="RecordsStatSP" Grid.Column="2" Style="{DynamicResource StackPanelCentered}">
+                        <TextBlock x:Name="RecordsAmountTB" Text="Кол-во забегов: " Style="{DynamicResource StatProfile}"/>
+                        <TextBlock x:Name="RecordsCheckTB" Text="На проверке: " Style="{DynamicResource StatProfile}"/>
+                        <TextBlock x:Name="RecordsOKTB" Text="Верифицированны: " Style="{DynamicResource StatProfile}"/>
+                        <TextBlock x:Name="RecordsNoTB" Text="Не верифицированны: " Style="{DynamicResource StatProfile}"/>
                     </StackPanel>
 
-                    <StackPanel x:Name="GuidesStatSP" Grid.Column="2" VerticalAlignment="Center">
-                        <TextBlock x:Name="GuidesAmountTB" Text="Кол-во гайдов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <StackPanel x:Name="GuidesStatSP" Grid.Column="2" Style="{DynamicResource StackPanelCentered}">
+                        <TextBlock x:Name="GuidesAmountTB" Text="Кол-во гайдов: " Style="{DynamicResource StatProfile}"/>
                     </StackPanel>
                 </Grid>
             </Border>
         </StackPanel>
-        <ComboBox x:Name="SelectPageCB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboBoxItemBase}" SelectionChanged="SelectPageCB_SelectionChanged" Margin="10"/>
+        <ComboBox x:Name="SelectPageCB" Style="{DynamicResource ComboBoxProfile}" ItemContainerStyle="{DynamicResource ComboBoxItemBase}" SelectionChanged="SelectPageCB_SelectionChanged"/>
 
         <!--Вывод рекордов пользователя-->
         <StackPanel Style="{DynamicResource StackPanelCentered}">
@@ -55,7 +55,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center" ToolTip="{Binding video, StringFormat=Видео: {0}}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ToolTip="{Binding video, StringFormat=Видео: {0}}">
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding total_time, StringFormat=Время: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
@@ -76,9 +76,9 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16" VerticalAlignment="Center">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
                                             <TextBlock Text="{Binding title, StringFormat=Название: {0}}" Style="{DynamicResource TextLeaderGame}"/>
-                                            <TextBlock Text="{Binding Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource TextLeaderGame}" Margin="10,0,0,0"/>
+                                            <TextBlock Text="{Binding Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource TextSecondGame}"/>
                                         </WrapPanel>
                                     </Grid>
                                 </DataTemplate>

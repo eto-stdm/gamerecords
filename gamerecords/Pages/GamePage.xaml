@@ -30,7 +30,7 @@
                         <ImageBrush x:Name="GameIB" Stretch="UniformToFill"/>
                     </Border.Background>
                 </Border>
-                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonMenu}" ToolTip="Назад" HorizontalAlignment="Right" Margin="0,0,0,0" Click="GoBackBtn_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonBackGame}" Click="GoBackBtn_Click"/>
                 <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" Style="{DynamicResource FirstHeaderGame}"/>
                 <ListBox x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="#233a3d" Background="#233a3d">
                     <ListBox.ItemTemplate>
@@ -79,8 +79,8 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <ComboBox x:Name="CategoryCB" Grid.Column="0"  Style="{DynamicResource ComboBoxLeaderGame}" SelectionChanged="CategoryCB_SelectionChanged"/>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <ComboBox x:Name="CategoryCB" Grid.Column="0" Style="{DynamicResource ComboBoxLeaderGame}" SelectionChanged="CategoryCB_SelectionChanged"/>
+                    <StackPanel Grid.Column="1" Style="{DynamicResource SPMainGame}">
                         <Button x:Name="RulesBtn" Content="Правила" Style="{DynamicResource ButtonRulesLeaderGame}" Click="RulesBtn_Click"/>
                         <Button x:Name="SubmitRunBtn" Content="Опубликовать забег" Style="{DynamicResource ButtonLeaderGame}" Click="SubmitRunBtn_Click"/>
                     </StackPanel>
@@ -196,7 +196,7 @@
         </Border>
 
         <!--Статистика-->
-        <Border Style="{DynamicResource BorderUsual}" x:Name="GameStatsB" Visibility="Visible">
+        <Border Style="{DynamicResource BorderUsual}" x:Name="GameStatsB" Visibility="Collapsed">
             <StackPanel>
                 <!--Текстовая статистика-->
                 <StackPanel>
@@ -208,15 +208,13 @@
 
                 <!--График-->
                 <StackPanel>
-                    <WindowsFormsHost Height="100" Width="100" Margin="10">
+                    <WindowsFormsHost Style="{DynamicResource ChartGame}">
                         <charts:Chart x:Name="StatChart">
                             <charts:Chart.Legends>
                                 <charts:Legend>
-
                                 </charts:Legend>
                             </charts:Chart.Legends>
                         </charts:Chart>
-
                     </WindowsFormsHost>
                 </StackPanel>
             </StackPanel>

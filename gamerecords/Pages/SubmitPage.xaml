@@ -28,7 +28,7 @@
 
                 <!--Строка 1-->
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Опубликовать забег" Style="{DynamicResource FirstTBSubmit}"/>
-                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonMenu}" ToolTip="Назад" HorizontalAlignment="Right" Margin="0,0,30,0" Click="GoBackBtn_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonBack}" Click="GoBackBtn_Click"/>
 
                 <!--Строка 2-->
                 <StackPanel Grid.Row="1" Grid.Column="0" Style="{DynamicResource SPSubmit}">

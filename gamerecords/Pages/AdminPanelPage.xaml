@@ -22,7 +22,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
-                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center" ToolTip="{Binding video, StringFormat=Видео: {0}}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ToolTip="{Binding video, StringFormat=Видео: {0}}">
                                             <TextBlock Text="{Binding Players.nickname, StringFormat=Никнейм: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesCategories.Categories.category, StringFormat=Категория: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
@@ -56,7 +56,7 @@
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 
-                                <WrapPanel Grid.Column="0" Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center">
+                                <WrapPanel Grid.Column="0" Style="{DynamicResource WrapPanelOrientHor}">
                                     <TextBlock Text="{Binding Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                     <TextBlock Text="{Binding title, StringFormat=Название: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                     <TextBlock Text="{Binding Players.nickname, StringFormat=Автор: {0}}" Style="{DynamicResource RegularAdminPanel}"/>

@@ -25,7 +25,7 @@
 
                 <!--Строка 1-->
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Создать гайд" Style="{DynamicResource FirstTBSubmit}"/>
-                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonMenu}" ToolTip="Назад" HorizontalAlignment="Right" Margin="0,0,30,0" Click="GoBackBtn_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonBack}" Click="GoBackBtn_Click"/>
 
                 <!--Строка 2-->
                 <StackPanel Grid.Row="1" Grid.Column="0" Style="{DynamicResource SPSubmit}">
@@ -48,8 +48,7 @@
                     <TextBlock Text="Текст" Style="{DynamicResource FirstSPTBSubmit}" />
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1" Style="{DynamicResource SPSubmit}">
-                    
-                    <TextBox x:Name="TextTB" Style="{DynamicResource VideoTBSubmit}" VerticalContentAlignment="Top" Height="150" TextWrapping="Wrap"/>
+                    <TextBox x:Name="TextTB" Style="{DynamicResource TextGuides}"/>
                 </StackPanel>
 
                 <!--Строка 7-->
