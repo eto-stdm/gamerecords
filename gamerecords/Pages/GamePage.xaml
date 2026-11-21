@@ -32,11 +32,11 @@
                 </Border>
                 <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonBackGame}" Click="GoBackBtn_Click"/>
                 <TextBlock x:Name="GameNameTB" Grid.Column="1" Grid.Row="0" Style="{DynamicResource FirstHeaderGame}"/>
-                <ListBox x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="#233a3d" Background="#233a3d">
+                <ListBox x:Name="GameTagsTB" Grid.Column="1" Grid.Row="1" Style="{DynamicResource LBGame}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="4,0,0,0">
-                                <Border Background="#188f6e" CornerRadius="5">
+                            <Grid Style="{DynamicResource GridGame}">
+                                <Border Style="{DynamicResource BorderTagGame}">
                                     <TextBlock Style="{DynamicResource TextBlockBaseRegular}" Text="{Binding}" Padding="5"/>
                                 </Border>
                             </Grid>

@@ -323,6 +323,22 @@
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Margin" Value="0,0,10,0"/>
     </Style>
+
+    <Style x:Key="LBGame" TargetType="ListBox">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="GridGame" TargetType="Grid">
+        <Setter Property="Margin" Value="4,0,0,0"/>
+    </Style>
+
+    <Style x:Key="BorderTagGame" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource EmeraldBrush}"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
     <!--#endregion-->
 
     <!--#region Лидерборд-->
