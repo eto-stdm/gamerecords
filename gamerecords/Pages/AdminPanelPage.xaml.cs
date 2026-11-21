@@ -31,6 +31,14 @@ namespace gamerecords.Pages
         {
             InitializeComponent();
             UpdateListBox();
+
+            SelectPageCB.ItemsSource = new List<string>
+            {
+                "Проверка рекордов",
+                "Удаление гайдов",
+            };
+            SelectPageCB.SelectedIndex = 0;
+            PageChange();
         }
 
         /// <summary>
@@ -39,6 +47,43 @@ namespace gamerecords.Pages
         private void UpdateListBox()
         {
             RecordsLB.ItemsSource = Core.Context.Records.Where(x => x.status_id == 1).ToList();
+            GuidesLB.ItemsSource = Core.Context.Guides.ToList();
+        }
+
+        /// <summary>
+        /// Скрытие всех StackPanel
+        /// </summary>
+        private void HideAll()
+        {
+            RecordsSP.Visibility = Visibility.Collapsed;
+            GuidesSP.Visibility = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Изменение раздела
+        /// </summary>
+        private void PageChange()
+        {
+            string pageName = SelectPageCB.SelectedItem.ToString();
+            HideAll();
+            switch (pageName)
+            {
+                case "Проверка рекордов":
+                    RecordsSP.Visibility = Visibility.Visible;
+                    break;
+                case "Удаление гайдов":
+                    GuidesSP.Visibility = Visibility.Visible;
+                    break;
+                default: break;
+            }
+        }
+
+        /// <summary>
+        /// Обработка нажания на ListBox с названиями разделов
+        /// </summary>
+        private void SelectPageCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PageChange();
         }
 
         /// <summary>
@@ -49,8 +94,11 @@ namespace gamerecords.Pages
             var selectRecord = RecordsLB.SelectedItem as Records;
             if (selectRecord == null) return;
 
-
-            try { Process.Start(selectRecord.video); }
+            try
+            {
+                Process.Start(selectRecord.video);
+                Core.ShowAppDialog(() => new RulesDialog(selectRecord.GamesCategories));
+            }
             catch
             {
                 Core.ShowAppDialog(() => new DefaultOKDialog("Ссылка на видео нечитаема, рекорд будет неверефицирован"));
@@ -72,6 +120,26 @@ namespace gamerecords.Pages
                 Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд не прошёл проверку и не будет отображаться в лидерборде!"));
             }
             UpdateListBox();
+        }
+
+        private void GuidesLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var sendBtn = sender as Button;
+            if (sendBtn.DataContext is Guides g)
+            {
+                if (Core.ShowAppDialog(() => new DefaultYesNoDialog("Удалить гайд?")))
+                {
+                    Core.Context.Guides.Remove(g);
+                    Core.Context.SaveChanges();
+                    Core.ShowAppDialog(() => new DefaultYesNoDialog("Гайд был удалён"));
+                }
+                UpdateListBox();
+            }
         }
     }
 }

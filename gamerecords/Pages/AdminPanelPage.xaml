@@ -11,13 +11,13 @@
     <!--Заголовок-->
     <StackPanel Style="{DynamicResource StackPanelCentered}">
         <TextBlock Text="Панель администратора" Style="{DynamicResource FirstTBAdminPanel}"/>
-        <TextBlock Text="Проверка рекордов" Style="{DynamicResource SecondTBAdminPanel}"/>
+        <ComboBox x:Name="SelectPageCB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboBoxItemBase}" SelectionChanged="SelectPageCB_SelectionChanged"/>
 
-        <!--Основная часть-->
-        <StackPanel Style="{DynamicResource StackPanelCentered}">
+        <!--Список рекордов-->
+        <StackPanel x:Name="RecordsSP" Style="{DynamicResource StackPanelCentered}" Visibility="Collapsed">
             <Border Style="{DynamicResource BorderUsual}">
                 <StackPanel>
-                    <Grid Style="{DynamicResource GridCenteredAdminPanel}">
+                    <Grid Style="{DynamicResource GridCentered}">
                         <ListBox x:Name="RecordsLB" Style="{DynamicResource ListBoxUsual}" MouseDoubleClick="RecordsLB_MouseDoubleClick">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -41,6 +41,37 @@
                         </ListBox>
                     </Grid>
                 </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!--Блок с гайдами-->
+        <StackPanel x:Name="GuidesSP" Style="{DynamicResource StackPanelCentered}" Visibility="Collapsed">
+            <Border Style="{DynamicResource BorderUsual}">
+                <ListBox x:Name="GuidesLB" Style="{DynamicResource ListBoxLeaderGame}" MouseDoubleClick="GuidesLB_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <WrapPanel Grid.Column="0" Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16"  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                    <TextBlock Text="{Binding title, StringFormat=Название: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                    <TextBlock Text="{Binding Players.nickname, StringFormat=Автор: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                </WrapPanel>
+
+                                <Button Grid.Column="1" Content="Удалить" Style="{DynamicResource ButtonDeleteAdminPanel}" Click="Button_Click"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </Border>
         </StackPanel>
     </StackPanel>

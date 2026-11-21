@@ -1,0 +1,62 @@
+﻿<Page x:Class="gamerecords.Pages.AddGuidesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gamerecords.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AddGuidesPage">
+
+    <StackPanel Style="{DynamicResource StackPanelCentered}">
+        <Border Style="{DynamicResource BorderUsual}">
+            <Grid Style="{DynamicResource GridSubmit}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="190"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!--Строка 1-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Создать гайд" Style="{DynamicResource FirstTBSubmit}"/>
+                <Button Grid.Row="0" Grid.Column="1" x:Name="GoBackBtn" Content="←" Style="{DynamicResource ButtonMenu}" ToolTip="Назад" HorizontalAlignment="Right" Margin="0,0,30,0" Click="GoBackBtn_Click"/>
+
+                <!--Строка 2-->
+                <StackPanel Grid.Row="1" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Пользователь" Style="{DynamicResource FirstSPTBSubmit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBox x:Name="UserTB" Style="{DynamicResource VideoTBSubmit}" IsEnabled="False"/>
+                </StackPanel>
+
+                <!--Строка 3-->
+                <StackPanel Grid.Row="2" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Заголовок" Style="{DynamicResource FirstSPTBSubmit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <TextBox x:Name="HeaderTB" Style="{DynamicResource VideoTBSubmit}"/>
+                </StackPanel>
+
+                <!--Строка 4-->
+                <StackPanel Grid.Row="3" Grid.Column="0" Style="{DynamicResource SPSubmit}">
+                    <TextBlock Text="Текст" Style="{DynamicResource FirstSPTBSubmit}" />
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    
+                    <TextBox x:Name="TextTB" Style="{DynamicResource VideoTBSubmit}" VerticalContentAlignment="Top" Height="150" TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <!--Строка 7-->
+                <StackPanel Grid.Row="4" Grid.Column="1" Style="{DynamicResource SPSubmit}">
+                    <Button x:Name="CreateGuideBtn" Content="Создать" Style="{DynamicResource ButtonSubmit}" Click="CreateGuideBtn_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
+</Page>

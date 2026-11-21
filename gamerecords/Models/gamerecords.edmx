@@ -37,6 +37,7 @@
           <Property Name="created_year" Type="date" Nullable="false" />
           <Property Name="image" Type="nvarchar(max)" />
           <Property Name="rules" Type="nvarchar(max)" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="GamesCategories">
           <Key>
@@ -79,6 +80,7 @@
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Platforms">
           <Key>
@@ -434,6 +436,7 @@
           <Property Name="created_year" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="rules" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="GamesGenres" Relationship="Self.FK__GamesGenr__game___4316F928" FromRole="Games" ToRole="GamesGenres" />
           <NavigationProperty Name="Guides" Relationship="Self.FK__Guides__game_id__3F466844" FromRole="Games" ToRole="Guides" />
           <NavigationProperty Name="GamesCategories" Relationship="Self.FK_GamesCategories_Games" FromRole="Games" ToRole="GamesCategories" />
@@ -489,6 +492,7 @@
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Games" Relationship="Self.FK__Guides__game_id__3F466844" FromRole="Guides" ToRole="Games" />
           <NavigationProperty Name="Players" Relationship="Self.FK__Guides__author_i__403A8C7D" FromRole="Guides" ToRole="Players" />
         </EntityType>
@@ -858,6 +862,7 @@
                 <ScalarProperty Name="created_year" ColumnName="created_year" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="rules" ColumnName="rules" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -905,6 +910,7 @@
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

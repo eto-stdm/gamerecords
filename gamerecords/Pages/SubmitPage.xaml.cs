@@ -171,10 +171,15 @@ namespace gamerecords.Pages
             Core.Context.Records.Add(newrecord);
             Core.Context.SaveChanges();
             Core.ShowAppDialog(() => new DefaultOKDialog("Рекорд успешно опубликован! Вы сможете увидеть его в таблице лидеров после проверки модераторами."));
-            NavigationService.Navigate(new CatalogPage());
+            NavigationService.Navigate(new GamePage(Core.Context.Games.FirstOrDefault(x => x.id == GameCat.Games.id)));
             return;
             //}
             //catch { Core.ShowAppDialog(() => new DefaultOKDialog("Неверно заполненные поля!")); } // не помню зачем
+        }
+
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -27,6 +27,7 @@ namespace gamerecords.Models
         public System.DateTime created_year { get; set; }
         public string image { get; set; }
         public string rules { get; set; }
+        public System.DateTime created_date { get; set; }
     
         public virtual ICollection<GamesGenres> GamesGenres { get; set; }
         public virtual ICollection<Guides> Guides { get; set; }

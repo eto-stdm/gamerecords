@@ -31,18 +31,22 @@
                         <TextBlock x:Name="CountryTB" Text="Страна: " Style="{DynamicResource SecondTBAdminPanel}" VerticalAlignment="Center"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2">
+                    <StackPanel x:Name="RecordsStatSP" Grid.Column="2" VerticalAlignment="Center">
                         <TextBlock x:Name="RecordsAmountTB" Text="Кол-во забегов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock x:Name="RecordsCheckTB" Text="На проверке: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock x:Name="RecordsOKTB" Text="Верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock x:Name="RecordsNoTB" Text="Не верифицированны: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
+
+                    <StackPanel x:Name="GuidesStatSP" Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock x:Name="GuidesAmountTB" Text="Кол-во гайдов: " Style="{DynamicResource SecondTBAdminPanel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </StackPanel>
                 </Grid>
             </Border>
         </StackPanel>
-        <TextBlock Text="Мои рекорды" Style="{DynamicResource SecondTBAdminPanel}"/>
+        <ComboBox x:Name="SelectPageCB" Style="{DynamicResource ComboBoxSignUp}" ItemContainerStyle="{DynamicResource ComboBoxItemBase}" SelectionChanged="SelectPageCB_SelectionChanged" Margin="10"/>
 
-            <!--Вывод рекордов пользователя-->
+        <!--Вывод рекордов пользователя-->
         <StackPanel Style="{DynamicResource StackPanelCentered}">
             <Border Style="{DynamicResource BorderUsual}">
                 <StackPanel>
@@ -58,6 +62,23 @@
                                             <TextBlock Text="{Binding date, StringFormat=Дата: dd.MM.yyyy hh:mm:ss}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding GamesPlatforms.Platforms.platform, StringFormat=Платформа: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
                                             <TextBlock Text="{Binding Statuses.status, StringFormat=Статус: {0}}" Style="{DynamicResource RegularAdminPanel}"/>
+                                        </WrapPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                        <ListBox x:Name="GuidesLB" Style="{DynamicResource ListBoxSmall}" MouseDoubleClick="GuidesLB_MouseDoubleClick" Visibility="Collapsed">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Style="{DynamicResource GridHorizontalAdminPanel}">
+                                        <WrapPanel Style="{DynamicResource WrapPanelOrientHor}" ItemHeight="16" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding title, StringFormat=Название: {0}}" Style="{DynamicResource TextLeaderGame}"/>
+                                            <TextBlock Text="{Binding Games.name, StringFormat=Игра: {0}}" Style="{DynamicResource TextLeaderGame}" Margin="10,0,0,0"/>
                                         </WrapPanel>
                                     </Grid>
                                 </DataTemplate>

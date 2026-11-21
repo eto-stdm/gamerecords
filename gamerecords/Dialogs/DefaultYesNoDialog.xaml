@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gamerecords.Dialogs"
         mc:Ignorable="d"
-        Title="DefaultYesNoDialog"
+        Title="Да или нет"
         WindowStartupLocation="CenterOwner"
         Height="300" Width="300"
         Style="{DynamicResource MyWindowStyle}">

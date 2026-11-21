@@ -35,6 +35,7 @@ namespace gamerecords.Pages
             InitializeComponent();
 
             List<Records> userRecords = Core.Context.Records.Where(x => x.player_id == Core.current_player.id).ToList();
+            List<Guides> userGuides = Core.Context.Guides.Where(x => x.author_id == Core.current_player.id).ToList();
 
             // Вывод никнейма и его рекордов
             NickNameTB.Text += Core.current_player.nickname;
@@ -44,8 +45,17 @@ namespace gamerecords.Pages
             RecordsCheckTB.Text += userRecords.Where(x => x.status_id == 1).Count();
             RecordsOKTB.Text += userRecords.Where(x => x.status_id == 2).Count();
             RecordsNoTB.Text += userRecords.Where(x => x.status_id == 3).Count();
+            GuidesAmountTB.Text += userGuides.Count();
 
             RecordsLB.ItemsSource = userRecords;
+            GuidesLB.ItemsSource = userGuides;
+
+            SelectPageCB.ItemsSource = new List<string>
+            {
+                "Мои рекорды",
+                "Мои гайды",
+            };
+            SelectPageCB.SelectedIndex = 0;
         }
 
         private void RecordsLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -55,6 +65,57 @@ namespace gamerecords.Pages
 
             // Открытие видео в браузере
             Process.Start(selectRecord.video);
+        }
+
+        /// <summary>
+        /// Обработка двойного нажатия на запись в гайде
+        /// </summary>
+        private void GuidesLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectGuide = GuidesLB.SelectedItem as Guides;
+            if (selectGuide == null) return;
+
+            Core.ShowAppDialog(() => new GuidesDialog(selectGuide));
+        }
+
+        /// <summary>
+        /// Скрытие всех StackPanel
+        /// </summary>
+        private void HideAll()
+        {
+            RecordsLB.Visibility = Visibility.Collapsed;
+            RecordsStatSP.Visibility = Visibility.Collapsed;
+            GuidesLB.Visibility = Visibility.Collapsed;
+            GuidesStatSP.Visibility = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Изменение раздела
+        /// </summary>
+        private void PageChange()
+        {
+            string pageName = SelectPageCB.SelectedItem.ToString();
+            HideAll();
+            switch (pageName)
+            {
+                case "Мои рекорды":
+                    RecordsLB.Visibility = Visibility.Visible;
+                    RecordsStatSP.Visibility = Visibility.Visible;
+                    break;
+                case "Мои гайды":
+                    GuidesLB.Visibility = Visibility.Visible;
+                    GuidesStatSP.Visibility = Visibility.Visible;
+                    break;
+                default: break;
+            }
+        }
+
+        /// <summary>
+        /// Обработка нажания на ListBox с названиями разделов
+        /// </summary>
+        private void SelectPageCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PageChange();
         }
 
         private void AvatarBtn_Click(object sender, RoutedEventArgs e)

@@ -19,6 +19,7 @@ namespace gamerecords.Models
         public string title { get; set; }
         public string description { get; set; }
         public int author_id { get; set; }
+        public System.DateTime created_date { get; set; }
     
         public virtual Games Games { get; set; }
         public virtual Players Players { get; set; }

@@ -17,6 +17,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace gamerecords.Pages
 {
@@ -25,7 +27,7 @@ namespace gamerecords.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        Games Game { get; set; }
+        Games game { get; set; }
 
         /// <summary>
         /// Конструктор страницы GamePage
@@ -34,7 +36,7 @@ namespace gamerecords.Pages
         public GamePage(Games game)
         {
             InitializeComponent();
-            this.Game = game;
+            this.game = game;
 
             // Изменение раздела
             ChangeBorder();
@@ -44,13 +46,13 @@ namespace gamerecords.Pages
             GameNameTB.Text = $"{game.name} ({game.created_year.Year})";
 
             // Заполнение строки с жанрами
-            List<GamesPlatforms> gamesPlatforms = Core.Context.GamesPlatforms.Where(x => x.game_id == game.id).ToList();
-            string textPlatforms = "";
-            foreach (GamesPlatforms gamepl in gamesPlatforms)
+            List<string> tags = new List<string>();
+            foreach (GamesGenres g in Core.Context.GamesGenres.ToList())
             {
-                textPlatforms += $"{Core.Context.Platforms.First(x => x.id == gamepl.platform_id).platform}, ";
-            }
-            GameTagsTB.Text = "Жанры: " + textPlatforms.Substring(0, textPlatforms.Length - 2);
+                if (g.game_id == game.id) { tags.Add(g.Genres.genre); }
+            }    
+            GameTagsTB.ItemsSource = tags;
+
 
             // Заполнение ComboBox с категориями
             List<GamesCategories> gamesCategories = Core.Context.GamesCategories.Where(x => x.game_id == game.id).ToList();
@@ -65,8 +67,31 @@ namespace gamerecords.Pages
             // Заполнение лидерборда на основе категории
             ChangingCategory();
 
+            List<Records> curGameRecords = Core.Context.Records.Where(x => x.GamesCategories.Games.id == game.id).ToList();
+
+            DateTime totalTime = new DateTime();
+            totalTime += curGameRecords.Aggregate(TimeSpan.Zero, (sum, item) => sum + item.total_time);
+
+            int uniquePlayersCount = curGameRecords
+                .Select(x => x.Players.nickname)
+                .Distinct()
+                .Count();
+
+            // Расчёт чисел статистики (по всей игре)
+            StatTotalRunsTB.Text += $"{curGameRecords.Count}";
+            StatTotalTimeTB.Text += $"{totalTime}";
+            StatTotalPlayersTB.Text += $"{uniquePlayersCount}";
+            StatTotalGuidesTB.Text += $"{Core.Context.Guides.Where(x => x.game_id == game.id).Count()}";
+
             // Заполнение списка гайдов
-            //GuidesLB.ItemsSource = Core.Context.Guides.Where(x => x.Games.id == Game.id).ToList();
+            GuidesLB.ItemsSource = Core.Context.Guides.Where(x => x.Games.id == game.id).ToList();
+
+            // Инициализация графика
+            StatChart.ChartAreas.Add(new ChartArea("Main"));
+            StatChart.Series.Add(new Series("Точки"));
+
+            StatChart.Series["Точки"].ChartArea = "Main";
+            StatChart.Series["Точки"].ChartType = SeriesChartType.Line;
         }
 
         /// <summary>
@@ -114,9 +139,11 @@ namespace gamerecords.Pages
         /// </summary>
         private void RulesBtn_Click(object sender, RoutedEventArgs e)
         {
-            RulesDialog dialog = new RulesDialog(FindGameCategory());
-            dialog.Owner = System.Windows.Application.Current.MainWindow;
-            dialog.ShowDialog();
+            Core.ShowAppDialog(() => new RulesDialog(FindGameCategory()));
+
+            //RulesDialog dialog = new RulesDialog(FindGameCategory());
+            //dialog.Owner = System.Windows.Application.Current.MainWindow;
+            //dialog.ShowDialog();
         }
 
         /// <summary>
@@ -134,7 +161,7 @@ namespace gamerecords.Pages
         private GamesCategories FindGameCategory()
         {
             string catname = CategoryCB.SelectedItem.ToString();
-            return Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == catname && x.game_id == Game.id);
+            return Core.Context.GamesCategories.FirstOrDefault(x => x.Categories.category == catname && x.game_id == game.id);
         }
 
         /// <summary>
@@ -143,7 +170,16 @@ namespace gamerecords.Pages
         private void ChangingCategory()
         {
             string catname = CategoryCB.SelectedItem.ToString();
-            LeaderboardLB.ItemsSource = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.status_id == 2).ToList();
+
+            // Выбираем рекорды, из конкретной категории и с определённым статусом
+            List<Records> curCatRecords = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.status_id == 2).ToList();
+
+            // Делаем так, чтобы у конкретного пользователя была только одна запись в лидерборде (с самым мальеньким временем)
+            List<Records> curOnePlayerRecords = curCatRecords
+                .GroupBy(x => x.player_id)
+                .Select(x => x.OrderBy(y => y.total_time).FirstOrDefault())
+                .ToList();
+            LeaderboardLB.ItemsSource = curOnePlayerRecords;
         }
 
         /// <summary>
@@ -152,6 +188,27 @@ namespace gamerecords.Pages
         private void CategoryCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ChangingCategory();
+        }
+
+        /// <summary>
+        /// Обработка двойного нажатия на запись в гайде
+        /// </summary>
+        private void GuidesLB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectGuide = GuidesLB.SelectedItem as Guides;
+            if (selectGuide == null) return;
+
+            Core.ShowAppDialog(() => new GuidesDialog(selectGuide));
+        }
+
+        private void CreateGuideBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddGuidesPage(game));
+        }
+
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CatalogPage());
         }
     }
 }
