@@ -1,10 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-
+    
+    <!--#region Кисти-->
+    <SolidColorBrush x:Key="EmeraldBrush" Color="#188f6e"/>
+    <SolidColorBrush x:Key="BlackAccentBrush" Color="#111618"/>
+    <SolidColorBrush x:Key="DarkGreenBrush" Color="#1e262c"/>
+    <SolidColorBrush x:Key="GreenBackBrush" Color="#233a3d"/>
+    <SolidColorBrush x:Key="LightGrayBrush" Color="#aeb3ba"/>
+    <!--#endregion-->
+    
     <Style x:Key="ComboBoxBase" TargetType="ComboBox">
-        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderBrush" Value="#111618"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -43,7 +51,7 @@
                                         <!-- Цвет при наведении -->
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter TargetName="Border" Property="Background" Value="#3E3E42"/>
-                                            <Setter TargetName="Border" Property="BorderBrush" Value="#188f6e"/>
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -78,8 +86,8 @@
     <!--
     <Style x:Key="ComboBoxBaseold" TargetType="ComboBox">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#111618"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Style.Resources>
@@ -92,7 +100,7 @@
     <Style x:Key="ComboBoxItemBase" TargetType="ComboBoxItem">
         <Setter Property="Padding" Value="8,4"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
@@ -101,7 +109,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="#188f6e"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource EmeraldBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -125,19 +133,19 @@
     </Style>
 
     <Style x:Key="ButtonBaseInterEmerald" TargetType="Button" BasedOn="{StaticResource ButtonBaseInter}">
-        <Setter Property="Background" Value="#188f6e"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="{DynamicResource EmeraldBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
     </Style>
 
     <Style x:Key="ButtonBaseInterGray" TargetType="Button" BasedOn="{StaticResource ButtonBaseInter}">
-        <Setter Property="Background" Value="#1e262c"/>
-        <Setter Property="BorderBrush" Value="#1e262c"/>
+        <Setter Property="Background" Value="{DynamicResource DarkGreenBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkGreenBrush}"/>
     </Style>
 
     <Style x:Key="TextBoxBase" TargetType="TextBox">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#111618"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Style.Resources>
             <Style TargetType="Border">
@@ -155,14 +163,14 @@
 
     <Style x:Key="ListBoxUsual" TargetType="ListBox" BasedOn="{StaticResource ListBoxBase}">
         <Setter Property="Height" Value="600"/>
-        <Setter Property="Background" Value="#233a3d"/>
-        <Setter Property="BorderBrush" Value="#233a3d"/>
+        <Setter Property="Background" Value="{DynamicResource GreenBackBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource GreenBackBrush}"/>
     </Style>
 
     <Style x:Key="ListBoxSmall" TargetType="ListBox" BasedOn="{StaticResource ListBoxBase}">
         <Setter Property="Height" Value="400"/>
-        <Setter Property="Background" Value="#233a3d"/>
-        <Setter Property="BorderBrush" Value="#233a3d"/>
+        <Setter Property="Background" Value="{DynamicResource GreenBackBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource GreenBackBrush}"/>
     </Style>
 
     <Style x:Key="TextBlockBase" TargetType="TextBlock">
@@ -192,7 +200,7 @@
     </Style>
 
     <Style x:Key="TextBlockBaseNote" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="Foreground" Value="#aeb3ba"/>
+        <Setter Property="Foreground" Value="{DynamicResource LightGrayBrush}"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
     </Style>
 
@@ -202,7 +210,7 @@
     </Style>
 
     <Style x:Key="BorderUsual" TargetType="Border" BasedOn="{StaticResource BorderBase}">
-        <Setter Property="Background" Value="#233a3d"/>
+        <Setter Property="Background" Value="{DynamicResource GreenBackBrush}"/>
     </Style>
 
     <Style x:Key="GameImgBorder" TargetType="Border">
@@ -237,7 +245,7 @@
     </Style>
 
     <Style x:Key="MyWindowStyle" TargetType="Window">
-        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
     </Style>
     <!--#endregion-->
@@ -313,7 +321,7 @@
     </Style>
 
     <Style x:Key="BorderButtonsGame" TargetType="Border" BasedOn="{StaticResource BorderBase}">
-        <Setter Property="Background" Value="#1e262c"/>
+        <Setter Property="Background" Value="{DynamicResource DarkGreenBrush}"/>
     </Style>
 
     <Style x:Key="ButtonMainGame" TargetType="Button" BasedOn="{StaticResource ButtonBaseInterGray}">
@@ -338,16 +346,16 @@
 
     <Style x:Key="ListBoxLeaderGame" TargetType="ListBox" BasedOn="{StaticResource ListBoxBase}">
         <Setter Property="Height" Value="400"/>
-        <Setter Property="Background" Value="#1e262c"/>
-        <Setter Property="BorderBrush" Value="#1e262c"/>
+        <Setter Property="Background" Value="{DynamicResource DarkGreenBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkGreenBrush}"/>
     </Style>
 
     <Style x:Key="ButtonRulesLeaderGame" TargetType="Button" BasedOn="{StaticResource ButtonBaseInter}">
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="130"/>
         <Setter Property="Margin" Value="5"/>
-        <Setter Property="Background" Value="#111618"/>
-        <Setter Property="BorderBrush" Value="#353c40"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
@@ -361,7 +369,7 @@
     <Style x:Key="GridLeaderGame" TargetType="Grid">
         <Setter Property="Width" Value="730"/>
         <Setter Property="Margin" Value="10,0,10,0"/>
-        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
     </Style>
 
     <Style x:Key="TextLeaderGame" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBaseRegular}">
@@ -388,7 +396,7 @@
     </Style>
 
     <Style x:Key="BorderMain" TargetType="Border">
-        <Setter Property="Background" Value="#188f6e"/>
+        <Setter Property="Background" Value="{DynamicResource EmeraldBrush}"/>
         <Setter Property="Panel.ZIndex" Value="50"/>
     </Style>
 
@@ -421,8 +429,8 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="30"/>
         <Setter Property="Margin" Value="0,0,20,0"/>
-        <Setter Property="Background" Value="#188f6e"/>
-        <Setter Property="BorderBrush" Value="#188f6e"/>
+        <Setter Property="Background" Value="{DynamicResource EmeraldBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
         <Setter Property="FontSize" Value="20"/>
     </Style>
 
@@ -452,7 +460,7 @@
     </Style>
 
     <Style x:Key="HyperlinkSignIn" TargetType="Hyperlink">
-        <Setter Property="Foreground" Value="#188f6e"/>
+        <Setter Property="Foreground" Value="{DynamicResource EmeraldBrush}"/>
         <Setter Property="FontFamily" Value="/Fonts/#Inter Medium"/>
         <Setter Property="TextDecorations" Value="None"/>
     </Style>
@@ -468,13 +476,13 @@
         <Setter Property="Width" Value="300"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#111618"/>
+        <Setter Property="Background" Value="{DynamicResource BlackAccentBrush}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border Background="#111618" BorderBrush="#188f6e" BorderThickness="1"  CornerRadius="5">
+                    <Border Background="{DynamicResource BlackAccentBrush}" BorderBrush="{DynamicResource EmeraldBrush}" BorderThickness="1"  CornerRadius="5">
                         <ScrollViewer x:Name="PART_ContentHost"/>
                     </Border>
                 </ControlTemplate>
@@ -576,7 +584,7 @@
 
     <Style x:Key="DPSubmit" TargetType="DatePicker">
         <Setter Property="Margin" Value="10,0,10,10"/>
-        <Setter Property="BorderBrush" Value="#233a3d"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource GreenBackBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
