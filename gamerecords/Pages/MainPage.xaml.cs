@@ -30,15 +30,10 @@ namespace gamerecords.Pages
 
             // Выбор темы на основании того, вошёл пользователь или нет
             if (Core.current_player == null) { }
-            else { 
-                if (Core.current_player.theme != null)
+            else {
+                if (Application.Current.MainWindow is MainWindow mainWindow)
                 {
-                    switch (Core.current_player.theme)
-                    {
-                        case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
-                        case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
-                        default: break;
-                    }
+                    mainWindow.AutoChangeTheme();
                 }
 
                 // Показ кнопки с админкой у администраторов

@@ -63,9 +63,26 @@ namespace gamerecords
             if (Core.current_player != null)
             {
                 Core.current_player.theme = ChooseThemeCB.SelectedItem.ToString();
+                ChooseThemeCB.SelectedItem = ChooseThemeCB.SelectedItem.ToString();
                 Core.Context.SaveChanges();
             }
         }
+
+        public void AutoChangeTheme()
+        {
+            var userTheme = Core.current_player.theme;
+            if (userTheme != null)
+            {
+                switch (userTheme)
+                {
+                    case "Стандартная": Core.ApplyTheme("Styles/DictionaryDefault.xaml"); break;
+                    case "По заданию": Core.ApplyTheme("Styles/DictionaryTask.xaml"); break;
+                    default: break;
+                }
+            }
+            ChooseThemeCB.SelectedItem = userTheme;
+        }
+
         /// <summary>
         /// Обработка кнопки закрытия приложения
         /// </summary>
