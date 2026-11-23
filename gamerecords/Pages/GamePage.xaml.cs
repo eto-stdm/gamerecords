@@ -11,13 +11,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
-using System.Windows.Forms.DataVisualization.Charting;
 
 
 namespace gamerecords.Pages
@@ -67,19 +68,34 @@ namespace gamerecords.Pages
             // Заполнение лидерборда на основе категории
             ChangingCategory();
 
-            List<Records> curGameRecords = Core.Context.Records.Where(x => x.GamesCategories.Games.id == game.id).ToList();
+            //List<Records> curGameRecords = Core.Context.Records.Where(x => x.GamesCategories.Games.id == game.id).ToList();
 
-            DateTime totalTime = new DateTime();
+            List<Records> curGameRecords = Core.Context.Records
+             .Where(x => x.GamesCategories.game_id == game.id && x.status_id == 2)
+             .ToList();
+
+
+            TimeSpan totalTime = new TimeSpan();
             totalTime += curGameRecords.Aggregate(TimeSpan.Zero, (sum, item) => sum + item.total_time);
+            DateTime dt = DateTime.MinValue + totalTime;
 
             int uniquePlayersCount = curGameRecords
-                .Select(x => x.Players.nickname)
+                .Select(x => x.player_id)
                 .Distinct()
                 .Count();
 
+
             // Расчёт чисел статистики (по всей игре)
             StatTotalRunsTB.Text += $"{curGameRecords.Count}";
-            StatTotalTimeTB.Text += $"{totalTime}";
+
+            if (dt.Year - 1 > 0) StatTotalTimeTB.Text += $"{dt.Year - 1:D2}г ";
+            if (dt.Month - 1 > 0) StatTotalTimeTB.Text += $"{dt.Month - 1:D2}мес ";
+            if (dt.Day - 1 > 0) StatTotalTimeTB.Text += $"{dt.Day - 1:D2}д ";
+            if (dt.Hour > 0) StatTotalTimeTB.Text += $"{dt.Hour:D2}ч ";
+            if (dt.Minute > 0) StatTotalTimeTB.Text += $"{dt.Minute:D2}м ";
+            if (dt.Second > 0) StatTotalTimeTB.Text += $"{dt.Second:D2}с ";
+            if (dt == DateTime.MinValue) { StatTotalTimeTB.Text += "0с"; }
+
             StatTotalPlayersTB.Text += $"{uniquePlayersCount}";
             StatTotalGuidesTB.Text += $"{Core.Context.Guides.Where(x => x.game_id == game.id).Count()}";
 
@@ -102,7 +118,7 @@ namespace gamerecords.Pages
             // По умолчанию отображаются лидерборды
             if (sender == null) { GameLeaderboardB.Visibility = Visibility.Visible; return; }
 
-            var btn = (Button)sender;
+            var btn = (System.Windows.Controls.Button)sender;
             GameLeaderboardB.Visibility = Visibility.Collapsed;
             GameGuidesB.Visibility = Visibility.Collapsed;
             GameStatsB.Visibility = Visibility.Collapsed;
@@ -172,7 +188,7 @@ namespace gamerecords.Pages
             string catname = CategoryCB.SelectedItem.ToString();
 
             // Выбираем рекорды, из конкретной категории и с определённым статусом
-            List<Records> curCatRecords = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.status_id == 2).ToList();
+            List<Records> curCatRecords = Core.Context.Records.Where(x => x.GamesCategories.Categories.category == catname && x.GamesCategories.Games.id == game.id && x.status_id == 2).ToList();
 
             // Делаем так, чтобы у конкретного пользователя была только одна запись в лидерборде (с самым мальеньким временем)
             List<Records> curOnePlayerRecords = curCatRecords

@@ -2,19 +2,10 @@
 
 
     <!--#region Кисти-->
-    <!-- Фон всей страницы / окна (мягкий светло-серый из палитры) -->
     <SolidColorBrush x:Key="BlackAccentBrush" Color="#F3F3F3"/>
-
-    <!-- Фон карточки авторизации / контейнеров (чистый белый) -->
     <SolidColorBrush x:Key="GreenBackBrush" Color="#FFFFFF"/>
-
-    <!-- Фон полей ввода (TextBox / PasswordBox) и второстепенных элементов -->
     <SolidColorBrush x:Key="DarkGreenBrush" Color="#eaebed"/>
-
-    <!-- Основной акцент: кнопка "Войти", ссылки, обводка активных полей -->
     <SolidColorBrush x:Key="EmeraldBrush" Color="#0198AF"/>
-
-    <!-- Основной цвет текста (тёмно-синий вместо чёрного — выглядит мягче и дороже) -->
     <SolidColorBrush x:Key="LightGrayBrush" Color="#233E76"/>
     <!--#endregion-->
 
@@ -54,13 +45,13 @@
                                             </Grid.ColumnDefinitions>
                                             <!-- Иконка стрелки -->
                                             <Path x:Name="Arrow" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Data="M 0 0 L 4 4 L 8 0 Z" Fill="#003E47"/>
+                                              Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource EmeraldBrush}"/>
                                         </Grid>
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <!-- Цвет при наведении -->
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#3E3E42"/>
+                                            <Setter TargetName="Border" Property="Background" Value="White"/>
                                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource EmeraldBrush}"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
@@ -80,7 +71,7 @@
                         <!-- Выпадающий список -->
                         <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
                             <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border x:Name="DropDownBorder" Background="#252526" BorderThickness="1" BorderBrush="#555555" CornerRadius="4">
+                                <Border x:Name="DropDownBorder" Background="White" BorderThickness="1" BorderBrush="White" CornerRadius="4">
                                     <ScrollViewer Margin="2" SnapsToDevicePixels="True">
                                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
@@ -638,6 +629,10 @@
         <Setter Property="Width" Value="110"/>
         <Setter Property="Margin" Value="20"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+
+    <Style x:Key="WrapPanelHeightAuto" TargetType="WrapPanel" BasedOn="{StaticResource WrapPanelOrientHor}">
+        <Setter Property="ItemHeight" Value="Auto"/>
     </Style>
     <!--#endregion-->
 

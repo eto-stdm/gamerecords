@@ -630,6 +630,10 @@
         <Setter Property="Margin" Value="20"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
     </Style>
+
+    <Style x:Key="WrapPanelHeightAuto" TargetType="WrapPanel" BasedOn="{StaticResource WrapPanelOrientHor}">
+        <Setter Property="ItemHeight" Value="Auto"/>
+    </Style>
     <!--#endregion-->
 
     <!--Окна-->

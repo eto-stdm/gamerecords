@@ -56,7 +56,7 @@
                 </ListBox>
                 
                 <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Style="{DynamicResource BorderButtonsGame}">
-                    <WrapPanel Style="{DynamicResource WrapPanelOrientHor}">
+                    <WrapPanel Style="{DynamicResource WrapPanelHeightAuto}">
                         <Button x:Name="GameLeaderboardBtn" Content="Таблицы лидеров" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
                         <Button x:Name="GameGuidesBtn" Content="Гайды" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
                         <Button x:Name="GameStatsBtn" Content="Статистика" Style="{DynamicResource ButtonMainGame}" Click="ChangeBorder"/>
